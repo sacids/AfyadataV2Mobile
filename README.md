@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ODK Collect
 ![Platform](https://img.shields.io/badge/platform-Android-blue.svg)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -113,3 +114,6 @@ If you build the app on your own using Android Studio `(Build -> Build APK)` and
 
 This problem occurs building other apps as well.
 
+=======
+# AfyaDataMaterial
+>>>>>>> 8ea014fde2358c7b4cbd7e80d7ff232162350172
