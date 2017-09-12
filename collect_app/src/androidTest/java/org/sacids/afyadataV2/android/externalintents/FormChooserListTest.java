@@ -5,7 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.sacids.afyadataV2.activities.FormChooserList;
+import org.sacids.afyadataV2.android.activities.FormChooserList;
 
 import java.io.IOException;
 

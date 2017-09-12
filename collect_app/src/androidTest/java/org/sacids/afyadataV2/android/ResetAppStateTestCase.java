@@ -26,12 +26,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.sacids.afyadataV2.application.Collect;
-import org.sacids.afyadataV2.preferences.AdminKeys;
-import org.sacids.afyadataV2.preferences.PreferenceKeys;
-import org.sacids.afyadataV2.provider.FormsProviderAPI;
-import org.sacids.afyadataV2.provider.InstanceProviderAPI;
-import org.sacids.afyadataV2.utilities.ResetUtility;
+import org.sacids.afyadataV2.android.application.Collect;
+import org.sacids.afyadataV2.android.preferences.AdminKeys;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
+import org.sacids.afyadataV2.android.provider.FormsProviderAPI;
+import org.sacids.afyadataV2.android.provider.InstanceProviderAPI;
+import org.sacids.afyadataV2.android.utilities.ResetUtility;
 import org.osmdroid.config.Configuration;
 
 import java.io.File;

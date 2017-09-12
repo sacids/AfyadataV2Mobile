@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.sacids.afyadataV2.dao;
+package org.sacids.afyadataV2.android.dao;
 
 import android.database.Cursor;
 import android.support.test.runner.AndroidJUnit4;
@@ -23,10 +23,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.sacids.afyadataV2.application.Collect;
-import org.sacids.afyadataV2.dto.Form;
-import org.sacids.afyadataV2.provider.FormsProviderAPI;
-import org.sacids.afyadataV2.utilities.ResetUtility;
+import org.sacids.afyadataV2.android.application.Collect;
+import org.sacids.afyadataV2.android.dto.Form;
+import org.sacids.afyadataV2.android.provider.FormsProviderAPI;
+import org.sacids.afyadataV2.android.utilities.ResetUtility;
 
 import java.io.File;
 import java.io.IOException;

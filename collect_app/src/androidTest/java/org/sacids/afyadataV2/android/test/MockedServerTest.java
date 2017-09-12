@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
-import org.sacids.afyadataV2.application.Collect;
-import org.sacids.afyadataV2.preferences.PreferenceKeys;
+import org.sacids.afyadataV2.android.application.Collect;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;

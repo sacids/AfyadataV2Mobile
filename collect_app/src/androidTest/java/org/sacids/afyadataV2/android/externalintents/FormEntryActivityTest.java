@@ -7,7 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.sacids.afyadataV2.activities.FormEntryActivity;
+import org.sacids.afyadataV2.android.activities.FormEntryActivity;
 
 import java.io.IOException;
 

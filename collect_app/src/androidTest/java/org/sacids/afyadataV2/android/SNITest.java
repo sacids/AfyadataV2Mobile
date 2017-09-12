@@ -20,9 +20,9 @@ import javax.net.ssl.HttpsURLConnection;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
-import static org.sacids.afyadataV2.utilities.WebUtils.CONNECTION_TIMEOUT;
-import static org.sacids.afyadataV2.utilities.WebUtils.createHttpClient;
-import static org.sacids.afyadataV2.utilities.WebUtils.createOpenRosaHttpGet;
+import static org.sacids.afyadataV2.android.utilities.WebUtils.CONNECTION_TIMEOUT;
+import static org.sacids.afyadataV2.android.utilities.WebUtils.createHttpClient;
+import static org.sacids.afyadataV2.android.utilities.WebUtils.createOpenRosaHttpGet;
 
 /**
  * An on-device test for TLS server name indication support.

@@ -1,11 +1,11 @@
-package org.sacids.afyadataV2.utilities;
+package org.sacids.afyadataV2.android.utilities;
 
 import java.net.URI;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import org.sacids.afyadataV2.application.Collect;
+import org.sacids.afyadataV2.android.application.Collect;
 import org.sacids.afyadataV2.android.test.MockedServerTest;
 import org.opendatakit.httpclientandroidlib.HttpResponse;
 import org.opendatakit.httpclientandroidlib.client.HttpClient;

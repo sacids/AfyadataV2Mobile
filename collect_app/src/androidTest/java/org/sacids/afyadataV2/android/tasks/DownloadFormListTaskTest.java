@@ -1,7 +1,7 @@
-package org.sacids.afyadataV2.tasks;
+package org.sacids.afyadataV2.android.tasks;
 
 import org.junit.Test;
-import org.sacids.afyadataV2.logic.FormDetails;
+import org.sacids.afyadataV2.android.logic.FormDetails;
 import org.sacids.afyadataV2.android.test.MockedServerTest;
 
 import java.util.Map;

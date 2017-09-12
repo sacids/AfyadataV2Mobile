@@ -65,7 +65,7 @@ android {
     compileSdkVersion(25)
     buildToolsVersion('25.0.2')
     defaultConfig {
-        applicationId('org.sacids.afyadataV2')
+        applicationId('org.sacids.afyadataV2.android')
         minSdkVersion(16)
         targetSdkVersion(22)
         versionName getVersionName()

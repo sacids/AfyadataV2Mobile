@@ -1,4 +1,4 @@
-package org.sacids.afyadataV2.tasks;
+package org.sacids.afyadataV2.android.tasks;
 
 import android.net.Uri;
 
@@ -7,10 +7,10 @@ import java.io.File;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.sacids.afyadataV2.dao.InstancesDao;
-import org.sacids.afyadataV2.dto.Instance;
-import org.sacids.afyadataV2.provider.InstanceProviderAPI;
-import org.sacids.afyadataV2.tasks.InstanceUploader.Outcome;
+import org.sacids.afyadataV2.android.dao.InstancesDao;
+import org.sacids.afyadataV2.android.dto.Instance;
+import org.sacids.afyadataV2.android.provider.InstanceProviderAPI;
+import org.sacids.afyadataV2.android.tasks.InstanceUploader.Outcome;
 import org.sacids.afyadataV2.android.test.MockedServerTest;
 
 import okhttp3.mockwebserver.RecordedRequest;

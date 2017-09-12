@@ -6,12 +6,12 @@ import java.io.File;
 
 import timber.log.Timber;
 
-import static org.sacids.afyadataV2.application.Collect.CACHE_PATH;
-import static org.sacids.afyadataV2.application.Collect.FORMS_PATH;
-import static org.sacids.afyadataV2.application.Collect.INSTANCES_PATH;
-import static org.sacids.afyadataV2.application.Collect.METADATA_PATH;
-import static org.sacids.afyadataV2.application.Collect.ODK_ROOT;
-import static org.sacids.afyadataV2.application.Collect.OFFLINE_LAYERS;
+import static org.sacids.afyadataV2.android.application.Collect.CACHE_PATH;
+import static org.sacids.afyadataV2.android.application.Collect.FORMS_PATH;
+import static org.sacids.afyadataV2.android.application.Collect.INSTANCES_PATH;
+import static org.sacids.afyadataV2.android.application.Collect.METADATA_PATH;
+import static org.sacids.afyadataV2.android.application.Collect.ODK_ROOT;
+import static org.sacids.afyadataV2.android.application.Collect.OFFLINE_LAYERS;
 
 class ExportedActivitiesUtils {
 

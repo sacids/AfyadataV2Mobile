@@ -12,8 +12,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-import org.sacids.afyadataV2.application.Collect;
-import org.sacids.afyadataV2.provider.InstanceProviderAPI;
+import org.sacids.afyadataV2.android.application.Collect;
+import org.sacids.afyadataV2.android.provider.InstanceProviderAPI;
 
 public final class TestUtils {
     private TestUtils() {}

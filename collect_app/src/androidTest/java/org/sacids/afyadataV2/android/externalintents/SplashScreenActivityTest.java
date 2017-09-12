@@ -5,7 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.sacids.afyadataV2.activities.SplashScreenActivity;
+import org.sacids.afyadataV2.android.activities.SplashScreenActivity;
 
 import java.io.IOException;
 
