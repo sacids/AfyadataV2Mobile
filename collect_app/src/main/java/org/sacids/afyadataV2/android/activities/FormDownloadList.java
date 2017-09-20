@@ -20,18 +20,24 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.SparseBooleanArray;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -41,6 +47,7 @@ import org.sacids.afyadataV2.android.dao.FormsDao;
 import org.sacids.afyadataV2.android.listeners.FormDownloaderListener;
 import org.sacids.afyadataV2.android.listeners.FormListDownloaderListener;
 import org.sacids.afyadataV2.android.logic.FormDetails;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.preferences.PreferencesActivity;
 import org.sacids.afyadataV2.android.provider.FormsProviderAPI;
 import org.sacids.afyadataV2.android.provider.FormsProviderAPI.FormsColumns;
@@ -48,6 +55,7 @@ import org.sacids.afyadataV2.android.tasks.DownloadFormListTask;
 import org.sacids.afyadataV2.android.tasks.DownloadFormsTask;
 import org.sacids.afyadataV2.android.utilities.AuthDialogUtility;
 import org.sacids.afyadataV2.android.utilities.ToastUtils;
+import org.sacids.afyadataV2.android.utilities.WebUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -418,9 +426,67 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
                 Collect.getInstance().getActivityLogger().logAction(this,
                         "onCreateDialog.AUTH_DIALOG", "show");
 
-                alertShowing = false;
+                Collect.getInstance().getActivityLogger().logAction(this, "onCreateDialog.AUTH_DIALOG", "show");
+                AlertDialog.Builder b = new AlertDialog.Builder(this);
 
-                return new AuthDialogUtility().createDialog(this, this);
+                LayoutInflater factory = LayoutInflater.from(this);
+                final View dialogView = factory.inflate(R.layout.server_auth_dialog, null);
+
+                // Get the server, username, and password from the settings
+                SharedPreferences settings =
+                        PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                String server =
+                        settings.getString(PreferenceKeys.KEY_SERVER_URL,
+                                getString(R.string.default_server_url));
+
+                String formListUrl = getString(R.string.default_odk_formlist);
+                final String url =
+                        server + settings.getString(PreferenceKeys.KEY_FORMLIST_URL, formListUrl);
+                Log.i("formList", "Trying to get formList from: " + url);
+
+                EditText username = (EditText) dialogView.findViewById(R.id.username_edit);
+                String storedUsername = settings.getString(PreferenceKeys.KEY_USERNAME, null);
+                username.setText(storedUsername);
+
+                EditText password = (EditText) dialogView.findViewById(R.id.password_edit);
+                String storedPassword = settings.getString(PreferenceKeys.KEY_PASSWORD, null);
+                password.setText(storedPassword);
+
+                b.setTitle(getString(R.string.server_requires_auth));
+                b.setMessage(getString(R.string.server_auth_credentials, url));
+                b.setView(dialogView);
+                b.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Collect.getInstance().getActivityLogger().logAction(this, "onCreateDialog.AUTH_DIALOG", "OK");
+
+                        EditText username = (EditText) dialogView.findViewById(R.id.username_edit);
+                        EditText password = (EditText) dialogView.findViewById(R.id.password_edit);
+
+                        Uri u = Uri.parse(url);
+
+                        WebUtils.addCredentials(username.getText().toString(), password.getText()
+                                .toString(), u.getHost());
+
+                        //TODO: Added for removing dialog
+                        downloadFormList();
+                    }
+                });
+                b.setNegativeButton(getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Collect.getInstance().getActivityLogger().logAction(this, "onCreateDialog.AUTH_DIALOG", "Cancel");
+                                finish();
+                            }
+                        });
+
+                b.setCancelable(false);
+                alertShowing = false;
+                return b.create();
+
+            //alertShowing = false
+            //return new AuthDialogUtility().createDialog(this, this);
         }
         return null;
     }

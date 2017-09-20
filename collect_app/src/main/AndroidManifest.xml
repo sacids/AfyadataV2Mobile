@@ -9,7 +9,9 @@ the specific language governing permissions and limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.sacids.afyadataV2.android">
+    package="org.sacids.afyadataV2.android"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-feature
         android:name="android.hardware.location"
@@ -20,7 +22,6 @@ the specific language governing permissions and limitations under the License.
     <uses-feature
         android:name="android.hardware.location.gps"
         android:required="false" />
-
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
@@ -41,20 +42,22 @@ the specific language governing permissions and limitations under the License.
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <!-- Get permission for reliable local dispatching on non-Google Play devices. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-    <uses-feature android:name="android.hardware.camera.autofocus"
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
         android:required="false" />
-    <uses-feature android:name="android.hardware.screen.portrait"
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
         android:required="false" />
-
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-    <!--  for Maps v2 functionality, want:
+    <!--
+    for Maps v2 functionality, want:
     <uses-feature android:glEsVersion="0x00020000" android:required="false"/>
     uses-feature android:glEsVersion="0x00020000" android:required="false"
     BUT, the gl setting is not modified by the required parameter, so
@@ -77,16 +80,15 @@ the specific language governing permissions and limitations under the License.
         android:xlargeScreens="true" />
 
     <application
-        android:name="org.sacids.afyadataV2.android.application.Collect"
-        android:icon="@drawable/notes"
+        android:name=".application.Collect"
+        android:icon="@mipmap/ic_launcher"
         android:installLocation="auto"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeBase.Collect">
-
+        android:theme="@style/AppTheme">
         <provider
-            android:name="org.sacids.afyadataV2.android.provider.FormsProvider"
+            android:name=".provider.FormsProvider"
             android:authorities="org.sacids.afyadataV2.android.provider.odk.forms"
             android:exported="true" />
         <provider
@@ -95,7 +97,7 @@ the specific language governing permissions and limitations under the License.
             android:exported="true" />
 
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.MainMenuActivity"
+            android:name=".activities.MainMenuActivity"
             android:configChanges="locale|orientation|screenSize"
             android:label="@string/app_name" />
         <activity
@@ -104,7 +106,7 @@ the specific language governing permissions and limitations under the License.
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.FormEntryActivity"
+            android:name=".activities.FormEntryActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize">
@@ -119,25 +121,25 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.NotificationActivity"
+            android:name=".activities.NotificationActivity"
             android:excludeFromRecents="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:taskAffinity="" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.DrawActivity"
-            android:screenOrientation="landscape"
-            android:label="@string/app_name" />
+            android:name=".activities.DrawActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.OpenSourceLicensesActivity"
+            android:name=".activities.OpenSourceLicensesActivity"
             android:label="@string/all_open_source_licenses" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GoogleDriveActivity"
+            android:name=".activities.GoogleDriveActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.InstanceChooserList"
+            android:name=".activities.InstanceChooserList"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -149,7 +151,7 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.FormChooserList"
+            android:name=".activities.FormChooserList"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -162,18 +164,18 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.FormDownloadList"
+            android:name=".activities.FormDownloadList"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.FileManagerTabs"
+            android:name=".activities.FileManagerTabs"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GoogleSheetsUploaderActivity"
+            android:name=".activities.GoogleSheetsUploaderActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.InstanceUploaderList"
+            android:name=".activities.InstanceUploaderList"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -188,31 +190,29 @@ the specific language governing permissions and limitations under the License.
             android:label="@string/app_name" />
         <activity
             android:name=".preferences.AboutPreferencesActivity"
-            android:theme="@style/AppTheme.SettingsTheme"
-            android:label="@string/app_name" />
-        <activity android:name="org.sacids.afyadataV2.android.preferences.PreferencesActivity"
-            android:theme="@style/AppTheme.SettingsTheme"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.preferences.AdminPreferencesActivity"
-            android:theme="@style/AppTheme.SettingsTheme"
+            android:name=".preferences.PreferencesActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.FormHierarchyActivity"
+            android:name=".preferences.AdminPreferencesActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GeoPointActivity"
+            android:name=".activities.FormHierarchyActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GeoPointMapActivity"
+            android:name=".activities.GeoPointActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".activities.GeoPointMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GeoPointOsmMapActivity"
+            android:name=".activities.GeoPointOsmMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GeoShapeOsmMapActivity"
+            android:name=".activities.GeoShapeOsmMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name" />
         <activity
@@ -220,21 +220,19 @@ the specific language governing permissions and limitations under the License.
             android:configChanges="orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GeoTraceOsmMapActivity"
+            android:name=".activities.GeoTraceOsmMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.GeoTraceGoogleMapActivity"
+            android:name=".activities.GeoTraceGoogleMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name" />
-
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.BearingActivity"
+            android:name=".activities.BearingActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.SplashScreenActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Dialog">
+            android:name=".activities.SplashScreenActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -244,7 +242,7 @@ the specific language governing permissions and limitations under the License.
         </activity>
         <!-- Enable Shortcuts for Command Actions -->
         <activity
-            android:name="org.sacids.afyadataV2.android.activities.AndroidShortcuts"
+            android:name=".activities.AndroidShortcuts"
             android:label="ODK Form"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -253,12 +251,11 @@ the specific language governing permissions and limitations under the License.
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="org.sacids.afyadataV2.android.activities.CaptureSelfieActivity" />
-        <activity
-            android:name="org.sacids.afyadataV2.android.activities.CaptureSelfieActivityNewApi" />
+        <activity android:name=".activities.CaptureSelfieActivity" />
+        <activity android:name=".activities.CaptureSelfieActivityNewApi" />
+
         <receiver
-            android:name="org.sacids.afyadataV2.android.receivers.NetworkReceiver"
+            android:name=".receivers.NetworkReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -267,8 +264,10 @@ the specific language governing permissions and limitations under the License.
                 <action android:name="org.odk.collect.android.FormSaved" />
             </intent-filter>
         </receiver>
-        <!-- Register AnalyticsReceiver and AnalyticsService to support background
-        dispatching on non-Google Play devices. -->
+        <!--
+        Register AnalyticsReceiver and AnalyticsService to support background
+        dispatching on non-Google Play devices.
+        -->
         <receiver
             android:name="com.google.android.gms.analytics.AnalyticsReceiver"
             android:enabled="true">
@@ -276,6 +275,7 @@ the specific language governing permissions and limitations under the License.
                 <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
             </intent-filter>
         </receiver>
+
         <service
             android:name="com.google.android.gms.analytics.AnalyticsService"
             android:enabled="true"
@@ -285,16 +285,34 @@ the specific language governing permissions and limitations under the License.
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBS-JQ-dnaZ_8qsbvSyr_I3rTPFd5fJsYI" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"
-            tools:replace="android:value" />  <!-- integer/google_play_services_version -->
+            tools:replace="android:value" /> <!-- integer/google_play_services_version -->
 
         <uses-library
             android:name="com.google.android.maps"
             android:required="false" />
 
+        <activity android:name=".activities.FrontPageActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.HealthTipsListActivity" />
+        <activity android:name=".activities.CampaignListActivity" />
+        <activity android:name=".activities.FeedbackListActivity" />
+        <activity android:name=".activities.HeathTipsActivity" />
+        <activity android:name=".activities.CampaignActivity" />
+        <activity android:name=".activities.ChatListActivity" />
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.FormDetailsActivity" />
+        <activity android:name=".activities.SymptomsListActivity" />
+        <activity android:name=".activities.SymptomActivity" />
+        <activity android:name=".activities.SearchActivity" />
+
+        <service
+            android:name=".tasks.DownloadSearchableForm"
+            android:exported="false"></service>
     </application>
 
 </manifest>

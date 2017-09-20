@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_blue_grey">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ListView
+        android:id="@+id/list_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_row_selector"
+        android:scrollbars="none" />
+</RelativeLayout>

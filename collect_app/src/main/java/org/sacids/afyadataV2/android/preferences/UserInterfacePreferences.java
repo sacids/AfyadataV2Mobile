@@ -27,6 +27,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import org.sacids.afyadataV2.android.R;
+import org.sacids.afyadataV2.android.activities.MainActivity;
 import org.sacids.afyadataV2.android.activities.MainMenuActivity;
 import org.sacids.afyadataV2.android.utilities.LocaleHelper;
 import org.sacids.afyadataV2.android.utilities.MediaUtils;
@@ -150,7 +151,7 @@ public class UserInterfacePreferences extends BasePreferenceFragment {
 
                     localeHelper.updateLocale(getActivity());
 
-                    Intent intent = new Intent(getActivity().getBaseContext(), MainMenuActivity.class);
+                    Intent intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
                     getActivity().startActivity(intent);
                     getActivity().overridePendingTransition(0, 0);
                     getActivity().finishAffinity();

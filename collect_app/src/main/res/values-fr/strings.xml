@@ -503,4 +503,90 @@
   <string name="edit_value">Modifier valeur</string>
   <string name="no_value_selected">Aucune valeur choisie</string>
   <string name="search">Rechercher</string>
+
+  <string name="lang_swahili">Swahili</string>
+  <string name="lang_english">English</string>
+  <string name="lang_french">French</string>
+  <string name="lang_portuguese">Portuguese</string>
+  <string name="btn_change_language">Changer de langue</string>
+  <string name="lbl_choose_language">Changer de langue</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <!-- NEW STRING -->
+  <string name="powered_by">Propulsé par AfyaData</string>
+  <string name="on_back_pressed">Appuyez à nouveau pour sortir</string>
+  <string name="nav_item_home">Accueil</string>
+  <string name="nav_item_about">À propos d\'AfyaData</string>
+  <string name="nav_item_forms">Campagne</string>
+  <string name="nav_item_feedback">Commentaires</string>
+  <string name="nav_item_tips">Santé A-Z</string>
+  <string name="nav_item_symptoms">Symptômes</string>
+  <string name="nav_item_search">Chercher</string>
+  <string name="nav_item_lab">Laboratoire</string>
+  <string name="nav_item_form_details">Détails du formulaire</string>
+  <string name="nav_item_settings">Paramètres</string>
+  <string name="nav_item_language">Changer de langue</string>
+  <string name="nav_item_logout">Déconnexion</string>
+
+  <!-- Feedback -->
+  <string name="edit_feedback">Rédiger des commentaires..</string>
+  <string name="submit_feedback">Envoyer</string>
+  <string name="new_feedback">Nouveaux commentaires reçus</string>
+  <string name="required_feedback">Message de rétroaction requis</string>
+  <string name="success_feedback">Vos commentaires ont été envoyés avec succès.</string>
+  <string name="error_feedback">Impossible d\'envoyer des commentaires, réessayez.</string>
+
+
+  <!--Laboratory issues-->
+  <string name="lbl_lab">Laboratoire</string>
+  <string name="lbl_fill_results">Remplir le formulaire de résultats</string>
+  <string name="lab_details">Demander un test de laboratoire ou fournir des résultats de laboratoire</string>
+  <string name="lab_request">Demande de laboratoire</string>
+  <string name="lab_results">Résultats du laboratoire</string>
+  <string name="required_admission">Le numéro d\'admission est requis</string>
+
+  <string name="lbl_search_details">Recherche en utilisant le formulaire et la valeur</string>
+  <string name="lbl_search">Chercher</string>
+  <string name="lbl_choose_form">Choisissez le formulaire</string>
+  <string name="lbl_choose_field">Choisissez le champ de recherche</string>
+  <string name="lbl_enter_value">Entrez la valeur de recherche</string>
+  <string name="required_search_value">La valeur de recherche est requise</string>
+
+
+  <!--SignIn and SignUp -->
+  <string name="lbl_welcome">Bienvenue</string>
+  <string name="lbl_first_name">Prénom</string>
+  <string name="lbl_last_name">Nom de famille</string>
+  <string name="lbl_email">Adresse mail</string>
+  <string name="lbl_mobile">Numéro de portable, c\'est-à-dire 717705746</string>
+  <string name="lbl_password">Mot de passe</string>
+  <string name="lbl_password_confirm">Confirmer le mot de passe</string>
+  <string name="lbl_first_name_required">Le prénom est requis</string>
+  <string name="lbl_last_name_required">Le nom de famille est requis</string>
+  <string name="lbl_mobile_required">Le mobile est requis</string>
+  <string name="lbl_password_required">Mot de passe requis</string>
+  <string name="lbl_valid_password_required">Le mot de passe doit comporter 8 caractères</string>
+  <string name="lbl_password_confirm_required">La confirmation du mot de passe est requise</string>
+  <string name="lbl_sign_in">LogIn</string>
+  <string name="lbl_sign_up">REGISTRE</string>
+  <string name="btn_link_to_register">Nouveau membre à AfyaData? Registre À présent.</string>
+  <string name="btn_link_to_login">Vous avez déjà un compte, LogIn .</string>
+  <string name="lbl_waiting">S\'il vous plaît, attendez.....</string>
+  <string name="msg_nothing_display">Rien à afficher</string>
+  <string name="msg_no_feedback">Aucun commentaire pour le moment</string>
+  <string name="msg_no_campaign">Aucune campagne pour le moment</string>
+  <string name="exit_status">Êtes-vous sûr de vouloir quitter?</string>
+  <string name="delete_status">Etes-vous sûr que vous voulez supprimer?</string>
+  <string name="update_status">Il y a de nouvelles fonctionnalités dans l\'application, souhaitez-vous mettre à jour?</string>
+  <string name="yes">Oui</string>
+  <string name="no">Non</string>
+
+
+  <!-- About AfyaData -->
+  <string name="lbl_about">Afyadata Manager is a tool that analyzes all the data collected from the field and intelligently
+        sends feedback to the data collector and sends an alert to higher authority officials if any abnormal pattern is discovered
+        in the data collected, this tool provides a graphical user interface for involved health stakeholders to analyze and visualizing
+        data collected via Afyadata mobile app for android.</string>
 </resources>

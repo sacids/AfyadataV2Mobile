@@ -290,7 +290,8 @@ public class Collect extends Application {
     public synchronized Tracker getDefaultTracker() {
         if (tracker == null) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            tracker = analytics.newTracker(R.xml.global_tracker);
+            //TODO: This line should not be uncommented
+            //tracker = analytics.newTracker(R.xml.global_tracker);
         }
         return tracker;
     }
