@@ -58,4 +58,26 @@
         android:textColor="@color/white"
         android:textSize="@dimen/text_medium"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/powered_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:padding="5dp"
+        android:text="@string/powered_by"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:textColor="@color/white"
+        android:textStyle=""
+        android:textSize="@dimen/text_medium" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/app_logo_white" />
 </RelativeLayout>
