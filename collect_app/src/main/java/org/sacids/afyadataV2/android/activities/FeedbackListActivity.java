@@ -59,6 +59,7 @@ public class FeedbackListActivity extends AppCompatActivity {
     private FeedbackListAdapter feedbackAdapter;
 
     private SharedPreferences mSharedPreferences;
+    private String serverUrl;
     private String username;
 
     //AfyaData database
@@ -91,6 +92,8 @@ public class FeedbackListActivity extends AppCompatActivity {
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         username = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         //database
         db = new AfyaDataV2DB(this);
@@ -234,7 +237,7 @@ public class FeedbackListActivity extends AppCompatActivity {
             param.add("date_created", dateCreated);
             //param.add("language", language);
 
-            BackgroundClient.get("/api/v3/feedback", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(serverUrl + "/api/v3/feedback", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray

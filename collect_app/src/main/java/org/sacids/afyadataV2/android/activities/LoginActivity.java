@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private Context context = this;
     private PrefManager prefManager;
     private SharedPreferences mSharedPreferences;
+    private String serverUrl;
 
     private static final String KEY_USER_ID = "uid";
     private static final String KEY_FIRST_NAME = "first_name";
@@ -110,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.show();
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         RequestParams params = new RequestParams();
         params.add("code", code);
@@ -117,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
         params.add("password", password);
         //params.add("gcm_id", gcmRegId);
 
-        RestClient.post("/api/v3/auth/login", params, new JsonHttpResponseHandler() {
+        RestClient.post(serverUrl + "/api/v3/auth/login", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers,
                                   JSONObject response) {

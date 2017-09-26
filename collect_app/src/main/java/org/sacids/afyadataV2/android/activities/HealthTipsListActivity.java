@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.adapters.TipsListAdapter;
 import org.sacids.afyadataV2.android.adapters.model.Tips;
 import org.sacids.afyadataV2.android.database.AfyaDataV2DB;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.web.BackgroundClient;
 
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ public class HealthTipsListActivity extends AppCompatActivity {
     private TipsListAdapter adapter;
 
     private SharedPreferences mSharedPreferences;
-    private String language;
+    private String serverUrl;
 
     //AfyaData database
     private AfyaDataV2DB db;
@@ -72,6 +74,11 @@ public class HealthTipsListActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
+
 
         listView = (ListView) findViewById(R.id.list_tips);
 
@@ -164,7 +171,7 @@ public class HealthTipsListActivity extends AppCompatActivity {
             RequestParams param = new RequestParams();
             //param.add("language", language);
 
-            BackgroundClient.get("/api/v3/ohkr/disease", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(serverUrl + "/api/v3/ohkr/disease", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray

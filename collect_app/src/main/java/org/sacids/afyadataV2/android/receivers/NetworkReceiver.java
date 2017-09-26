@@ -61,7 +61,7 @@ public class NetworkReceiver extends BroadcastReceiver implements InstanceUpload
                     && isFormAutoSendOptionEnabled(currentNetworkInfo)) {
                 uploadForms(context);
             }
-        } else if (action.equals("org.odk.collect.android.FormSaved")) {
+        } else if (action.equals("org.sacids.afyadataV2.android.FormSaved")) {
             ConnectivityManager connectivityManager = (ConnectivityManager) context
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo ni = connectivityManager.getActiveNetworkInfo();

@@ -57,6 +57,7 @@ public class ChatListActivity extends AppCompatActivity {
     private ListView listFeedback;
 
     private SharedPreferences mSharedPreferences;
+    private String serverUrl;
     private String username;
     private String message;
 
@@ -172,6 +173,8 @@ public class ChatListActivity extends AppCompatActivity {
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         username = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -195,7 +198,7 @@ public class ChatListActivity extends AppCompatActivity {
         feedback.setReplyBy(String.valueOf(0));
         feedback.setStatus("pending");
 
-        RestClient.post("/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
+        RestClient.post(serverUrl + "/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

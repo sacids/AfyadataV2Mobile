@@ -1,11 +1,16 @@
 package org.sacids.afyadataV2.android.activities;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +23,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -27,7 +33,9 @@ import org.json.JSONObject;
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.PrefManager;
 import org.sacids.afyadataV2.android.fragments.MenuFragment;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.preferences.PreferencesActivity;
+import org.sacids.afyadataV2.android.receivers.FeedbackReceiver;
 import org.sacids.afyadataV2.android.tasks.DownloadSearchableForm;
 import org.sacids.afyadataV2.android.web.RestClient;
 
@@ -45,11 +53,18 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context = this;
     private PrefManager prefManager;
+    private SharedPreferences mSharedPreferences;
+    private String serverUrl;
 
     private PackageInfo pInfo;
     private long currentVersion;
     private long newVersion;
     private String packageName;
+
+    private PendingIntent pendingIntent;
+    private AlarmManager manager;
+
+    private boolean doubleBackToExitPressedOnce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         prefManager = new PrefManager(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         //default fragment view
         if (savedInstanceState == null) {
@@ -161,12 +180,32 @@ public class MainActivity extends AppCompatActivity {
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
 
-        // Start the service
-        startService(new Intent(this, DownloadSearchableForm.class));
-
         //check App updates
         packageName = getPackageName();
         updateAppVersion();
+
+        // Start the service
+        startService(new Intent(this, DownloadSearchableForm.class));
+
+        // Retrieve a PendingIntent that will perform a broadcast
+        Intent feedbackIntent = new Intent(this, FeedbackReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, feedbackIntent, 0);
+
+        // Set the alarm here.
+        manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        int interval = 1800000; // 30 minutes
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
+
+        // Get the message from the intent
+        Intent intent = getIntent();
+        // Get the extras (if there are any)
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            String formFeedback = extras.getString("feedback");
+            if (formFeedback.equalsIgnoreCase("formFeedback")) {
+                startActivity(new Intent(this, FeedbackListActivity.class));
+            }
+        }
     }
 
     @Override
@@ -192,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
     //update App Version
     public void updateAppVersion() {
-        RestClient.get("/api/v3/auth/version", new RequestParams(), new JsonHttpResponseHandler() {
+        RestClient.get(serverUrl + "/api/v3/auth/version", new RequestParams(), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers,
                                   JSONObject response) {
@@ -252,6 +291,24 @@ public class MainActivity extends AppCompatActivity {
     public long getAppVersionCode() throws PackageManager.NameNotFoundException {
         pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
         return pInfo.versionCode;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.on_back_pressed), Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+
+            }
+        }, 1000);
     }
 
     @Override

@@ -13,9 +13,11 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.adapters.model.SearchableData;
 import org.sacids.afyadataV2.android.adapters.model.SearchableForm;
 import org.sacids.afyadataV2.android.database.AfyaDataV2DB;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.web.BackgroundClient;
 
 
@@ -30,6 +32,7 @@ public class DownloadSearchableForm extends IntentService {
     private static String TAG = "Searchable";
 
     private SharedPreferences mSharedPreferences;
+    private String serverUrl;
     private String username;
 
     private AfyaDataV2DB db;
@@ -56,6 +59,8 @@ public class DownloadSearchableForm extends IntentService {
 
             mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             username = mSharedPreferences.getString(KEY_USERNAME, null);
+            serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                    getString(R.string.default_server_url));
 
             db = new AfyaDataV2DB(getApplicationContext());
 
@@ -64,7 +69,7 @@ public class DownloadSearchableForm extends IntentService {
             param.add("username", username);
 
             //server request
-            BackgroundClient.get("/api/v3/search/init", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(serverUrl + "/api/v3/search/init", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray

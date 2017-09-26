@@ -295,24 +295,40 @@ the specific language governing permissions and limitations under the License.
             android:required="false" />
 
         <activity android:name=".activities.FrontPageActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.RegisterActivity" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.HealthTipsListActivity" />
         <activity android:name=".activities.CampaignListActivity" />
         <activity android:name=".activities.FeedbackListActivity" />
         <activity android:name=".activities.HeathTipsActivity" />
         <activity android:name=".activities.CampaignActivity" />
-        <activity android:name=".activities.ChatListActivity" />
+        <activity
+            android:name=".activities.ChatListActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".activities.AboutActivity" />
         <activity android:name=".activities.FormDetailsActivity" />
         <activity android:name=".activities.SymptomsListActivity" />
         <activity android:name=".activities.SymptomActivity" />
-        <activity android:name=".activities.SearchActivity" />
+        <activity
+            android:name=".activities.SearchActivity"
+            android:windowSoftInputMode="stateHidden" />
 
         <service
             android:name=".tasks.DownloadSearchableForm"
-            android:exported="false"></service>
+            android:exported="false" />
+        <service
+            android:name=".tasks.DownloadFeedbackTask"
+            android:exported="false" />
+
+        <receiver
+            android:name=".receivers.FeedbackReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>

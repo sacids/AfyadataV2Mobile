@@ -5,7 +5,7 @@
     android:layout_centerHorizontal="true"
     android:layout_marginLeft="80dp"
     android:layout_marginRight="80dp"
-    android:background="@color/primary"
+    android:background="@color/primary_light"
     android:orientation="vertical">
 
     <TextView
@@ -16,6 +16,6 @@
         android:layout_centerHorizontal="true"
         android:text="@string/lbl_choose_language"
         android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_dark"
         android:textSize="@dimen/title_small" />
 </RelativeLayout>

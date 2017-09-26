@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import org.sacids.afyadataV2.android.adapters.FormDetailsAdapter;
 import org.sacids.afyadataV2.android.adapters.model.Feedback;
 import org.sacids.afyadataV2.android.adapters.model.FormDetails;
 import org.sacids.afyadataV2.android.database.AfyaDataV2DB;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.web.BackgroundClient;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class FormDetailsActivity extends AppCompatActivity {
 
     //AfyaData database
     private AfyaDataV2DB db;
+    private SharedPreferences mSharedPreferences;
+    private String serverUrl;
 
     private static final String TAG_ID = "id";
     private static final String TAG_LABEL = "label";
@@ -67,6 +71,10 @@ public class FormDetailsActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         feedback = (Feedback) Parcels.unwrap(getIntent().getParcelableExtra("feedback"));
 
@@ -153,7 +161,7 @@ public class FormDetailsActivity extends AppCompatActivity {
             param.add("table_name", feedback.getFormId());
             param.add("instance_id", feedback.getInstanceId());
 
-            BackgroundClient.get("/api/v3/feedback/form_details", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(serverUrl + "/api/v3/feedback/form_details", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray

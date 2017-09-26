@@ -32,6 +32,7 @@ import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.adapters.CampaignListAdapter;
 import org.sacids.afyadataV2.android.adapters.model.Campaign;
 import org.sacids.afyadataV2.android.database.AfyaDataV2DB;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.web.BackgroundClient;
 
 import java.util.ArrayList;
@@ -52,11 +53,10 @@ public class CampaignListActivity extends AppCompatActivity {
     private GridView gridView;
     private CampaignListAdapter adapter;
 
-    private SharedPreferences mSharedPreferences;
-    private String language;
-
     //AfyaData database
     private AfyaDataV2DB db;
+    private SharedPreferences mSharedPreferences;
+    private String serverUrl;
 
     //variable Tag
     private static final String TAG_ID = "id";
@@ -76,6 +76,10 @@ public class CampaignListActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         //database
         db = new AfyaDataV2DB(this);
@@ -170,7 +174,7 @@ public class CampaignListActivity extends AppCompatActivity {
             RequestParams param = new RequestParams();
             //param.add("language", language);
 
-            BackgroundClient.get("/api/v3/campaign", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(serverUrl + "/api/v3/campaign", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray

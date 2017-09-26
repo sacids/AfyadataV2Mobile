@@ -28,8 +28,8 @@
     <string name="recapture_osm">Redo OSM Tagging</string>
     <string name="capture_video">Record Video</string>
     <string name="change_language">Change Language</string>
-    <string name="change_password">ODK Password</string>
-    <string name="change_username">ODK Username</string>
+    <string name="change_password">AfyaData Password</string>
+    <string name="change_username">AfyaData Username</string>
     <string name="clearanswer_confirm">Remove the response to \"%s\"?</string>
     <string name="clear_answer">Remove response</string>
     <string name="clear_answer_ask">Remove This Response?</string>
@@ -134,7 +134,7 @@
     <string name="client">User interface</string>
     <string name="show_splash_summary">Shows when application starts</string>
     <string name="splash_path">Selected splash image</string>
-    <string name="default_splash_path">ODK Default</string>
+    <string name="default_splash_path">AfyaData Default</string>
     <string name="select_another_image">Select another image</string>
     <string name="use_odk_default">Use default image</string>
     <string name="change_splash_path">Change image</string>
@@ -275,8 +275,8 @@
     <string name="invalid_oauth">Invalid OAuth 2 token</string>
     <string name="google_repeat_error">Repeats are not supported by Google Sheets at this time.</string>
     <string name="media_upload_error">Failed to upload photo that does not exist: %1$s</string>
-    <string name="odk_auth_auth_fail">ODK auto send authentication failure, please make sure your settings are correct</string>
-    <string name="odk_auto_note">ODK Auto Send Notification</string>
+    <string name="odk_auth_auth_fail">AfyaData auto send authentication failure, please make sure your settings are correct</string>
+    <string name="odk_auto_note">AfyaData Auto Send Notification</string>
     <string name="notification_error">Error displaying notification text</string>
     <string name="delete_after_send">Delete after send</string>
     <string name="delete_after_send_summary">Deletes finalized forms and media after sending to server</string>
@@ -527,6 +527,7 @@
 
     <!-- NEW STRING -->
     <string name="powered_by">Powered by AfyaData</string>
+    <string name="znz_reporting_tool">Zanzibar IDSR Reporting Tool</string>
     <string name="on_back_pressed">Press back again to exit</string>
     <string name="nav_item_home">Home</string>
     <string name="nav_item_about">About AfyaData</string>

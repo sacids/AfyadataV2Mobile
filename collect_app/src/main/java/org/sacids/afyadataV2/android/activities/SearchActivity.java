@@ -34,6 +34,7 @@ import org.sacids.afyadataV2.android.adapters.model.FormDetails;
 import org.sacids.afyadataV2.android.adapters.model.SearchableData;
 import org.sacids.afyadataV2.android.adapters.model.SearchableForm;
 import org.sacids.afyadataV2.android.database.AfyaDataV2DB;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.web.RestClient;
 
 import java.util.ArrayList;
@@ -52,6 +53,8 @@ public class SearchActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
 
     private AfyaDataV2DB db;
+    private SharedPreferences mSharedPreferences;
+    private String serverUrl;
 
     private List<FormDetails> formList = new ArrayList<FormDetails>();
     private ListView listView;
@@ -223,12 +226,16 @@ public class SearchActivity extends AppCompatActivity {
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
+
         RequestParams params = new RequestParams();
         params.add("form_id", formId + "");
         params.add("search_for", value);
         params.add("field", label);
 
-        RestClient.get("/api/v3/search/form", params, new JsonHttpResponseHandler() {
+        RestClient.get(serverUrl + "/api/v3/search/form", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d(TAG, response.toString());

@@ -6,9 +6,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 
-import org.sacids.afyadataV2.android.app.AppConfig;
-import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
-
 import java.net.URL;
 
 /**
@@ -17,21 +14,16 @@ import java.net.URL;
 
 public class BackgroundClient {
     private static SyncHttpClient client = new SyncHttpClient();
+    private URL urlObject;
 
-    public static void get(String url, RequestParams params,
-                           AsyncHttpResponseHandler responseHandler) {
-        //client.addHeader(Preferences.API_KEY_NAME, Preferences.API_KEY);
+
+    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }
 
-    public static void post(String url, RequestParams params,
-                            AsyncHttpResponseHandler responseHandler) {
-        //client.addHeader(Preferences.API_KEY_NAME, Preferences.API_KEY);
-        client.post(getAbsoluteUrl(url), params, responseHandler);
-    }
 
     private static String getAbsoluteUrl(String relativeUrl) {
-        Log.d("Request url ", AppConfig.BASE_URL + relativeUrl);
-        return AppConfig.BASE_URL + relativeUrl;
+        Log.d("Rest client", "Request page => " + relativeUrl);
+        return relativeUrl;
     }
 }

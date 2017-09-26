@@ -34,6 +34,8 @@ import org.sacids.afyadataV2.android.app.PrefManager;
 
 import java.util.Locale;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -111,5 +113,10 @@ public class SplashScreenActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
