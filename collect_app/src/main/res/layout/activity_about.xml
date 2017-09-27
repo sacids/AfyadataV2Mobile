@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/light_grey">
 
     <include
         android:id="@+id/toolbar"
@@ -18,16 +18,92 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/description"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="2dp"
                 android:background="@color/white"
-                android:padding="10dp"
-                android:text="@string/lbl_about"
-                android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/text_large" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/app_logo_colored" />
+
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="Version 1.0"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/TextAppearance.FontPath"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_large"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/website"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="@string/app_web"
+                    android:textAppearance="@style/TextAppearance.FontPath"
+                    android:textColor="@color/primary_dark"
+                    android:textSize="@dimen/text_large" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/support_from"
+                    android:textAppearance="@style/TextAppearance.FontPath"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/title_medium" />
+
+                <ImageView
+                    android:id="@+id/logo_skoll"
+                    android:layout_width="150dp"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/logo_skoll" />
+
+                <ImageView
+                    android:id="@+id/logo_idrc"
+                    android:layout_width="150dp"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/logo_idrc" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/open_source_licence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/all_open_source_licenses"
+                    android:textAppearance="@style/TextAppearance.FontPath"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_large" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

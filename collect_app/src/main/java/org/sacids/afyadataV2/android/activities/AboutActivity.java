@@ -1,12 +1,16 @@
 package org.sacids.afyadataV2.android.activities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import org.sacids.afyadataV2.android.R;
 
@@ -18,6 +22,9 @@ public class AboutActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private ActionBar actionBar;
+    private Context context = this;
+
+    private TextView openLicence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         setToolbar();
+        setViews();
     }
 
     @Override
@@ -59,6 +67,28 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
     }
+
+    //setViews
+    private void setViews() {
+        //onclick website
+        findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://afyadata.sacids.org"));
+                startActivity(intent);
+            }
+        });
+
+        //on click open source licence
+        findViewById(R.id.open_source_licence).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, OpenSourceLicensesActivity.class));
+            }
+        });
+    }
+
 
     @Override
     protected void attachBaseContext(Context newBase) {

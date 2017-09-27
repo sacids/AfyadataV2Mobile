@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 Copyright (C) 2009 University of Washington Licensed under the Apache
 License, Version 2.0 (the "License"); you may not use this file except in
 compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -32,10 +31,11 @@ the specific language governing permissions and limitations under the License.
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/primaryTextColor"
             android:lineSpacingMultiplier="1.2"
             android:paddingBottom="20dp"
             android:paddingTop="10dp"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primaryTextColor"
             android:textSize="21sp"
             android:textStyle="bold" />
 
@@ -44,9 +44,10 @@ the specific language governing permissions and limitations under the License.
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textColor="@color/primaryTextColor"
             android:lineSpacingMultiplier="1.2"
             android:text="@string/save_form_as"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primaryTextColor"
             android:textSize="21sp" />
 
         <EditText
@@ -63,6 +64,7 @@ the specific language governing permissions and limitations under the License.
             android:layout_gravity="start"
             android:layout_marginBottom="10dp"
             android:text="@string/mark_finished"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:textSize="21sp" />
 
         <Button
@@ -70,9 +72,12 @@ the specific language governing permissions and limitations under the License.
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@drawable/primary_rounded_button"
             android:padding="20dp"
             android:text="@string/quit_entry"
             android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/white"
             android:textSize="21sp" />
 
         <View

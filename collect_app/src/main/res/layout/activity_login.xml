@@ -31,13 +31,14 @@
                 android:id="@+id/code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.3"
                 android:maxLines="1"
                 android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/primary_dark"
                 android:textColorHint="@color/primary_dark"
-                android:textSize="@dimen/text_large" />
+                android:textSize="@dimen/text_size_extra_small" />
 
             <EditText
                 android:id="@+id/mobile"
@@ -45,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="2dp"
-                android:layout_weight="0.8"
+                android:layout_weight="0.7"
                 android:hint="@string/lbl_mobile"
                 android:inputType="phone"
                 android:maxLines="1"
@@ -53,7 +54,7 @@
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/primary_dark"
                 android:textColorHint="@color/primary_dark"
-                android:textSize="@dimen/text_large" />
+                android:textSize="@dimen/text_small" />
         </LinearLayout>
 
         <EditText
@@ -71,7 +72,7 @@
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/primary_dark"
             android:textColorHint="@color/primary_dark"
-            android:textSize="@dimen/text_large" />
+            android:textSize="@dimen/text_small" />
 
         <!-- Login Button -->
         <Button
@@ -87,23 +88,16 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_large" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/btn_link_register"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/btn_link_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@null"
-                android:text="@string/btn_link_to_register"
-                android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/primary_dark"
-                android:textSize="@dimen/text_large" />
-        </RelativeLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:text="@string/btn_link_to_register"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/text_small" />
     </LinearLayout>
 </ScrollView>

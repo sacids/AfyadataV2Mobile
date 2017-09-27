@@ -35,18 +35,20 @@ the License.
             android:paddingStart="8dip"
             android:paddingTop="4dip"
             android:text="@string/form_scan_starting"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:textSize="14sp" />
 
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@android:id/empty"
             style="@style/emptyViewStyle"
-            android:text="@string/no_items_display_instances" />
+            android:text="@string/no_items_display_instances"
+            android:textAppearance="@style/TextAppearance.FontPath" />
 
         <LinearLayout
             android:id="@+id/buttonholder"
@@ -62,6 +64,7 @@ the License.
                 android:padding="12dp"
                 android:text="@string/select_all"
                 android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.FontPath"
                 android:textSize="16sp" />
 
             <Button
@@ -72,6 +75,7 @@ the License.
                 android:padding="12dp"
                 android:text="@string/send_selected_data"
                 android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.FontPath"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>

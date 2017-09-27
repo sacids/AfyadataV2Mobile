@@ -23,7 +23,7 @@
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_large"
+            android:textSize="@dimen/text_medium"
             android:textStyle="bold" />
     </LinearLayout>
 

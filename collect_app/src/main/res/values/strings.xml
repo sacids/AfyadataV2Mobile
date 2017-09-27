@@ -527,7 +527,7 @@
 
     <!-- NEW STRING -->
     <string name="powered_by">Powered by AfyaData</string>
-    <string name="znz_reporting_tool">Zanzibar IDSR Reporting Tool</string>
+    <string name="znz_reporting_tool">Zanzibar IDSR\nReporting Tool</string>
     <string name="on_back_pressed">Press back again to exit</string>
     <string name="nav_item_home">Home</string>
     <string name="nav_item_about">About AfyaData</string>
@@ -599,5 +599,10 @@
         sends feedback to the data collector and sends an alert to higher authority officials if any abnormal pattern is discovered
         in the data collected, this tool provides a graphical user interface for involved health stakeholders to analyze and visualizing
         data collected via Afyadata mobile app for android.</string>
+
+    <!-- other string -->
+    <string name="app_version">Version</string>
+    <string name="app_web">AfyaData Website</string>
+    <string name="support_from">Created with support from</string>
 
 </resources>

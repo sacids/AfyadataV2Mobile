@@ -61,18 +61,18 @@
     <dimen name="dots_margin_bottom">20dp</dimen>
     <dimen name="img_width_height">100dp</dimen>
 
-    <dimen name="slide_title">24dp</dimen>
-    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="slide_title">24sp</dimen>
+    <dimen name="slide_desc">16sp</dimen>
     <dimen name="desc_padding">40dp</dimen>
 
     <!--Title dimen -->
-    <dimen name="title_large">20dp</dimen>
-    <dimen name="title_medium">18dp</dimen>
-    <dimen name="title_small">16dp</dimen>
+    <dimen name="title_large">24sp</dimen>
+    <dimen name="title_medium">20sp</dimen>
+    <dimen name="title_small">18sp</dimen>
 
     <!--Text dimen -->
-    <dimen name="text_large">14dp</dimen>
-    <dimen name="text_medium">12dp</dimen>
-    <dimen name="text_small">10dp</dimen>
+    <dimen name="text_large">16sp</dimen>
+    <dimen name="text_medium">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
 
 </resources>

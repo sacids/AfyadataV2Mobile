@@ -16,6 +16,7 @@ package org.sacids.afyadataV2.android.activities;
 
 import android.app.AlertDialog;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -36,6 +37,7 @@ import org.sacids.afyadataV2.android.utilities.ApplicationConstants;
 import org.sacids.afyadataV2.android.utilities.VersionHidingCursorAdapter;
 
 import timber.log.Timber;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Responsible for displaying all the valid forms in the forms directory. Stores the path to
@@ -232,5 +234,10 @@ public class FormChooserList extends FormListActivity implements DiskSyncListene
         alertDialog.setCancelable(false);
         alertDialog.setButton(getString(R.string.ok), errorListener);
         alertDialog.show();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

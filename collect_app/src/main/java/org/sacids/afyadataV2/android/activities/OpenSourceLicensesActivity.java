@@ -25,7 +25,7 @@ import android.webkit.WebView;
 import org.sacids.afyadataV2.android.R;
 
 public class OpenSourceLicensesActivity extends AppCompatActivity {
-    private static final String LICENSES_HTML_PATH = "file:///android_asset/open_source_licenses.html";
+    private static final String LICENSES_HTML_PATH = "http://afyadata.sacids.org/open_source_licence";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

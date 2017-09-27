@@ -1,95 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light">
+    android:background="@color/primary_light"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
-    <Spinner
-        android:id="@+id/spinner"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@color/primary_light"
-        android:prompt="@string/lbl_choose_language"
-        android:spinnerMode="dropdown" />
+        android:layout_height="match_parent"
+        android:background="@color/primary_light">
 
-    <ImageView
-        android:id="@+id/app_logo"
-        android:layout_below="@id/spinner"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:src="@drawable/app_logo_znz" />
 
-    <TextView
-        android:id="@+id/znz_reporting_tool"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/app_logo"
-        android:gravity="center_horizontal"
-        android:text="@string/znz_reporting_tool"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/primary_dark"
-        android:textSize="40dp"
-        android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@color/primary_light"
+            android:prompt="@string/lbl_choose_language"
+            android:spinnerMode="dropdown" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@id/znz_reporting_tool"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/primary_rounded_button"
-        android:maxLines="1"
-        android:paddingLeft="100dp"
-        android:paddingRight="100dp"
-        android:text="@string/lbl_sign_in"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_medium"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/app_logo"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/spinner"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal"
+            android:src="@drawable/app_logo_znz" />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@id/btn_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/primary_rounded_button"
-        android:maxLines="1"
-        android:paddingLeft="100dp"
-        android:paddingRight="100dp"
-        android:text="@string/lbl_sign_up"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_medium"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/znz_reporting_tool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_logo"
+            android:gravity="center_horizontal"
+            android:text="@string/znz_reporting_tool"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/text_size_extra_large"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/powered_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:padding="10dp"
-        android:text="@string/powered_by"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/primary_dark"
-        android:textSize="@dimen/text_large"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/znz_reporting_tool"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/primary_rounded_button"
+            android:maxLines="1"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:text="@string/lbl_sign_in"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="0dp"
-        android:layout_marginRight="5dp"
-        android:src="@drawable/app_logo_colored" />
-</RelativeLayout>
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/primary_rounded_button"
+            android:maxLines="1"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
+            android:text="@string/lbl_sign_up"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/powered_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_register"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="@string/powered_by"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/title_medium"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/powered_text"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/app_logo_colored" />
+    </RelativeLayout>
+</ScrollView>

@@ -14,6 +14,7 @@
 
 package org.sacids.afyadataV2.android.activities;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import org.sacids.afyadataV2.android.fragments.FormManagerList;
 import org.sacids.afyadataV2.android.views.SlidingTabLayout;
 
 import java.util.ArrayList;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FileManagerTabs extends AppCompatActivity {
 
@@ -73,7 +76,7 @@ public class FileManagerTabs extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.notes);
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
     }
 
     @Override
@@ -86,5 +89,10 @@ public class FileManagerTabs extends AppCompatActivity {
     protected void onStop() {
         Collect.getInstance().getActivityLogger().logOnStop(this);
         super.onStop();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

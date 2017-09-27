@@ -17,8 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/icon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:padding="5dp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/primary_text"
-        android:textSize="@dimen/text_medium" />
+        android:textSize="@dimen/text_size_extra_small" />
 </RelativeLayout>

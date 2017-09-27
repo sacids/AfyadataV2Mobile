@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2009 University of Washington Licensed under the Apache
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2009 University of Washington Licensed under the Apache
 License, Version 2.0 (the "License"); you may not use this file except in
 compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed
@@ -35,7 +34,8 @@ the specific language governing permissions and limitations under the License. -
             android:layout_toLeftOf="@+id/checkbox"
             android:layout_toStartOf="@+id/checkbox"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textSize="21sp"
             tools:text="text1" />
 
         <TextView
@@ -48,7 +48,8 @@ the specific language governing permissions and limitations under the License. -
             android:layout_toLeftOf="@+id/checkbox"
             android:layout_toStartOf="@+id/checkbox"
             android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textSize="14sp"
             tools:text="text2" />
 
         <CheckBox

@@ -70,10 +70,11 @@ android {
         applicationId('org.sacids.afyadataV2.android')
         minSdkVersion(16)
         targetSdkVersion(22)
-        versionName getVersionName()
+        versionName '1.0'
         testInstrumentationRunner('android.support.test.runner.AndroidJUnitRunner')
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+        versionCode 1
     }
     signingConfigs {
         release {
