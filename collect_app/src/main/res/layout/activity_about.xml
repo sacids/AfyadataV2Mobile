@@ -2,108 +2,86 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_grey">
+    android:background="@color/white">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="@string/afyadata_name"
+                android:textAppearance="@style/TextAppearance.FontPath"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/title_medium" />
 
-                <ImageView
-                    android:layout_width="250dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/app_logo_colored" />
 
-                <TextView
-                    android:id="@+id/version"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:text="Version 1.0"
-                    android:textAllCaps="true"
-                    android:textAppearance="@style/TextAppearance.FontPath"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/text_large"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/website"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:text="@string/app_web"
-                    android:textAppearance="@style/TextAppearance.FontPath"
-                    android:textColor="@color/primary_dark"
-                    android:textSize="@dimen/text_large" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:text="Version 1.0"
+                android:textAppearance="@style/TextAppearance.FontPath"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_large" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/support_from"
-                    android:textAppearance="@style/TextAppearance.FontPath"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/title_medium" />
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/app_logo_colored" />
 
-                <ImageView
-                    android:id="@+id/logo_skoll"
-                    android:layout_width="150dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/logo_skoll" />
 
-                <ImageView
-                    android:id="@+id/logo_idrc"
-                    android:layout_width="150dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/logo_idrc" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="@string/support_from"
+                android:textAppearance="@style/TextAppearance.FontPath"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_large" />
 
-                <TextView
-                    android:id="@+id/open_source_licence"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/all_open_source_licenses"
-                    android:textAppearance="@style/TextAppearance.FontPath"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="@dimen/text_large" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/logo_skoll"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_skoll" />
+
+            <ImageView
+                android:id="@+id/logo_idrc"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_idrc" />
+
+
+            <TextView
+                android:id="@+id/open_source_licence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:padding="10dp"
+                android:text="@string/app_license"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.FontPath"
+                android:textColor="@color/primary_dark"
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

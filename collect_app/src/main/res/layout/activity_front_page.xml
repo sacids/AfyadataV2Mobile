@@ -17,18 +17,18 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@color/primary_light"
             android:prompt="@string/lbl_choose_language"
             android:spinnerMode="dropdown" />
 
         <ImageView
             android:id="@+id/app_logo"
-            android:layout_width="400dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
             android:layout_below="@id/spinner"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="0dp"
-            android:gravity="center_horizontal"
             android:src="@drawable/app_logo_znz" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:text="@string/znz_reporting_tool"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/primary_dark"
-            android:textSize="@dimen/text_size_extra_large"
+            android:textSize="@dimen/title_medium"
             android:textStyle="bold" />
 
         <Button
@@ -86,16 +86,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/btn_register"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="@string/powered_by"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/primary_dark"
-            android:textSize="@dimen/title_medium"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_medium" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
             android:layout_below="@id/powered_text"
             android:layout_centerHorizontal="true"
             android:src="@drawable/app_logo_colored" />

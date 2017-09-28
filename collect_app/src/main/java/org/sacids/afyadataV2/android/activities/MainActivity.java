@@ -136,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(context, PreferencesActivity.class));
                         return true;
 
+                    case R.id.action_language:
+                        //settings
+                        startActivity(new Intent(context, LanguageActivity.class));
+                        return true;
+
                     case R.id.action_sign_out:
                         //clear session
                         prefManager.clearSession();

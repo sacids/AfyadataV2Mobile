@@ -31,7 +31,6 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        setToolbar();
         setViews();
     }
 
@@ -58,28 +57,18 @@ public class AboutActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //setToolbar
-    private void setToolbar() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_about));
-        setSupportActionBar(mToolbar);
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
-    }
+//    //setToolbar
+//    private void setToolbar() {
+//        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+//        mToolbar.setTitle(getString(R.string.nav_item_about));
+//        setSupportActionBar(mToolbar);
+//        actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setHomeButtonEnabled(true);
+//    }
 
     //setViews
     private void setViews() {
-        //onclick website
-        findViewById(R.id.website).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://afyadata.sacids.org"));
-                startActivity(intent);
-            }
-        });
-
         //on click open source licence
         findViewById(R.id.open_source_licence).setOnClickListener(new View.OnClickListener() {
             @Override

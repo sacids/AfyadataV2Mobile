@@ -328,7 +328,9 @@ the specific language governing permissions and limitations under the License.
         <receiver
             android:name=".receivers.FeedbackReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
+
+        <activity android:name=".activities.LanguageActivity"></activity>
     </application>
 
 </manifest>

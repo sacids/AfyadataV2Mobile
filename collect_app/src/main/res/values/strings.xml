@@ -602,6 +602,7 @@
 
     <!-- other string -->
     <string name="app_version">Version</string>
+    <string name="app_license">Open License</string>
     <string name="app_web">AfyaData Website</string>
     <string name="support_from">Created with support from</string>
 
