@@ -1,22 +1,21 @@
 package org.sacids.afyadataV2.android.utilities;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
-import org.sacids.afyadataV2.android.activities.MainActivity;
 import org.sacids.afyadataV2.android.app.Preferences;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Calendar;
 import java.util.Locale;
 
-import static android.os.Build.VERSION_CODES.N;
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by administrator on 13/09/2017.
@@ -52,8 +51,23 @@ public class AfyaDataUtils {
         }
     }
 
-    //setLocale
-    public static void setLocale(Context context, SharedPreferences mSharedPreferences, String selectedLocale) {
+
+    public static void loadLanguage(Context context) {
+        Locale locale = new Locale(getLangCode(context));
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+    }
+
+    public static String getLangCode(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
+        String langCode = preferences.getString(Preferences.LANGUAGE, "sw");
+        return langCode;
+    }
+
+    //setAppLanguage
+    public static void setAppLanguage(Activity context, String selectedLocale) {
         Resources res = context.getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
@@ -66,7 +80,13 @@ public class AfyaDataUtils {
             conf.locale = new Locale(selectedLocale);
             res.updateConfiguration(conf, dm);
         }
-        mSharedPreferences.edit().putString(Preferences.DEFAULT_LOCALE, selectedLocale).commit();
-        mSharedPreferences.edit().putBoolean(Preferences.FIRST_TIME_APP_OPENED, false).commit();
+
+        SharedPreferences mSharedPreferences = context.getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(Preferences.DEFAULT_LOCALE, selectedLocale);
+        editor.putBoolean(Preferences.FIRST_TIME_APP_OPENED, false);
+        editor.putString(Preferences.LANGUAGE, selectedLocale);
+        editor.apply();
+        context.recreate();
     }
 }

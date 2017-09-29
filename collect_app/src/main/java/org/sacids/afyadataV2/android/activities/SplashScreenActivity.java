@@ -18,12 +18,9 @@ package org.sacids.afyadataV2.android.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -33,44 +30,27 @@ import org.sacids.afyadataV2.android.app.Preferences;
 import org.sacids.afyadataV2.android.app.PrefManager;
 import org.sacids.afyadataV2.android.utilities.AfyaDataUtils;
 
-import java.util.Locale;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     private static String TAG = SplashScreenActivity.class.getSimpleName();
-
     private Context context = this;
-
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static int SPLASH_TIME_OUT = 1000;
-
-    private SharedPreferences settings;
-    private String gcmRegId;
     private PrefManager pref;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AfyaDataUtils.loadLanguage(SplashScreenActivity.this);
         setContentView(R.layout.splash_screen);
-
-        settings = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
-        String defaultLocale = settings.getString(Preferences.DEFAULT_LOCALE, null);
-
-        if (defaultLocale != null) {
-            AfyaDataUtils.setLocale(SplashScreenActivity.this, settings, defaultLocale);
-        } else {
-            AfyaDataUtils.setLocale(SplashScreenActivity.this, settings, "sw");
-        }
 
         pref = new PrefManager(this);
 
-        //shared Preference
-        settings = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
-
+        int SPLASH_TIME_OUT = 1000;
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -80,11 +60,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                //check login
                 if (pref.isLoggedIn()) {
                     startActivity(new Intent(context, MainActivity.class));
                 } else {
-                   startActivity(new Intent(context, FrontPageActivity.class));
+                    startActivity(new Intent(context, FrontPageActivity.class));
                 }
                 finish();
             }

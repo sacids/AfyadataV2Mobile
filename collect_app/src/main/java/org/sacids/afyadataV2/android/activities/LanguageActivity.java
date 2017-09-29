@@ -3,34 +3,20 @@ package org.sacids.afyadataV2.android.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
-import org.sacids.afyadataV2.android.utilities.AfyaDataUtils;
-
-import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static android.os.Build.VERSION_CODES.N;
-import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setLocale;
+import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setAppLanguage;
 
 public class LanguageActivity extends AppCompatActivity {
 
@@ -50,7 +36,6 @@ public class LanguageActivity extends AppCompatActivity {
         mSharedPreferences = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
 
         setToolbar();
-
         setViews();
     }
 
@@ -92,7 +77,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_swahili).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale(context,mSharedPreferences,"sw");
+                setAppLanguage(LanguageActivity.this, "sw");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
@@ -102,7 +87,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_french).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale(context,mSharedPreferences,"fr");
+                setAppLanguage(LanguageActivity.this, "fr");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
@@ -112,7 +97,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_english).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale(context,mSharedPreferences,"en");
+                setAppLanguage(LanguageActivity.this, "en");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
@@ -122,7 +107,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_portuguese).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale(context,mSharedPreferences,"pt");
+                setAppLanguage(LanguageActivity.this, "pt");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }

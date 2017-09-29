@@ -18,11 +18,10 @@ import android.widget.TextView;
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
 
-import java.util.Locale;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setLocale;
+import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.loadLanguage;
+import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setAppLanguage;
 
 public class FrontPageActivity extends AppCompatActivity {
 
@@ -36,8 +35,10 @@ public class FrontPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_front_page);
 
+        loadLanguage(FrontPageActivity.this);
+
+        setContentView(R.layout.activity_front_page);
         mSharedPreferences = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
 
         setViews();
@@ -87,32 +88,29 @@ public class FrontPageActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         String selectedLanguage = parent.getItemAtPosition(position).toString();
 
-                        Log.d("FrontPage", "Selected language " + selectedLanguage);
                         Activity _activity = FrontPageActivity.this;
 
                         switch (selectedLanguage) {
                             case "English":
-                                setLocale(_activity, mSharedPreferences, "en");
+                                setAppLanguage(_activity, "en");
                                 break;
 
                             case "Swahili":
-                                setLocale(_activity, mSharedPreferences, "sw");
+                                setAppLanguage(_activity, "sw");
                                 break;
 
                             case "French":
-                                setLocale(_activity, mSharedPreferences, "fr");
+                                setAppLanguage(_activity, "fr");
                                 break;
 
                             case "Portuguese":
-                                setLocale(_activity, mSharedPreferences, "pt");
+                                setAppLanguage(_activity, "pt");
                                 break;
                             default:
-                                setLocale(_activity, mSharedPreferences, "sw");
+                                setAppLanguage(_activity, "sw");
                                 break;
                         }
-                        Intent refresh = new Intent(context, FrontPageActivity.class);
-                        startActivity(refresh);
-                        finish();
+                        recreate();
                     }
 
                     @Override
