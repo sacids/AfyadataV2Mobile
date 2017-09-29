@@ -11,7 +11,6 @@ public class Preferences {
 
     public static String API_KEY = "";
     public static String API_KEY_NAME = "api_key";
-    public static String USER= "user";
 
     public static final String GOOGLE_PROJ_ID = "";
     public static String GCM_REG_ID = "gcm_reg_id";

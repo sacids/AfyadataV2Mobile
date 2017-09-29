@@ -1,14 +1,12 @@
 package org.sacids.afyadataV2.android.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +14,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
 
 import java.util.Locale;
 
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static android.os.Build.VERSION_CODES.N;
+import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setLocale;
 
 public class FrontPageActivity extends AppCompatActivity {
 
@@ -84,67 +79,49 @@ public class FrontPageActivity extends AppCompatActivity {
         spinnerLanguage = (Spinner) findViewById(R.id.spinner);
         spinnerLanguage.setAdapter(new SpinnerAdapter(this, R.layout.custom_spinner, language));
 
-        spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerLanguage.post(new Runnable() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String mLanguage = parent.getItemAtPosition(position).toString();
+            public void run() {
+                spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        String selectedLanguage = parent.getItemAtPosition(position).toString();
 
-                switch (mLanguage) {
-                    case "English":
-                        setLocale("en");
-                        startActivity(new Intent(context, FrontPageActivity.class));
+                        Log.d("FrontPage", "Selected language " + selectedLanguage);
+                        Activity _activity = FrontPageActivity.this;
+
+                        switch (selectedLanguage) {
+                            case "English":
+                                setLocale(_activity, mSharedPreferences, "en");
+                                break;
+
+                            case "Swahili":
+                                setLocale(_activity, mSharedPreferences, "sw");
+                                break;
+
+                            case "French":
+                                setLocale(_activity, mSharedPreferences, "fr");
+                                break;
+
+                            case "Portuguese":
+                                setLocale(_activity, mSharedPreferences, "pt");
+                                break;
+                            default:
+                                setLocale(_activity, mSharedPreferences, "sw");
+                                break;
+                        }
+                        Intent refresh = new Intent(context, FrontPageActivity.class);
+                        startActivity(refresh);
                         finish();
-                        break;
+                    }
 
-                    case "Swahili":
-                        setLocale("sw");
-                        startActivity(new Intent(context, FrontPageActivity.class));
-                        finish();
-                        break;
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
 
-                    case "French":
-                        setLocale("fr");
-                        startActivity(new Intent(context, FrontPageActivity.class));
-                        finish();
-                        break;
-
-                    case "Portuguese":
-                        setLocale("pt");
-                        startActivity(new Intent(context, FrontPageActivity.class));
-                        finish();
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                    }
+                });
             }
         });
-    }
-
-    //setLocale
-    private void setLocale(String mLanguageCode) {
-        Locale locale = new Locale(mLanguageCode);
-        Locale.setDefault(locale);
-        Configuration config = context.getResources().getConfiguration();
-
-        if (Build.VERSION.SDK_INT >= N) {
-            config.setLocale(locale);
-        } else {
-            config.locale = locale;
-        }
-        context.getResources().updateConfiguration(
-                config,
-                context.getResources().getDisplayMetrics());
-
-
-        //update language
-        mSharedPreferences.edit().putString(Preferences.DEFAULT_LOCALE, mLanguageCode).commit();
-        mSharedPreferences.edit().putBoolean(Preferences.FIRST_TIME_APP_OPENED, false).commit();
     }
 
     //SpinnerAdapter

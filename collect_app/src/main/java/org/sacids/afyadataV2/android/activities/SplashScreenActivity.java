@@ -31,6 +31,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
 import org.sacids.afyadataV2.android.app.PrefManager;
+import org.sacids.afyadataV2.android.utilities.AfyaDataUtils;
 
 import java.util.Locale;
 
@@ -56,27 +57,19 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-//        settings = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
-//        String defaultLocale = settings.getString(Preferences.DEFAULT_LOCALE, "sw");
-//
-//        Resources res = getResources();
-//        DisplayMetrics dm = res.getDisplayMetrics();
-//        android.content.res.Configuration conf = res.getConfiguration();
-//        conf.locale = new Locale(defaultLocale);
-//        res.updateConfiguration(conf, dm);
+        settings = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
+        String defaultLocale = settings.getString(Preferences.DEFAULT_LOCALE, null);
 
-        checkPlayServices();
+        if (defaultLocale != null) {
+            AfyaDataUtils.setLocale(SplashScreenActivity.this, settings, defaultLocale);
+        } else {
+            AfyaDataUtils.setLocale(SplashScreenActivity.this, settings, "sw");
+        }
 
         pref = new PrefManager(this);
 
         //shared Preference
-        settings = getSharedPreferences(Preferences.USER, MODE_PRIVATE);
-
-        //register gcmId to server
-        if (settings.getString(Preferences.GCM_REG_ID, "").length() != 0) {
-            gcmRegId = settings.getString(Preferences.GCM_REG_ID, "");
-            //registerGCMUsers();
-        }
+        settings = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
 
         new Handler().postDelayed(new Runnable() {
 
@@ -91,7 +84,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (pref.isLoggedIn()) {
                     startActivity(new Intent(context, MainActivity.class));
                 } else {
-                    startActivity(new Intent(context, FrontPageActivity.class));
+                   startActivity(new Intent(context, FrontPageActivity.class));
                 }
                 finish();
             }
@@ -107,7 +100,6 @@ public class SplashScreenActivity extends AppCompatActivity {
             if (apiAvailability.isUserResolvableError(resultCode)) {
                 apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST).show();
             } else {
-                Log.i(TAG, "Device does not support Google Play Service");
                 finish();
             }
             return false;

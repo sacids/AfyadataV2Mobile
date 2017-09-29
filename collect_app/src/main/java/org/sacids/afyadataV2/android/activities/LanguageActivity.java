@@ -23,12 +23,14 @@ import android.widget.TextView;
 
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
+import org.sacids.afyadataV2.android.utilities.AfyaDataUtils;
 
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static android.os.Build.VERSION_CODES.N;
+import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setLocale;
 
 public class LanguageActivity extends AppCompatActivity {
 
@@ -90,7 +92,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_swahili).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale("sw");
+                setLocale(context,mSharedPreferences,"sw");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
@@ -100,7 +102,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_french).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale("fr");
+                setLocale(context,mSharedPreferences,"fr");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
@@ -110,7 +112,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_english).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale("en");
+                setLocale(context,mSharedPreferences,"en");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
@@ -120,25 +122,13 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_portuguese).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocale("pt");
+                setLocale(context,mSharedPreferences,"pt");
                 startActivity(new Intent(context, MainActivity.class));
                 finish();
             }
 
         });
     }
-
-    //setLocale
-    private void setLocale(String locale) {
-        Resources res = context.getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        android.content.res.Configuration conf = res.getConfiguration();
-        conf.locale = new Locale(locale);
-        res.updateConfiguration(conf, dm);
-        mSharedPreferences.edit().putString(Preferences.DEFAULT_LOCALE, locale).commit();
-        mSharedPreferences.edit().putBoolean(Preferences.FIRST_TIME_APP_OPENED, false).commit();
-    }
-
 
     @Override
     protected void attachBaseContext(Context newBase) {
