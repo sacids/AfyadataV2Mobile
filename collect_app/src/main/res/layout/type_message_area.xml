@@ -23,5 +23,5 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:padding="4dp"
-        android:src="@drawable/ic_menu_send" />
+        android:src="@drawable/ic_send_colored" />
 </LinearLayout>
