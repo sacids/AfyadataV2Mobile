@@ -62,7 +62,7 @@ public class AfyaDataUtils {
 
     public static String getLangCode(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
-        String langCode = preferences.getString(Preferences.LANGUAGE, "sw");
+        String langCode = preferences.getString(Preferences.LANGUAGE, AfyaDataLanguages.SWAHILI.getLanguage());
         return langCode;
     }
 

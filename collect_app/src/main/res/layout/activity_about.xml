@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/primary">
 
 
     <ScrollView
@@ -22,7 +22,8 @@
                 android:padding="5dp"
                 android:text="@string/afyadata_name"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/secondary_text"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 android:textSize="@dimen/title_medium" />
 
 
@@ -33,7 +34,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Version 1.0"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/secondary_text"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_large" />
 
             <ImageView
@@ -51,7 +52,7 @@
                 android:padding="10dp"
                 android:text="@string/support_from"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/secondary_text"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_large" />
 
             <ImageView
@@ -79,7 +80,8 @@
                 android:text="@string/app_license"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/primary_dark"
+                android:textColor="@color/white"
+                android:textColorLink="@color/primary_orange"
                 android:textSize="@dimen/text_large"
                 android:textStyle="bold" />
         </LinearLayout>

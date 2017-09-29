@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
+import org.sacids.afyadataV2.android.utilities.AfyaDataLanguages;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -91,23 +91,23 @@ public class FrontPageActivity extends AppCompatActivity {
                         Activity _activity = FrontPageActivity.this;
 
                         switch (selectedLanguage) {
-                            case "English":
-                                setAppLanguage(_activity, "en");
+                            case "Swahili":
+                                setAppLanguage(_activity, AfyaDataLanguages.SWAHILI.getLanguage());
                                 break;
 
-                            case "Swahili":
-                                setAppLanguage(_activity, "sw");
+                            case "English":
+                                setAppLanguage(_activity, AfyaDataLanguages.ENGLISH.getLanguage());
                                 break;
 
                             case "French":
-                                setAppLanguage(_activity, "fr");
+                                setAppLanguage(_activity, AfyaDataLanguages.FRENCH.getLanguage());
                                 break;
 
                             case "Portuguese":
-                                setAppLanguage(_activity, "pt");
+                                setAppLanguage(_activity, AfyaDataLanguages.PORTUGUESE.getLanguage());
                                 break;
                             default:
-                                setAppLanguage(_activity, "sw");
+                                setAppLanguage(_activity, AfyaDataLanguages.SWAHILI.getLanguage());
                                 break;
                         }
                         recreate();
@@ -139,8 +139,7 @@ public class FrontPageActivity extends AppCompatActivity {
             return getCustomView(pos, cnvtView, prnt);
         }
 
-        public View getCustomView(int position, View convertView,
-                                  ViewGroup parent) {
+        public View getCustomView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
             View spinnerLanguage = inflater.inflate(R.layout.custom_spinner, parent, false);
 

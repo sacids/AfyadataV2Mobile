@@ -1,11 +1,10 @@
 package org.sacids.afyadataV2.android.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,14 +12,14 @@ import android.view.View;
 
 import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.app.Preferences;
+import org.sacids.afyadataV2.android.utilities.AfyaDataLanguages;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.loadLanguage;
 import static org.sacids.afyadataV2.android.utilities.AfyaDataUtils.setAppLanguage;
 
 public class LanguageActivity extends AppCompatActivity {
-
-    private static final String TAG = "Language";
 
     private Toolbar mToolbar;
     private ActionBar actionBar;
@@ -31,6 +30,8 @@ public class LanguageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loadLanguage(LanguageActivity.this);
         setContentView(R.layout.activity_language);
 
         mSharedPreferences = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
@@ -77,9 +78,14 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_swahili).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAppLanguage(LanguageActivity.this, "sw");
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
+                setAppLanguage(LanguageActivity.this, AfyaDataLanguages.SWAHILI.getLanguage());
+            }
+        });
+
+        findViewById(R.id.btn_english).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAppLanguage(LanguageActivity.this, AfyaDataLanguages.ENGLISH.getLanguage());
             }
 
         });
@@ -87,19 +93,8 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_french).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAppLanguage(LanguageActivity.this, "fr");
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
-            }
-
-        });
-
-        findViewById(R.id.btn_english).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAppLanguage(LanguageActivity.this, "en");
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
+                setAppLanguage(LanguageActivity.this, AfyaDataLanguages.FRENCH.getLanguage());
+                recreate();
             }
 
         });
@@ -107,9 +102,7 @@ public class LanguageActivity extends AppCompatActivity {
         findViewById(R.id.btn_portuguese).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAppLanguage(LanguageActivity.this, "pt");
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
+                setAppLanguage(LanguageActivity.this, AfyaDataLanguages.PORTUGUESE.getLanguage());
             }
 
         });
