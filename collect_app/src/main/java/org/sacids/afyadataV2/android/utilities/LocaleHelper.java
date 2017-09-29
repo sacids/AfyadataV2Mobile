@@ -5,7 +5,9 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
+import org.sacids.afyadataV2.android.app.Preferences;
 import org.sacids.afyadataV2.android.application.Collect;
 import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 
@@ -36,7 +38,7 @@ public class LocaleHelper {
 
     public void updateLocale(Context context) {
         String localeCode = PreferenceManager.getDefaultSharedPreferences(context)
-                .getString(PreferenceKeys.KEY_APP_LANGUAGE, "");
+                .getString(PreferenceKeys.KEY_APP_LANGUAGE, Preferences.LANGUAGE);
         boolean isUsingSysLanguage = localeCode.equals("");
         if (isUsingSysLanguage) {
             localeCode = Collect.defaultSysLanguage;

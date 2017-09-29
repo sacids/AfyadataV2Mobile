@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 
 import org.sacids.afyadataV2.android.app.Preferences;
@@ -16,6 +17,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import static android.content.Context.MODE_PRIVATE;
+import static org.sacids.afyadataV2.android.preferences.PreferenceKeys.KEY_APP_LANGUAGE;
 
 /**
  * Created by administrator on 13/09/2017.
@@ -58,6 +60,9 @@ public class AfyaDataUtils {
         Configuration config = new Configuration();
         config.locale = locale;
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+
+        LocaleHelper localeHelper = new LocaleHelper();
+        localeHelper.updateLocale(context);
     }
 
     public static String getLangCode(Context context) {
@@ -67,26 +72,34 @@ public class AfyaDataUtils {
     }
 
     //setAppLanguage
-    public static void setAppLanguage(Activity context, String selectedLocale) {
+    public static void setAppLanguage(Activity context, String selectedLanguage) {
         Resources res = context.getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            Locale locale = new Locale(selectedLocale);
+            Locale locale = new Locale(selectedLanguage);
             Locale.setDefault(locale);
             conf.setLocale(locale);
         } else {
-            conf.locale = new Locale(selectedLocale);
+            conf.locale = new Locale(selectedLanguage);
             res.updateConfiguration(conf, dm);
         }
 
         SharedPreferences mSharedPreferences = context.getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString(Preferences.DEFAULT_LOCALE, selectedLocale);
+        editor.putString(Preferences.DEFAULT_LOCALE, selectedLanguage);
         editor.putBoolean(Preferences.FIRST_TIME_APP_OPENED, false);
-        editor.putString(Preferences.LANGUAGE, selectedLocale);
+        editor.putString(Preferences.LANGUAGE, selectedLanguage);
         editor.apply();
+
+        SharedPreferences.Editor edit = PreferenceManager
+                .getDefaultSharedPreferences(context).edit();
+        edit.putString(KEY_APP_LANGUAGE, selectedLanguage);
+        edit.apply();
+        LocaleHelper localeHelper = new LocaleHelper();
+        localeHelper.updateLocale(context);
+
         context.recreate();
     }
 }
