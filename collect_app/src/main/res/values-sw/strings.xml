@@ -72,7 +72,7 @@
     <string name="location_accuracy">Usahihi ni %1$s m</string>
     <string name="main_menu">Orodha Kuu</string>
     <string name="main_menu_details">Ukusanyaji wa takwimu umerahisishwa…</string>
-    <string name="manage_files">Futa Fomu zilizohifadhiwa</string>
+    <string name="manage_files">Futa Fomu</string>
     <string name="mark_finished">Weka alama fomu imekamilishwa</string>
     <string name="noselect_error">Pole, hujachagua fomu yoyoyte!</string>
     <string name="no_connection">Hakuna mtandao unaopatikana</string>
@@ -93,14 +93,14 @@
     <string name="refresh">Onyesha upya</string>
     <string name="replace_barcode">Badili Barcode</string>
     <string name="required_answer_error">Samahani, jibu hili linahitajika!</string>
-    <string name="review_data">Hariri Fomu iliyohifadhiwa</string>
-    <string name="review_data_button">Hariri Fomu iliyohifadhiwa (%s)</string>
+    <string name="review_data">Hariri Fomu</string>
+    <string name="review_data_button">Hariri Fomu (%s)</string>
     <string name="save_all_answers">Hifadhi Fomu</string>
     <string name="save_enter_data_description">Umefika mwisho wa \"%s\".</string>
     <string name="saving_form">Inahifadhi Fomu</string>
     <string name="sending_items">Inatuma %1$s ya %2$s fomu(s)</string>
-    <string name="send_data">Tuma Fomu Zilizokamilika</string>
-    <string name="send_data_button">Tuma Fomu Zilizokamilika (%s)</string>
+    <string name="send_data">Tuma Fomu</string>
+    <string name="send_data_button">Tuma Fomu (%s)</string>
     <string name="send_selected_data">Tuma zilizochaguliwa</string>
     <string name="view_sent_forms">Angalia Fomu Iliyotumwa</string>
     <string name="view_sent_forms_button">Angalia Fomu Iliyotumwa (%s)</string>

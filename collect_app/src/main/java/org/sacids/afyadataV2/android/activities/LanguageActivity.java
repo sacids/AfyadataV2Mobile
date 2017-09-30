@@ -1,7 +1,6 @@
 package org.sacids.afyadataV2.android.activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -80,8 +79,6 @@ public class LanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setAppLanguage(LanguageActivity.this, AfyaDataLanguages.SWAHILI.getLanguage());
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
             }
         });
 
@@ -89,8 +86,6 @@ public class LanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setAppLanguage(LanguageActivity.this, AfyaDataLanguages.ENGLISH.getLanguage());
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
             }
 
         });
@@ -99,8 +94,6 @@ public class LanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setAppLanguage(LanguageActivity.this, AfyaDataLanguages.FRENCH.getLanguage());
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
             }
 
         });
@@ -109,8 +102,6 @@ public class LanguageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setAppLanguage(LanguageActivity.this, AfyaDataLanguages.PORTUGUESE.getLanguage());
-                startActivity(new Intent(context, MainActivity.class));
-                finish();
             }
 
         });

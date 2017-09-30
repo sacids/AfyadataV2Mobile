@@ -2,12 +2,14 @@ package org.sacids.afyadataV2.android.utilities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.util.DisplayMetrics;
 
+import org.sacids.afyadataV2.android.activities.MainActivity;
 import org.sacids.afyadataV2.android.app.Preferences;
 
 import java.io.InputStream;
