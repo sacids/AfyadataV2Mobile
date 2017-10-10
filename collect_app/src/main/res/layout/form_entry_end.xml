@@ -73,7 +73,7 @@ the specific language governing permissions and limitations under the License.
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/primary_rounded_button"
-            android:padding="20dp"
+            android:padding="10dp"
             android:text="@string/quit_entry"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.FontPath"

@@ -31,10 +31,12 @@ import org.sacids.afyadataV2.android.R;
 import org.sacids.afyadataV2.android.application.Collect;
 import org.sacids.afyadataV2.android.dao.InstancesDao;
 import org.sacids.afyadataV2.android.listeners.InstanceUploaderListener;
+import org.sacids.afyadataV2.android.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.sacids.afyadataV2.android.tasks.InstanceServerUploader;
 import org.sacids.afyadataV2.android.utilities.ApplicationConstants;
 import org.sacids.afyadataV2.android.utilities.AuthDialogUtility;
+import org.sacids.afyadataV2.android.utilities.WebUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -325,7 +327,6 @@ public class InstanceUploaderActivity extends AppCompatActivity implements Insta
                 Collect.getInstance().getActivityLogger().logAction(this,
                         "onCreateDialog.AUTH_DIALOG", "show");
 
-
                 // Get the server, username, and password from the settings
                 SharedPreferences settings =
                         PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -370,7 +371,29 @@ public class InstanceUploaderActivity extends AppCompatActivity implements Insta
         instancesToSend = updatedToSend;
 
         this.url = url.toString();
-        showDialog(AUTH_DIALOG);
+        //showDialog(AUTH_DIALOG);
+
+        //TODO get_username, get_password and get_url
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String serverURL =
+                settings.getString(PreferenceKeys.KEY_SERVER_URL,
+                        getResources().getString(R.string.default_server_url));
+
+        // NOTE: /submission must not be translated! It is the well-known path on the server.
+        String submissionUrl = getString(R.string.default_odk_submission);
+
+        final String subURL =
+                serverURL + settings.getString(PreferenceKeys.KEY_SUBMISSION_URL, submissionUrl);
+
+        Uri u = Uri.parse(subURL);
+
+        //username and password
+        String username = settings.getString(PreferenceKeys.KEY_USERNAME, null);
+
+        String password = settings.getString(PreferenceKeys.KEY_PASSWORD, null);
+
+        WebUtils.addCredentials(username, password, u.getHost());
     }
 
 

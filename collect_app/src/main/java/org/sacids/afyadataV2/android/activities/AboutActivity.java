@@ -69,7 +69,15 @@ public class AboutActivity extends AppCompatActivity {
 
     //setViews
     private void setViews() {
-        //on click open source licence
+        findViewById(R.id.app_logo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://afyadata.sacids.org"));
+                startActivity(webIntent);
+            }
+        });
+
         findViewById(R.id.open_source_licence).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

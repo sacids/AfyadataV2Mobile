@@ -426,67 +426,9 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
                 Collect.getInstance().getActivityLogger().logAction(this,
                         "onCreateDialog.AUTH_DIALOG", "show");
 
-                Collect.getInstance().getActivityLogger().logAction(this, "onCreateDialog.AUTH_DIALOG", "show");
-                AlertDialog.Builder b = new AlertDialog.Builder(this);
-
-                LayoutInflater factory = LayoutInflater.from(this);
-                final View dialogView = factory.inflate(R.layout.server_auth_dialog, null);
-
-                // Get the server, username, and password from the settings
-                SharedPreferences settings =
-                        PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-                String server =
-                        settings.getString(PreferenceKeys.KEY_SERVER_URL,
-                                getString(R.string.default_server_url));
-
-                String formListUrl = getString(R.string.default_odk_formlist);
-                final String url =
-                        server + settings.getString(PreferenceKeys.KEY_FORMLIST_URL, formListUrl);
-                Log.i("formList", "Trying to get formList from: " + url);
-
-                EditText username = (EditText) dialogView.findViewById(R.id.username_edit);
-                String storedUsername = settings.getString(PreferenceKeys.KEY_USERNAME, null);
-                username.setText(storedUsername);
-
-                EditText password = (EditText) dialogView.findViewById(R.id.password_edit);
-                String storedPassword = settings.getString(PreferenceKeys.KEY_PASSWORD, null);
-                password.setText(storedPassword);
-
-                b.setTitle(getString(R.string.server_requires_auth));
-                b.setMessage(getString(R.string.server_auth_credentials, url));
-                b.setView(dialogView);
-                b.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Collect.getInstance().getActivityLogger().logAction(this, "onCreateDialog.AUTH_DIALOG", "OK");
-
-                        EditText username = (EditText) dialogView.findViewById(R.id.username_edit);
-                        EditText password = (EditText) dialogView.findViewById(R.id.password_edit);
-
-                        Uri u = Uri.parse(url);
-
-                        WebUtils.addCredentials(username.getText().toString(), password.getText()
-                                .toString(), u.getHost());
-
-                        //TODO: Added for removing dialog
-                        downloadFormList();
-                    }
-                });
-                b.setNegativeButton(getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Collect.getInstance().getActivityLogger().logAction(this, "onCreateDialog.AUTH_DIALOG", "Cancel");
-                                finish();
-                            }
-                        });
-
-                b.setCancelable(false);
                 alertShowing = false;
-                return b.create();
 
-            //alertShowing = false
-            //return new AuthDialogUtility().createDialog(this, this);
+                return new AuthDialogUtility().createDialog(this, this);
         }
         return null;
     }
@@ -707,7 +649,33 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
 
         if (result.containsKey(DownloadFormListTask.DL_AUTH_REQUIRED)) {
             // need authorization
-            showDialog(AUTH_DIALOG);
+            //showDialog(AUTH_DIALOG);
+
+            //TODO get_username, get_password and get_url
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+            String serverURL =
+                    settings.getString(PreferenceKeys.KEY_SERVER_URL,
+                            getResources().getString(R.string.default_server_url));
+
+            // NOTE: /formList must not be translated! It is the well-known path on the server.
+            String formListUrl = getResources().getString(R.string.default_odk_formlist);
+
+            final String url =
+                    serverURL + settings.getString(PreferenceKeys.KEY_FORMLIST_URL, formListUrl);
+
+            Uri u = Uri.parse(url);
+
+            //username and password
+            String username = settings.getString(PreferenceKeys.KEY_USERNAME, null);
+
+            String password = settings.getString(PreferenceKeys.KEY_PASSWORD, null);
+
+            WebUtils.addCredentials(username, password, u.getHost());
+
+            //download formList
+            downloadFormList();
+
         } else if (result.containsKey(DownloadFormListTask.DL_ERROR_MSG)) {
             // Download failed
             String dialogMessage =
