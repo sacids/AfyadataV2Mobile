@@ -165,7 +165,7 @@ public class FeedbackListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.general_menu, menu);
+        getMenuInflater().inflate(R.menu.feedback_menu, menu);
 
         // Return true to display menu
         return true;
@@ -178,9 +178,15 @@ public class FeedbackListActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == android.R.id.home) {
-            onBackPressed();
-            return true;
+        switch (item.getItemId()) {
+
+            case R.id.action_refresh:
+                new FetchFeedbackTask().execute();
+                break;
+
+            case android.R.id.home:
+                onBackPressed();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

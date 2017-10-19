@@ -4,9 +4,9 @@
     tools:context=".activities.ChatListActivity">
 
     <item
-        android:id="@+id/action_refresh"
-        android:icon="@drawable/ic_menu_refresh"
-        android:title="Refresh"
+        android:id="@+id/action_form_details"
+        android:icon="@drawable/ic_description_white_48dp"
+        android:title="Form Details"
         app:showAsAction="always" />
 
 </menu>

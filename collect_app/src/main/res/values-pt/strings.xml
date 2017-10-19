@@ -314,7 +314,7 @@ Escolher Imagem</string>
     <string name="lbl_first_name">Primeiro nome</string>
     <string name="lbl_last_name">Último nome</string>
     <string name="lbl_email">O email</string>
-    <string name="lbl_mobile">telefone i.e. 717705746</string>
+    <string name="lbl_mobile">telefone</string>
     <string name="lbl_password">Senha</string>
     <string name="lbl_password_confirm">Confirmação de senha</string>
     <string name="lbl_first_name_required">Primeiro nome necessário</string>

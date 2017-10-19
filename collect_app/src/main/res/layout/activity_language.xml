@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light">
+    android:background="@color/white">
 
     <include
         android:id="@+id/toolbar"
@@ -23,7 +23,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:background="@drawable/primary_rounded_button"
+            android:background="@drawable/primary_dark_rounded_button"
             android:text="@string/lang_swahili"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
@@ -37,7 +37,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/primary_rounded_button"
+            android:background="@drawable/primary_dark_rounded_button"
             android:text="@string/lang_english"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
@@ -51,7 +51,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/primary_rounded_button"
+            android:background="@drawable/primary_dark_rounded_button"
             android:text="@string/lang_french"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
@@ -65,12 +65,10 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/primary_rounded_button"
+            android:background="@drawable/primary_dark_rounded_button"
             android:text="@string/lang_portuguese"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
             android:textSize="@dimen/text_large" />
-
     </LinearLayout>
-
 </RelativeLayout>

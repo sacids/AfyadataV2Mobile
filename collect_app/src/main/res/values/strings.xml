@@ -570,7 +570,7 @@
     <string name="lbl_first_name">First name</string>
     <string name="lbl_last_name">Last name</string>
     <string name="lbl_email">Email</string>
-    <string name="lbl_mobile">Mobile i.e. 0717705746</string>
+    <string name="lbl_mobile">Mobile</string>
     <string name="lbl_password">Password</string>
     <string name="lbl_password_confirm">Password Confirm</string>
     <string name="lbl_first_name_required">First name is required</string>

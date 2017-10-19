@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@color/primary_dark"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -18,7 +18,7 @@
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/app_logo_znz" />
+            android:src="@drawable/app_logo_white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,9 +38,10 @@
                 android:maxLines="1"
                 android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/primary_dark"
-                android:textColorHint="@color/primary_dark"
-                android:textSize="@dimen/text_size_extra_small" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/text_size_extra_small"
+                android:theme="@style/whiteEditTextStyle" />
 
             <EditText
                 android:id="@+id/mobile"
@@ -54,9 +55,10 @@
                 android:maxLines="1"
                 android:padding="10dp"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/primary_dark"
-                android:textColorHint="@color/primary_dark"
-                android:textSize="@dimen/text_small" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/text_small"
+                android:theme="@style/whiteEditTextStyle" />
         </LinearLayout>
 
         <EditText
@@ -72,9 +74,10 @@
             android:maxLines="1"
             android:padding="10dp"
             android:textAppearance="@style/TextAppearance.FontPath"
-            android:textColor="@color/primary_dark"
-            android:textColorHint="@color/primary_dark"
-            android:textSize="@dimen/text_small" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/text_small"
+            android:theme="@style/whiteEditTextStyle" />
 
         <!-- Login Button -->
         <Button
@@ -83,7 +86,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:background="@drawable/primary_rounded_button"
+            android:background="@drawable/primary_dark_white_border_button"
             android:text="@string/lbl_sign_in"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.FontPath"
@@ -99,7 +102,7 @@
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAppearance="@style/TextAppearance.FontPath"
-            android:textColor="@color/primary_dark"
+            android:textColor="@color/white"
             android:textSize="@dimen/text_small" />
     </LinearLayout>
 </ScrollView>

@@ -108,7 +108,7 @@ public class ChatListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.feedback_menu, menu);
+        getMenuInflater().inflate(R.menu.chat_menu, menu);
 
         return true;
     }
@@ -125,11 +125,10 @@ public class ChatListActivity extends AppCompatActivity {
             case R.id.action_form_details:
                 showFormDetails();
                 break;
-        }
 
-        if (id == android.R.id.home) {
-            onBackPressed();
-            return true;
+            case android.R.id.home:
+                onBackPressed();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

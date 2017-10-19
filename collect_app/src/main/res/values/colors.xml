@@ -15,10 +15,10 @@ the License.
 -->
 <resources>
     <!-- primary colors -->
-    <color name="primary">#144d26</color>
-    <color name="primary_dark">#0e421e</color>
-    <color name="primary_light">#b4d5be</color>
-    <color name="accent">#97bc3d</color>
+    <color name="primary">#a20400</color>
+    <color name="primary_dark">#781E14</color>
+    <color name="primary_light">#a9201d</color>
+    <color name="accent">#795548</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>

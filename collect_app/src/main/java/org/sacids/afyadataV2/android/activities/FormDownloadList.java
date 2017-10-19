@@ -128,6 +128,12 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
     private boolean shouldExit;
     private static final String SHOULD_EXIT = "shouldexit";
 
+    //added variable
+    SharedPreferences settings;
+    String serverURL;
+    String formListURL;
+    String username;
+    String password;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -137,6 +143,14 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
         setTitle(getString(R.string.get_forms));
 
         alertMsg = getString(R.string.please_wait);
+
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        serverURL = settings.getString(PreferenceKeys.KEY_SERVER_URL,
+                getResources().getString(R.string.default_server_url));
+        formListURL = serverURL +
+                settings.getString(PreferenceKeys.KEY_FORMLIST_URL, getResources().getString(R.string.formlist_url)); //formList
+        username = settings.getString(PreferenceKeys.KEY_USERNAME, null); //username
+        password = settings.getString(PreferenceKeys.KEY_PASSWORD, null); //password
 
         downloadButton = (Button) findViewById(R.id.add_button);
         downloadButton.setEnabled(listView.getCheckedItemCount() > 0);
@@ -510,6 +524,8 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
             downloadFormsTask = new DownloadFormsTask();
             downloadFormsTask.setDownloaderListener(this);
             downloadFormsTask.execute(filesToDownload);
+
+            //TODO: add function to know who download which form
         } else {
             ToastUtils.showShortToast(R.string.noselect_error);
         }
