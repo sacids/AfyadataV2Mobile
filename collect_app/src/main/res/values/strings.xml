@@ -579,6 +579,7 @@
     <string name="lbl_password_required">Password required</string>
     <string name="lbl_valid_password_required">Password should be 8 character</string>
     <string name="lbl_password_confirm_required">Password confirmation is required</string>
+    <string name="lbl_password_match_required">Password did not match</string>
     <string name="lbl_sign_in">SIGN IN</string>
     <string name="lbl_sign_up">SIGN UP</string>
     <string name="btn_link_to_register">New member to AfyaData? Register Now.</string>

@@ -323,6 +323,7 @@ Escolher Imagem</string>
     <string name="lbl_password_required">Senha necessário</string>
     <string name="lbl_valid_password_required">A senha deve ter 8 caracteres</string>
     <string name="lbl_password_confirm_required">A confirmação da senha é necessária</string>
+    <string name="lbl_password_match_required">A senha não correspondia</string>
     <string name="lbl_sign_in">ENTRAR</string>
     <string name="lbl_sign_up">REGISTO</string>
     <string name="btn_link_to_register">Novo membro do AfyaData? Registrar agora.</string>

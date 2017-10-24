@@ -569,6 +569,7 @@
   <string name="lbl_password_required">Mot de passe requis</string>
   <string name="lbl_valid_password_required">Le mot de passe doit comporter 8 caractères</string>
   <string name="lbl_password_confirm_required">La confirmation du mot de passe est requise</string>
+  <string name="lbl_password_match_required">Le mot de passe ne correspond pas</string>
   <string name="lbl_sign_in">LogIn</string>
   <string name="lbl_sign_up">REGISTRE</string>
   <string name="btn_link_to_register">Nouveau membre à AfyaData? Registre À présent.</string>
