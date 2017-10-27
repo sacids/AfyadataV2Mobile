@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:340206746363:android:54219fc7bcfbbabc",
+        "mobilesdk_app_id": "1:340206746363:android:fd7dfdddeef17dd9",
         "android_client_info": {
-          "package_name": "org.sacids.afyadataV2.android"
+          "package_name": "org.sacids.afyadata"
         }
       },
       "oauth_client": [
@@ -22,6 +22,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyAN8oIxQjDHt5L3aBomuRbGg0et46cgOE0"
+        },
+        {
+          "current_key": "AIzaSyBNlvBVZb83ubBhQSEJuZWzUV7vLLGUsjQ"
         }
       ],
       "services": {

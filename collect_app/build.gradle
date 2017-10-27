@@ -67,7 +67,7 @@ android {
     buildToolsVersion('25.0.2')
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId('org.sacids.afyadataV2.android')
+        applicationId('org.sacids.afyadata')
         minSdkVersion(16)
         targetSdkVersion(22)
         versionName '1.0'

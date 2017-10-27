@@ -9,9 +9,7 @@ the specific language governing permissions and limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.sacids.afyadataV2.android"
-    android:versionCode="1"
-    android:versionName="1.0">
+    package="org.sacids.afyadata">
 
     <uses-feature
         android:name="android.hardware.location"
@@ -65,7 +63,7 @@ the specific language governing permissions and limitations under the License.
     -->
 
     <permission
-        android:name="org.sacids.afyadataV2.android.permission.MAPS_RECEIVE"
+        android:name="org.sacids.afyadata.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="org.odk.collect.android.permission.MAPS_RECEIVE" />
@@ -89,11 +87,11 @@ the specific language governing permissions and limitations under the License.
         android:theme="@style/AppTheme">
         <provider
             android:name=".provider.FormsProvider"
-            android:authorities="org.sacids.afyadataV2.android.provider.odk.forms"
+            android:authorities="org.sacids.afyadata.provider.odk.forms"
             android:exported="true" />
         <provider
             android:name=".provider.InstanceProvider"
-            android:authorities="org.sacids.afyadataV2.android.provider.odk.instances"
+            android:authorities="org.sacids.afyadata.provider.odk.instances"
             android:exported="true" />
 
         <activity
