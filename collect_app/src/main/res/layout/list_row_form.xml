@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/instanceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_large"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instanceName"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_medium"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_small"/>
+
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/rounded_textview"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_extra_small"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+</LinearLayout>

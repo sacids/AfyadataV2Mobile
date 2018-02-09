@@ -20,7 +20,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:padding="10dp"
             android:text="@string/lbl_search_details"
             android:textAllCaps="true"
@@ -28,26 +27,49 @@
             android:textSize="@dimen/text_large" />
 
         <!-- Form Spinner Dropdown -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/lbl_choose_form"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/text_large"
+            android:textStyle="italic" />
+
         <Spinner
             android:id="@+id/form"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:popupBackground="@drawable/background_spinner"
             android:prompt="@string/lbl_choose_form"
             android:spinnerMode="dropdown"
-            android:textAppearance="@style/TextAppearance.FontPath" />
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_large" />
 
-        <!-- Form Spinner Dropdown -->
+        <!-- Form Label Spinner Dropdown -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:text="@string/lbl_choose_field"
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/primary_dark"
+            android:textSize="@dimen/text_large"
+            android:textStyle="italic" />
+
         <Spinner
             android:id="@+id/label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:popupBackground="@drawable/background_spinner"
             android:prompt="@string/lbl_choose_field"
             android:spinnerMode="dropdown"
-            android:textAppearance="@style/TextAppearance.FontPath" />
+            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_large" />
 
         <EditText
             android:id="@+id/value"
@@ -77,15 +99,30 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/search_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_search"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="@string/lbl_search_results"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.FontPath"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <ListView
         android:id="@+id/list_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_search"
-        android:layout_marginTop="20dp"
-        android:divider="@android:color/transparent"
+        android:layout_below="@id/search_info"
+        android:layout_marginTop="5dp"
+        android:divider="@color/light_blue_grey"
         android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_row_selector"
-        android:scrollbars="none" />
+        android:listSelector="@drawable/list_row_selector" />
 
 </RelativeLayout>

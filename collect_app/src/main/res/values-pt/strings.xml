@@ -276,6 +276,7 @@ Escolher Imagem</string>
     <string name="nav_item_home">Casa</string>
     <string name="nav_item_about">Sobre AfyaData</string>
     <string name="nav_item_forms">Campanha</string>
+    <string name="nav_item_reports">Reports</string>
     <string name="nav_item_feedback">Comentários</string>
     <string name="nav_item_tips">Saúde A-Z</string>
     <string name="nav_item_symptoms">Sintomas</string>
@@ -304,6 +305,7 @@ Escolher Imagem</string>
 
     <string name="lbl_search_details">Pesquisar usando formulário e valor</string>
     <string name="lbl_search">Pesquisa</string>
+    <string name="lbl_search_results">Procurar Resultados</string>
     <string name="lbl_choose_form">Escolha o formulário</string>
     <string name="lbl_choose_field">Escolha o campo de pesquisa</string>
     <string name="lbl_enter_value">Digite o valor de pesquisa</string>
@@ -335,6 +337,7 @@ Escolher Imagem</string>
     <string name="exit_status">Você tem certeza que quer sair?</string>
     <string name="delete_status">Tem certeza de que deseja excluir?</string>
     <string name="update_status">Existem novos recursos no aplicativo, você deseja atualizar?</string>
+    <string name="lbl_cancel">Cancel</string>
     <string name="yes">sim</string>
     <string name="no">não</string>
 

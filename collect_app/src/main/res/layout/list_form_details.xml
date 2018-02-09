@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:background="@color/white">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/white">
 
     <TextView
         android:id="@+id/label"
@@ -11,7 +11,7 @@
         android:padding="10dp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/primary_text"
-        android:textSize="@dimen/title_medium" />
+        android:textSize="@dimen/text_large"/>
 
     <TextView
         android:id="@+id/value"
@@ -21,7 +21,7 @@
         android:padding="10dp"
         android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/secondary_text"
-        android:textSize="@dimen/title_small" />
+        android:textSize="@dimen/text_medium"/>
 
 
     <ImageView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/label"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 </RelativeLayout>
 

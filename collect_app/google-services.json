@@ -1,30 +1,27 @@
 {
   "project_info": {
-    "project_number": "340206746363",
-    "firebase_url": "https://afyadatav2-cf81a.firebaseio.com",
-    "project_id": "afyadatav2-cf81a",
-    "storage_bucket": "afyadatav2-cf81a.appspot.com"
+    "project_number": "875963739973",
+    "firebase_url": "https://afyadatav.firebaseio.com",
+    "project_id": "afyadatav",
+    "storage_bucket": "afyadatav.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:340206746363:android:fd7dfdddeef17dd9",
+        "mobilesdk_app_id": "1:875963739973:android:73d81b32b465820d",
         "android_client_info": {
-          "package_name": "org.sacids.afyadata"
+          "package_name": "org.sacids.afyadataV2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "340206746363-1j3p3a90v8kautkksqrbbtm3tgltm4it.apps.googleusercontent.com",
+          "client_id": "875963739973-c4imh0j06gqble8ddoh4nn6irk7ml1iq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAN8oIxQjDHt5L3aBomuRbGg0et46cgOE0"
-        },
-        {
-          "current_key": "AIzaSyBNlvBVZb83ubBhQSEJuZWzUV7vLLGUsjQ"
+          "current_key": "AIzaSyDtYFh5WBzM_fHcehae46mbOv0lwIMR9yM"
         }
       ],
       "services": {

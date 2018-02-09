@@ -520,6 +520,7 @@
   <string name="nav_item_home">Accueil</string>
   <string name="nav_item_about">À propos d\'AfyaData</string>
   <string name="nav_item_forms">Campagne</string>
+  <string name="nav_item_reports">Reports</string>
   <string name="nav_item_feedback">Commentaires</string>
   <string name="nav_item_tips">Santé A-Z</string>
   <string name="nav_item_symptoms">Symptômes</string>
@@ -549,6 +550,7 @@
 
   <string name="lbl_search_details">Recherche en utilisant le formulaire et la valeur</string>
   <string name="lbl_search">Chercher</string>
+  <string name="lbl_search_results">Résultats de la recherche</string>
   <string name="lbl_choose_form">Choisissez le formulaire</string>
   <string name="lbl_choose_field">Choisissez le champ de recherche</string>
   <string name="lbl_enter_value">Entrez la valeur de recherche</string>
@@ -581,6 +583,7 @@
   <string name="exit_status">Êtes-vous sûr de vouloir quitter?</string>
   <string name="delete_status">Etes-vous sûr que vous voulez supprimer?</string>
   <string name="update_status">Il y a de nouvelles fonctionnalités dans l\'application, souhaitez-vous mettre à jour?</string>
+  <string name="lbl_cancel">Cancel</string>
   <string name="yes">Oui</string>
   <string name="no">Non</string>
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary_dark"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_dark"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
     <LinearLayout
         android:id="@+id/viewContainer"
@@ -18,7 +18,7 @@
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/app_logo_white" />
+            android:src="@drawable/app_logo_white"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/text_size_extra_small"
-                android:theme="@style/whiteEditTextStyle" />
+                android:theme="@style/whiteEditTextStyle"/>
 
             <EditText
                 android:id="@+id/mobile"
@@ -58,7 +58,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/text_small"
-                android:theme="@style/whiteEditTextStyle" />
+                android:theme="@style/whiteEditTextStyle"/>
         </LinearLayout>
 
         <EditText
@@ -70,14 +70,13 @@
             android:layout_marginRight="50dp"
             android:hint="@string/lbl_password"
             android:inputType="textPassword"
-            android:maxLength="8"
             android:maxLines="1"
             android:padding="10dp"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="@dimen/text_small"
-            android:theme="@style/whiteEditTextStyle" />
+            android:theme="@style/whiteEditTextStyle"/>
 
         <!-- Login Button -->
         <Button
@@ -91,7 +90,7 @@
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_large" />
+            android:textSize="@dimen/text_large"/>
 
         <TextView
             android:id="@+id/btn_link_register"
@@ -103,6 +102,6 @@
             android:text="@string/btn_link_to_register"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_small" />
+            android:textSize="@dimen/text_small"/>
     </LinearLayout>
 </ScrollView>

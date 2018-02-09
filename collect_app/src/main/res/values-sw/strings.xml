@@ -254,6 +254,7 @@
     <string name="on_back_pressed">Bonyeza tena kutoka.</string>
     <string name="nav_item_home">Mwanzo</string>
     <string name="nav_item_forms">Kampeni</string>
+    <string name="nav_item_reports">Repoti</string>
     <string name="nav_item_feedback">Mrejesho</string>
     <string name="nav_item_tips">Afya Taarifa</string>
     <string name="nav_item_symptoms">Orodha ya Dalili</string>
@@ -281,8 +282,9 @@
 
     <string name="lbl_search_details">Tafuta maelezo ya fomu</string>
     <string name="lbl_search">Tafuta</string>
-    <string name="lbl_choose_form">Chagua fomu</string>
-    <string name="lbl_choose_field">Chagua kitafuta</string>
+    <string name="lbl_search_results">Matokeo ya Utafutaji</string>
+    <string name="lbl_choose_form">Chagua Fomu</string>
+    <string name="lbl_choose_field">Chagua Kitafuta</string>
     <string name="lbl_enter_value">Ingiza kitafuta</string>
     <string name="required_search_value">Kitafuta kinahitajika</string>
 
@@ -299,7 +301,7 @@
     <string name="lbl_last_name_required">Jina la mwisho linahitajika</string>
     <string name="lbl_mobile_required">Namba ya simu inahitajika</string>
     <string name="lbl_password_required">Neno siri linahitajika</string>
-    <string name="lbl_valid_password_required">Neno siri inatakiwa kuwa na herufi 8</string>
+    <string name="lbl_valid_password_required">Neno siri inatakiwa kuwa na herufi 8 na zaidi</string>
     <string name="lbl_password_confirm_required">Uhakiki neno siri unahitajika</string>
     <string name="lbl_password_match_required">Neno siri halijafanana</string>
     <string name="lbl_sign_in">INGIA</string>
@@ -313,6 +315,7 @@
     <string name="exit_status">Unataka kutoka sasa?</string>
     <string name="delete_status">Unataka kufuta mrejesho?</string>
     <string name="update_status">Kuna mabadiliko kwenye afyadata, Unahitaji mabadiliko?</string>
+    <string name="lbl_cancel">Ondoa</string>
     <string name="yes">NDIO</string>
     <string name="no">HAPANA</string>
 

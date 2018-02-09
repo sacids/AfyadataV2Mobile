@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="org.sacids.afyadata.activities.DrawActivity">
+    tools:context="org.sacids.afyadataV2.activities.DrawActivity">
 
-    <org.sacids.afyadata.views.DrawView
+    <org.sacids.afyadataV2.views.DrawView
         android:id="@+id/drawView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-    </org.sacids.afyadata.views.DrawView>
+    </org.sacids.afyadataV2.views.DrawView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_clear"

@@ -519,6 +519,10 @@
     <string name="lang_english">English</string>
     <string name="lang_french">French</string>
     <string name="lang_portuguese">Portuguese</string>
+    <string name="lang_khmer">Khmer</string>
+    <string name="lang_chinese">Chinese</string>
+    <string name="lang_thai">Thai</string>
+    <string name="lang_vietnamese">Vietnamese</string>
     <string name="btn_change_language">Change Language</string>
     <string name="lbl_choose_language">Choose Language</string>
 
@@ -532,6 +536,7 @@
     <string name="nav_item_home">Home</string>
     <string name="nav_item_about">About AfyaData</string>
     <string name="nav_item_forms">Campaign</string>
+    <string name="nav_item_reports">Reports</string>
     <string name="nav_item_feedback">Feedback</string>
     <string name="nav_item_tips">Health A-Z</string>
     <string name="nav_item_symptoms">Symptoms</string>
@@ -560,8 +565,9 @@
 
     <string name="lbl_search_details">Search using form and value</string>
     <string name="lbl_search">Search</string>
-    <string name="lbl_choose_form">Choose form</string>
-    <string name="lbl_choose_field">Choose search field</string>
+    <string name="lbl_search_results">Search Results</string>
+    <string name="lbl_choose_form">Select Form</string>
+    <string name="lbl_choose_field">Select Field</string>
     <string name="lbl_enter_value">Enter search value</string>
     <string name="required_search_value">Search value is required</string>
 
@@ -577,7 +583,7 @@
     <string name="lbl_last_name_required">Last name is required</string>
     <string name="lbl_mobile_required">Mobile is required</string>
     <string name="lbl_password_required">Password required</string>
-    <string name="lbl_valid_password_required">Password should be 8 character</string>
+    <string name="lbl_valid_password_required">Password should be 8 or more character</string>
     <string name="lbl_password_confirm_required">Password confirmation is required</string>
     <string name="lbl_password_match_required">Password did not match</string>
     <string name="lbl_sign_in">SIGN IN</string>
@@ -591,6 +597,7 @@
     <string name="exit_status">Are you sure you want to exit?</string>
     <string name="delete_status">Are you sure you want to delete?</string>
     <string name="update_status">There new features in app, Do you want to update?</string>
+    <string name="lbl_cancel">Cancel</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
 
