@@ -1,5 +1,6 @@
 package org.sacids.afyadataV2.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -43,20 +45,28 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FormFeedbackActivity extends AppCompatActivity {
 
-    private static final String TAG = "FormFeedbacks";
+    private static final String TAG = "FormFeedback";
 
     Toolbar mToolbar;
     ActionBar mActionBar;
 
     Context mContext = this;
     PrefManager mPrefManager;
-
     ProgressBar mProgressBar;
-
+    ProgressDialog mProgressDialog;
     SharedPreferences mSharedPreferences;
+
+
+    //string variable
     String mServerURL;
+    String mUsername;
+    String mMessage;
+
+    //EditText
+    EditText mEditFeedback;
 
     Form mForm;
+    FormFeedback mFormFeedback;
     ListView mListView;
     List<FormFeedback> mFeedbackList = new ArrayList<FormFeedback>();
     FormFeedbackListAdapter mListAdapter;
@@ -66,6 +76,8 @@ public class FormFeedbackActivity extends AppCompatActivity {
     private static final String TAG_INSTANCE_ID = "instance_id";
     private static final String TAG_MESSAGE = "message";
     private static final String TAG_SENDER = "sender";
+    private static final String TAG_REPLY_BY = "reply_by";
+    private static final String TAG_USERNAME = "username";
     private static final String TAG_DATE_CREATED = "date_created";
 
     @Override
@@ -76,6 +88,11 @@ public class FormFeedbackActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mUsername = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
+        mServerURL = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+                getString(R.string.default_server_url));
 
         mForm = (Form) Parcels.unwrap(getIntent().getParcelableExtra("form"));
         setToolbar();
@@ -96,6 +113,9 @@ public class FormFeedbackActivity extends AppCompatActivity {
         } else {
             fetchFormFeedback();
         }
+
+        //on submitting feedback
+        setAppViews();
     }
 
     @Override
@@ -140,15 +160,32 @@ public class FormFeedbackActivity extends AppCompatActivity {
         mActionBar.setHomeButtonEnabled(true);
     }
 
+    //setAppViews
+    private void setAppViews() {
+        //For submitting mFeedback to server
+        mEditFeedback = (EditText) findViewById(R.id.write_feedback);
+
+        //onClick submit
+        findViewById(R.id.btn_submit_feedback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMessage = mEditFeedback.getText().toString();
+
+                if (mMessage.length() == 0 || mMessage == null) {
+                    Toast.makeText(mContext, getString(R.string.required_feedback), Toast.LENGTH_SHORT).show();
+                } else {
+                    postFeedback();
+                }
+            }
+        });
+    }
+
 
     //TODO : Fetch Form Feedback
     private void fetchFormFeedback() {
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mServerURL = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
-                getString(R.string.default_server_url));
-
         RequestParams params = new RequestParams();
         params.add("instance_id", mForm.getInstanceId());
+        params.add("username", mUsername);
 
         RestClient.get(mServerURL + "/api/v3/reports/feedback", params, new JsonHttpResponseHandler() {
             @Override
@@ -172,6 +209,8 @@ public class FormFeedbackActivity extends AppCompatActivity {
                             formFeedback.setInstanceId(obj.getString(TAG_INSTANCE_ID));
                             formFeedback.setMessage(obj.getString(TAG_MESSAGE));
                             formFeedback.setSender(obj.getString(TAG_SENDER));
+                            formFeedback.setReplyBy(obj.getString(TAG_REPLY_BY));
+                            formFeedback.setUsername(obj.getString(TAG_USERNAME));
                             formFeedback.setDateCreated(obj.getString(TAG_DATE_CREATED));
 
                             //add list to array
@@ -193,6 +232,68 @@ public class FormFeedbackActivity extends AppCompatActivity {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 mProgressBar.setVisibility(View.GONE);
                 Log.d(TAG, "Server response " + responseString);
+            }
+        });
+    }
+
+
+    //Function to post details to the server
+    private void postFeedback() {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
+
+        if (ni == null || !ni.isConnected()) {
+            Toast.makeText(this, getString(R.string.no_connection), Toast.LENGTH_SHORT).show();
+        }
+
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setMessage(getResources().getString(R.string.lbl_waiting));
+        mProgressDialog.show();
+
+        RequestParams params = new RequestParams();
+        params.add("form_id", mForm.getFormId());
+        params.add("username", mUsername);
+        params.add("message", mMessage);
+        params.add("instance_id", mForm.getInstanceId());
+        params.add("sender", "user");
+        params.add("status", "pending");
+
+        //append chat at last
+        mFormFeedback = new FormFeedback();
+        mFormFeedback.setFormId(mForm.getFormId());
+        mFormFeedback.setUsername(mUsername);
+        mFormFeedback.setMessage(mMessage);
+        mFormFeedback.setSender("user");
+        mFormFeedback.setInstanceId(mFormFeedback.getInstanceId());
+        mFormFeedback.setReplyBy(String.valueOf(0));
+
+        RestClient.post(mServerURL + "/api/v3/reports/send_feedback", params, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                mProgressDialog.dismiss();
+
+                Log.d(TAG, response.toString());
+
+                mFeedbackList.add(mFormFeedback);
+                mListAdapter.notifyDataSetChanged();
+                mEditFeedback.setText("");
+                Log.d(TAG, "Saving feedback success");
+
+                Toast.makeText(mContext, getString(R.string.success_feedback),
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                mProgressDialog.dismiss();
+                Toast.makeText(mContext, getString(R.string.error_feedback),
+                        Toast.LENGTH_SHORT).show();
+
             }
         });
     }

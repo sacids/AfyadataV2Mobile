@@ -216,37 +216,37 @@
     <string name="lang_chinese">Chinese</string>
     <string name="lang_thai">Thai</string>
     <string name="lang_vietnamese">Vietnamese</string>
-    <string name="btn_change_language">Change Language</string>
-    <string name="lbl_choose_language">Choose Language</string>
+    <string name="btn_change_language">Thay đổi ngôn ngữ</string>
+    <string name="lbl_choose_language">Chọn ngôn ngữ</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- NEW STRING -->
-    <string name="powered_by">Powered by AfyaData</string>
+    <string name="powered_by">Được cung cấp bởi AfyaData</string>
     <string name="znz_reporting_tool">Zanzibar IDSR\nReporting Tool</string>
-    <string name="on_back_pressed">Press back again to exit</string>
-    <string name="nav_item_home">Home</string>
-    <string name="nav_item_about">About AfyaData</string>
-    <string name="nav_item_forms">Campaign</string>
-    <string name="nav_item_reports">Reports</string>
-    <string name="nav_item_feedback">Feedback</string>
-    <string name="nav_item_tips">Health A-Z</string>
-    <string name="nav_item_symptoms">Symptoms</string>
-    <string name="nav_item_search">Search</string>
+    <string name="on_back_pressed">Nhấn lại để thoát</string>
+    <string name="nav_item_home">Nhà</string>
+    <string name="nav_item_about">Giới thiệu về AfyaData</string>
+    <string name="nav_item_forms">Chiến dịch</string>
+    <string name="nav_item_reports">Báo cáo</string>
+    <string name="nav_item_feedback">Phản hồi</string>
+    <string name="nav_item_tips">Y tế A-Z</string>
+    <string name="nav_item_symptoms">Triệu chứng</string>
+    <string name="nav_item_search">Tìm kiếm</string>
     <string name="nav_item_lab">Lab</string>
-    <string name="nav_item_form_details">Form Details</string>
-    <string name="nav_item_settings">Settings</string>
-    <string name="nav_item_language">Change Language</string>
-    <string name="nav_item_logout">Sign Out</string>
+    <string name="nav_item_form_details">Chi tiết mẫu</string>
+    <string name="nav_item_settings">Cài đặt</string>
+    <string name="nav_item_language">Thay đổi ngôn ngữ</string>
+    <string name="nav_item_logout">Đăng xuất</string>
 
     <!-- Feedback -->
-    <string name="edit_feedback">Write feedback .....</string>
-    <string name="submit_feedback">Send</string>
-    <string name="new_feedback">New feedback received</string>
-    <string name="required_feedback">Feedback message required</string>
-    <string name="success_feedback">Your feedback successfully sent.</string>
-    <string name="error_feedback">Failed to send feedback, try again.</string>
+    <string name="edit_feedback">Viết phản hồi .....</string>
+    <string name="submit_feedback">Gửi</string>
+    <string name="new_feedback">Nhận phản hồi mới</string>
+    <string name="required_feedback">Yêu cầu thông báo phản hồi</string>
+    <string name="success_feedback">Phản hồi của bạn được gửi thành công.</string>
+    <string name="error_feedback">Không thể gửi phản hồi, hãy thử lại.</string>
 
     <!--Laboratory issues-->
     <string name="lbl_lab">Laboratory</string>
@@ -265,33 +265,33 @@
     <string name="required_search_value">Search value is required</string>
 
     <!--SignIn and SignUp -->
-    <string name="lbl_welcome">Welcome</string>
-    <string name="lbl_first_name">First name</string>
-    <string name="lbl_last_name">Last name</string>
-    <string name="lbl_email">Email</string>
-    <string name="lbl_mobile">Mobile</string>
-    <string name="lbl_password">Password</string>
-    <string name="lbl_password_confirm">Password Confirm</string>
-    <string name="lbl_first_name_required">First name is required</string>
-    <string name="lbl_last_name_required">Last name is required</string>
-    <string name="lbl_mobile_required">Mobile is required</string>
-    <string name="lbl_password_required">Password required</string>
-    <string name="lbl_valid_password_required">Password should be 8 or more character</string>
-    <string name="lbl_password_confirm_required">Password confirmation is required</string>
-    <string name="lbl_sign_in">SIGN IN</string>
-    <string name="lbl_sign_up">SIGN UP</string>
-    <string name="btn_link_to_register">New member to AfyaData? Register Now.</string>
-    <string name="btn_link_to_login">Already have account, LogIn .</string>
-    <string name="lbl_waiting">Please wait.....</string>
-    <string name="msg_nothing_display">Nothing to display</string>
-    <string name="msg_no_feedback">No feedback at the moment</string>
-    <string name="msg_no_campaign">No campaign at the moment</string>
-    <string name="exit_status">Are you sure you want to exit?</string>
-    <string name="delete_status">Are you sure you want to delete?</string>
-    <string name="update_status">There new features in app, Do you want to update?</string>
-    <string name="lbl_cancel">Cancel</string>
-    <string name="yes">YES</string>
-    <string name="no">NO</string>
+    <string name="lbl_welcome">Chào mừng</string>
+    <string name="lbl_first_name">Tên đầu tiên</string>
+    <string name="lbl_last_name">Họ</string>
+    <string name="lbl_email">E-mail</string>
+    <string name="lbl_mobile">Điện thoại di động</string>
+    <string name="lbl_password">Mật khẩu</string>
+    <string name="lbl_password_confirm">Xác nhận mật khẩu</string>
+    <string name="lbl_first_name_required">Tên là bắt buộc</string>
+    <string name="lbl_last_name_required">Họ là bắt buộc</string>
+    <string name="lbl_mobile_required">Điện thoại di động là bắt buộc</string>
+    <string name="lbl_password_required">mật khẩu được yêu câu</string>
+    <string name="lbl_valid_password_required">Mật khẩu phải có từ 8 ký tự trở lên</string>
+    <string name="lbl_password_confirm_required">Xác nhận mật khẩu là bắt buộc</string>
+    <string name="lbl_sign_in">ĐĂNG NHẬP</string>
+    <string name="lbl_sign_up">ĐĂNG KÝ</string>
+    <string name="btn_link_to_register">Thành viên mới của AfyaData? Đăng ký ngay.</string>
+    <string name="btn_link_to_login">Đã có tài khoản, LogIn.</string>
+    <string name="lbl_waiting">Vui lòng đợi .....</string>
+    <string name="msg_nothing_display">Chẳng có gì để trưng bày</string>
+    <string name="msg_no_feedback">Không có phản hồi tại thời điểm này</string>
+    <string name="msg_no_campaign">Không có chiến dịch tại thời điểm này</string>
+    <string name="exit_status">Bạn có chắc bạn muốn thoát?</string>
+    <string name="delete_status">Bạn có chắc chắn muốn xóa?</string>
+    <string name="update_status">Có các tính năng mới trong ứng dụng, Bạn có muốn cập nhật không?</string>
+    <string name="lbl_cancel">Hủy</string>
+    <string name="yes">VÂNG</string>
+    <string name="no">KHÔNG</string>
 
 
     <!-- About AfyaData -->

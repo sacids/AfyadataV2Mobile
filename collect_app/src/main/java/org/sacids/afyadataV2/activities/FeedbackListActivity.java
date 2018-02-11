@@ -44,21 +44,22 @@ import java.util.List;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FeedbackListActivity extends AppCompatActivity {
+    static String TAG = "Feedback";
 
-    private static String TAG = "Feedback";
-    private Toolbar mToolbar;
-    private ActionBar actionBar;
+    Toolbar mToolbar;
+    ActionBar mActionBar;
 
-    private Context context = this;
-    private ProgressDialog pDialog;
+    Context mContext = this;
+    SharedPreferences mSharedPreferences;
+    ProgressDialog mProgressDialog;
 
-    private List<Feedback> feedbackList = new ArrayList<Feedback>();
-    private ListView listFeedback;
-    private FeedbackListAdapter feedbackAdapter;
+    private ListView mListView;
+    private List<Feedback> mFeedbackList = new ArrayList<Feedback>();
+    private FeedbackListAdapter mListAdapter;
 
-    private SharedPreferences mSharedPreferences;
-    private String serverUrl;
-    private String username;
+    //string variable
+    private String mServerURL;
+    private String mUsername;
 
     //AfyaData database
     private AfyaDataV2DB db;
@@ -89,18 +90,15 @@ public class FeedbackListActivity extends AppCompatActivity {
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        username = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
-        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+        mUsername = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
+        mServerURL = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
                 getString(R.string.default_server_url));
 
-        //database
         db = new AfyaDataV2DB(this);
+        mListView = (ListView) findViewById(R.id.list_feedback);
+        mFeedbackList = db.getFeedbackList();
 
-        listFeedback = (ListView) findViewById(R.id.list_feedback);
-
-        feedbackList = db.getFeedbackList();
-
-        if (feedbackList.size() > 0) {
+        if (mFeedbackList.size() > 0) {
             refreshDisplay();
         } else {
             Toast.makeText(this, getString(R.string.msg_no_feedback), Toast.LENGTH_LONG).show();
@@ -113,23 +111,23 @@ public class FeedbackListActivity extends AppCompatActivity {
             new FetchFeedbackTask().execute();
 
         //OnLong Press
-        listFeedback.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            final int position, long arg) {
                 //set background color
                 view.setBackgroundColor(Color.parseColor("#F4F4F4"));
 
-                final Feedback feedback = feedbackList.get(position);
+                final Feedback feedback = mFeedbackList.get(position);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setMessage(getResources().getString(R.string.delete_status))
                         .setCancelable(false)
                         .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 db.deleteFeedback(feedback.getInstanceId());
-                                feedbackList.remove(position);
-                                feedbackAdapter.notifyDataSetChanged();
+                                mFeedbackList.remove(position);
+                                mListAdapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
@@ -145,15 +143,15 @@ public class FeedbackListActivity extends AppCompatActivity {
         });
 
         //Onclick Listener
-        listFeedback.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //set background color
                 view.setBackgroundColor(Color.parseColor("#F4F4F4"));
 
-                Feedback feedback = feedbackList.get(position);
+                Feedback feedback = mFeedbackList.get(position);
 
-                Intent feedbackIntent = new Intent(context, ChatListActivity.class);
+                Intent feedbackIntent = new Intent(mContext, ChatListActivity.class);
                 feedbackIntent.putExtra("feedback", Parcels.wrap(feedback));
                 startActivity(feedbackIntent);
             }
@@ -195,28 +193,27 @@ public class FeedbackListActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle(getString(R.string.nav_item_feedback));
         setSupportActionBar(mToolbar);
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setHomeButtonEnabled(true);
     }
 
     //refresh display
     private void refreshDisplay() {
-        feedbackAdapter = new FeedbackListAdapter(this, feedbackList);
-        listFeedback.setAdapter(feedbackAdapter);
-        feedbackAdapter.notifyDataSetChanged();
+        mListAdapter = new FeedbackListAdapter(this, mFeedbackList);
+        mListView.setAdapter(mListAdapter);
+        mListAdapter.notifyDataSetChanged();
     }
 
     //Background Task
-    class FetchFeedbackTask extends AsyncTask<Void, Void, Void> {
+    private class FetchFeedbackTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
-            // Progress dialog
-            pDialog = new ProgressDialog(context);
-            pDialog.setCancelable(true);
-            pDialog.setMessage(getResources().getString(R.string.lbl_waiting));
-            pDialog.show();
+            mProgressDialog = new ProgressDialog(mContext);
+            mProgressDialog.setCancelable(true);
+            mProgressDialog.setMessage(getResources().getString(R.string.lbl_waiting));
+            mProgressDialog.show();
             super.onPreExecute();
         }
 
@@ -235,13 +232,13 @@ public class FeedbackListActivity extends AppCompatActivity {
                 lastId = 0;
             }
 
+            //params
             RequestParams param = new RequestParams();
-            param.add("username", username);
+            param.add("username", mUsername);
             param.add("lastId", String.valueOf(lastId));
             param.add("date_created", dateCreated);
-            //param.add("language", language);
 
-            BackgroundClient.get(serverUrl + "/api/v3/feedback", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(mServerURL + "/api/v3/feedback", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray
@@ -292,12 +289,12 @@ public class FeedbackListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            feedbackList = db.getFeedbackList();
+            mFeedbackList = db.getFeedbackList();
 
-            if (feedbackList.size() > 0) {
+            if (mFeedbackList.size() > 0) {
                 refreshDisplay();
             }
-            pDialog.dismiss();
+            mProgressDialog.dismiss();
         }
     }
 

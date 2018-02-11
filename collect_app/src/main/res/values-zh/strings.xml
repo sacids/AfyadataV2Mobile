@@ -219,37 +219,37 @@
     <string name="lang_chinese">Chinese</string>
     <string name="lang_thai">Thai</string>
     <string name="lang_vietnamese">Vietnamese</string>
-    <string name="btn_change_language">Change Language</string>
-    <string name="lbl_choose_language">Choose Language</string>
+    <string name="btn_change_language">改变语言</string>
+    <string name="lbl_choose_language">选择语言</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- NEW STRING -->
-    <string name="powered_by">Powered by AfyaData</string>
+    <string name="powered_by">供电 AfyaData</string>
     <string name="znz_reporting_tool">Zanzibar IDSR\nReporting Tool</string>
-    <string name="on_back_pressed">Press back again to exit</string>
-    <string name="nav_item_home">Home</string>
-    <string name="nav_item_about">About AfyaData</string>
-    <string name="nav_item_forms">Campaign</string>
-    <string name="nav_item_reports">Reports</string>
-    <string name="nav_item_feedback">Feedback</string>
-    <string name="nav_item_tips">Health A-Z</string>
-    <string name="nav_item_symptoms">Symptoms</string>
-    <string name="nav_item_search">Search</string>
+    <string name="on_back_pressed">再按一次退出</string>
+    <string name="nav_item_home">家</string>
+    <string name="nav_item_about">关于 AfyaData</string>
+    <string name="nav_item_forms">运动</string>
+    <string name="nav_item_reports">报告</string>
+    <string name="nav_item_feedback">反馈</string>
+    <string name="nav_item_tips">健康 A-Z</string>
+    <string name="nav_item_symptoms">症状</string>
+    <string name="nav_item_search">搜索</string>
     <string name="nav_item_lab">Lab</string>
-    <string name="nav_item_form_details">Form Details</string>
-    <string name="nav_item_settings">Settings</string>
-    <string name="nav_item_language">Change Language</string>
-    <string name="nav_item_logout">Sign Out</string>
+    <string name="nav_item_form_details">形式细节</string>
+    <string name="nav_item_settings">设置</string>
+    <string name="nav_item_language">改变语言</string>
+    <string name="nav_item_logout">登出</string>
 
     <!-- Feedback -->
-    <string name="edit_feedback">Write feedback .....</string>
-    <string name="submit_feedback">Send</string>
-    <string name="new_feedback">New feedback received</string>
-    <string name="required_feedback">Feedback message required</string>
-    <string name="success_feedback">Your feedback successfully sent.</string>
-    <string name="error_feedback">Failed to send feedback, try again.</string>
+    <string name="edit_feedback">写反馈.....</string>
+    <string name="submit_feedback">发送</string>
+    <string name="new_feedback">收到新的反馈</string>
+    <string name="required_feedback">需要反馈信息</string>
+    <string name="success_feedback">您的反馈已成功发送。</string>
+    <string name="error_feedback">无法发送反馈，请重试。</string>
 
     <!--Laboratory issues-->
     <string name="lbl_lab">Laboratory</string>
@@ -268,34 +268,33 @@
     <string name="required_search_value">Search value is required</string>
 
     <!--SignIn and SignUp -->
-    <string name="lbl_welcome">Welcome</string>
-    <string name="lbl_first_name">First name</string>
-    <string name="lbl_last_name">Last name</string>
-    <string name="lbl_email">Email</string>
-    <string name="lbl_mobile">Mobile</string>
-    <string name="lbl_password">Password</string>
-    <string name="lbl_password_confirm">Password Confirm</string>
-    <string name="lbl_first_name_required">First name is required</string>
-    <string name="lbl_last_name_required">Last name is required</string>
-    <string name="lbl_mobile_required">Mobile is required</string>
-    <string name="lbl_password_required">Password required</string>
-    <string name="lbl_valid_password_required">Password should be 8 or more character</string>
-    <string name="lbl_password_confirm_required">Password confirmation is required</string>
-    <string name="lbl_sign_in">SIGN IN</string>
-    <string name="lbl_sign_up">SIGN UP</string>
-    <string name="btn_link_to_register">New member to AfyaData? Register Now.</string>
-    <string name="btn_link_to_login">Already have account, LogIn .</string>
-    <string name="lbl_waiting">Please wait.....</string>
-    <string name="msg_nothing_display">Nothing to display</string>
-    <string name="msg_no_feedback">No feedback at the moment</string>
-    <string name="msg_no_campaign">No campaign at the moment</string>
-    <string name="exit_status">Are you sure you want to exit?</string>
-    <string name="delete_status">Are you sure you want to delete?</string>
-    <string name="update_status">There new features in app, Do you want to update?</string>
-    <string name="lbl_cancel">Cancel</string>
-    <string name="yes">YES</string>
-    <string name="no">NO</string>
-
+    <string name="lbl_welcome">欢迎</string>
+    <string name="lbl_first_name">名字</string>
+    <string name="lbl_last_name">姓</string>
+    <string name="lbl_email">电子邮件</string>
+    <string name="lbl_mobile">移动</string>
+    <string name="lbl_password">密码</string>
+    <string name="lbl_password_confirm">确认密码</string>
+    <string name="lbl_first_name_required">名字是必需的</string>
+    <string name="lbl_last_name_required">姓氏是必需的</string>
+    <string name="lbl_mobile_required">手机是必需的</string>
+    <string name="lbl_password_required">要求输入密码</string>
+    <string name="lbl_valid_password_required">密码应该是8个或更多的字符</string>
+    <string name="lbl_password_confirm_required">密码确认是必需的</string>
+    <string name="lbl_sign_in">签到</string>
+    <string name="lbl_sign_up">注册</string>
+    <string name="btn_link_to_register">AfyaData的新成员？现在注册。</string>
+    <string name="btn_link_to_login">已经有帐号，登录。</string>
+    <string name="lbl_waiting">请稍候.....</string>
+    <string name="msg_nothing_display">无内容显示</string>
+    <string name="msg_no_feedback">目前没有反馈</string>
+    <string name="msg_no_campaign">目前没有运动</string>
+    <string name="exit_status">你确定要离开？</string>
+    <string name="delete_status">你确定你要删除？</string>
+    <string name="update_status">有应用程序中的新功能，你想更新？</string>
+    <string name="lbl_cancel">取消</string>
+    <string name="yes">是</string>
+    <string name="no">没有</string>
 
     <!-- About AfyaData -->
     <string name="lbl_about">Afyadata Manager is a tool that analyzes all the data collected from the field and intelligently

@@ -9,9 +9,9 @@ public enum AfyaDataLanguages {
     ENGLISH("en"),
     FRENCH("fr"),
     PORTUGUESE("pt"),
+    THAI("th"),
     CHINESE("zh"),
     VIETNAMESE("vi"),
-    THAI("th-rTH"),
     KHMER("km");
 
     private String language;

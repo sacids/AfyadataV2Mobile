@@ -117,8 +117,10 @@ public class LanguageActivity extends AppCompatActivity {
                     default:
                         break;
                 }
-                startActivity(new Intent(mContext, SplashScreenActivity.class));
-                finish();
+                startActivity(new Intent(mContext, MainActivity.class).
+                        setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }

@@ -523,7 +523,7 @@
     <string name="lang_chinese">Chinese</string>
     <string name="lang_thai">Thai</string>
     <string name="lang_vietnamese">Vietnamese</string>
-    <string name="btn_change_language">Change Language</string>
+    <string name="btn_change_language">Change</string>
     <string name="lbl_choose_language">Choose Language</string>
 
     <!-- TODO: Remove or change this placeholder text -->

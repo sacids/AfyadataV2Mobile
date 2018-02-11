@@ -39,67 +39,52 @@ import java.util.List;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ChatListActivity extends AppCompatActivity {
+    static final String TAG = "Chat";
 
-    private static final String TAG = "Chat";
+    Toolbar mToolbar;
+    ActionBar mActionBar;
+    Context mContext = this;
 
-    private Toolbar mToolbar;
-    private ActionBar actionBar;
+    ProgressDialog mProgressDialog;
+    SharedPreferences mSharedPreferences;
 
+    //model and db
+    Feedback mFeedback;
+    AfyaDataV2DB db;
 
-    private Feedback feedback = null;
-    private AfyaDataV2DB db;
+    //listView
+    ListView mListView;
+    List<Feedback> mFeedbackList = new ArrayList<Feedback>();
+    ChatListAdapter mChatListAdapter;
 
-    private List<Feedback> chatList = new ArrayList<Feedback>();
-    private ChatListAdapter chatAdapter;
-    private ListView listFeedback;
+    //string variable
+    String mServerURL;
+    String mUsername;
+    String mMessage;
 
-    private SharedPreferences mSharedPreferences;
-    private String serverUrl;
-    private String username;
-    private String message;
+    //EditText
+    EditText mEditFeedback;
 
-    private ImageView btnFeedback;
-    private EditText writeFeedback;
-
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
 
-        feedback = (Feedback) Parcels.unwrap(getIntent().getParcelableExtra("feedback"));
-
+        mFeedback = (Feedback) Parcels.unwrap(getIntent().getParcelableExtra("feedback"));
         setToolbar();
 
         db = new AfyaDataV2DB(this);
+        mFeedbackList = db.getFeedbackByInstanceId(mFeedback.getInstanceId());
+        mListView = (ListView) findViewById(R.id.list_feedback);
 
-        chatList = db.getFeedbackByInstanceId(feedback.getInstanceId());
-
-        listFeedback = (ListView) findViewById(R.id.list_feedback);
-
-        if (chatList.size() > 0) {
-            refreshDisplay();
+        if (mFeedbackList.size() > 0) {
+            mChatListAdapter = new ChatListAdapter(this, mFeedbackList);
+            mListView.setAdapter(mChatListAdapter);
+            mChatListAdapter.notifyDataSetChanged();
         }
 
-        //For submitting feedback to server
-        writeFeedback = (EditText) findViewById(R.id.write_feedback);
-        btnFeedback = (ImageView) findViewById(R.id.btn_submit_feedback);
-
-        //if submit feedback
-        btnFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                message = writeFeedback.getText().toString();
-
-                if (writeFeedback.getText().length() < 1) {
-                    writeFeedback.setError(getResources().getString(R.string.required_feedback));
-                } else {
-                    //post to the server
-                    postFeedbackToServer();
-                }
-            }
-        });
+        setAppViews();
     }
 
     @Override
@@ -135,77 +120,90 @@ public class ChatListActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_feedback) + " > " + feedback.getTitle());
+        mToolbar.setTitle(getString(R.string.nav_item_feedback) + " > " + mFeedback.getTitle());
         setSupportActionBar(mToolbar);
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+        mActionBar.setHomeButtonEnabled(true);
+    }
+
+    //setAppViews
+    private void setAppViews() {
+        //For submitting mFeedback to server
+        mEditFeedback = (EditText) findViewById(R.id.write_feedback);
+
+        //onClick submit
+        findViewById(R.id.btn_submit_feedback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMessage = mEditFeedback.getText().toString();
+
+                if (mMessage.length() == 0 || mMessage == null) {
+                    Toast.makeText(mContext, getString(R.string.required_feedback), Toast.LENGTH_SHORT).show();
+                } else {
+                    postFeedback();
+                }
+            }
+        });
     }
 
     //show form details
     private void showFormDetails() {
         Intent feedbackIntent = new Intent(ChatListActivity.this, FormDetailsActivity.class);
-        feedbackIntent.putExtra("feedback", Parcels.wrap(feedback));
+        feedbackIntent.putExtra("feedback", Parcels.wrap(mFeedback));
         startActivity(feedbackIntent);
     }
 
-    //refresh display
-    private void refreshDisplay() {
-        chatAdapter = new ChatListAdapter(this, chatList);
-        listFeedback.setAdapter(chatAdapter);
-        chatAdapter.notifyDataSetChanged();
-    }
 
     //Function to post details to the server
-    private void postFeedbackToServer() {
-
+    private void postFeedback() {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
 
         if (ni == null || !ni.isConnected()) {
-            Toast.makeText(this, R.string.no_connection, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.no_connection), Toast.LENGTH_SHORT).show();
         }
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        username = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
-        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+        mUsername = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
+        mServerURL = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
                 getString(R.string.default_server_url));
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage(getResources().getString(R.string.lbl_waiting));
-        progressDialog.show();
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setMessage(getResources().getString(R.string.lbl_waiting));
+        mProgressDialog.show();
 
         final RequestParams params = new RequestParams();
-        params.add("form_id", feedback.getFormId());
-        params.add("username", username);
-        params.add("message", message);
-        params.add("instance_id", feedback.getInstanceId());
+        params.add("form_id", mFeedback.getFormId());
+        params.add("username", mUsername);
+        params.add("message", mMessage);
+        params.add("instance_id", mFeedback.getInstanceId());
         params.add("sender", "user");
         params.add("status", "pending");
 
         //append chat at last
-        feedback.setFormId(feedback.getFormId());
-        feedback.setUserName(username);
-        feedback.setMessage(message);
-        feedback.setSender("user");
-        feedback.setInstanceId(feedback.getInstanceId());
-        feedback.setReplyBy(String.valueOf(0));
-        feedback.setStatus("pending");
+        mFeedback.setFormId(mFeedback.getFormId());
+        mFeedback.setUserName(mUsername);
+        mFeedback.setMessage(mMessage);
+        mFeedback.setSender("user");
+        mFeedback.setInstanceId(mFeedback.getInstanceId());
+        mFeedback.setReplyBy(String.valueOf(0));
+        mFeedback.setStatus("pending");
 
-        RestClient.post(serverUrl + "/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
+        RestClient.post(mServerURL + "/api/v3/mFeedback/send", params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                progressDialog.dismiss();
+                mProgressDialog.dismiss();
 
                 Log.d(TAG, response.toString());
 
-                chatList.add(feedback);
-                chatAdapter.notifyDataSetChanged();
-                writeFeedback.setText("");//clear feedback posted
+                mFeedbackList.add(mFeedback);
+                mChatListAdapter.notifyDataSetChanged();
+                mEditFeedback.setText("");//clear mFeedback posted
                 Log.d(TAG, "Saving feedback success");
 
                 Toast.makeText(ChatListActivity.this, getResources().getString(R.string.success_feedback),
@@ -215,7 +213,7 @@ public class ChatListActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                progressDialog.dismiss();
+                mProgressDialog.dismiss();
                 Toast.makeText(ChatListActivity.this, getResources().getString(R.string.error_feedback),
                         Toast.LENGTH_SHORT).show();
 

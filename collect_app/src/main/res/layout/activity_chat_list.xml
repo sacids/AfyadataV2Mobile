@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue_grey">
+    android:background="@color/light_grey">
 
     <include
         android:id="@+id/toolbar"

@@ -125,7 +125,7 @@
                 android:background="@drawable/primary_dark_rounded_button"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
-                android:text="@string/lbl_choose_language"
+                android:text="@string/btn_change_language"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"

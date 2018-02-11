@@ -111,20 +111,20 @@ public class FrontPageActivity extends AppCompatActivity {
                                 setAppLanguage(_activity, AfyaDataLanguages.PORTUGUESE.getLanguage());
                                 break;
 
-                            case "Khmer":
-                                setAppLanguage(_activity, AfyaDataLanguages.KHMER.getLanguage());
-                                break;
-
-                            case "Chinese":
-                                setAppLanguage(_activity, AfyaDataLanguages.CHINESE.getLanguage());
-                                break;
-
                             case "Thai":
                                 setAppLanguage(_activity, AfyaDataLanguages.THAI.getLanguage());
                                 break;
 
                             case "Vietnamese":
                                 setAppLanguage(_activity, AfyaDataLanguages.VIETNAMESE.getLanguage());
+                                break;
+
+                            case "Chinese":
+                                setAppLanguage(_activity, AfyaDataLanguages.CHINESE.getLanguage());
+                                break;
+
+                            case "Khmer":
+                                setAppLanguage(_activity, AfyaDataLanguages.KHMER.getLanguage());
                                 break;
 
                             default:

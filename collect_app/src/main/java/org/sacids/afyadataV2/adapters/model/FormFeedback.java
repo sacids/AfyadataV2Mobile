@@ -13,6 +13,8 @@ public class FormFeedback {
     String instanceId;
     String message;
     String sender;
+    String replyBy;
+    String username;
     String dateCreated;
 
     public FormFeedback() {
@@ -57,6 +59,22 @@ public class FormFeedback {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public String getReplyBy() {
+        return replyBy;
+    }
+
+    public void setReplyBy(String replyBy) {
+        this.replyBy = replyBy;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getDateCreated() {

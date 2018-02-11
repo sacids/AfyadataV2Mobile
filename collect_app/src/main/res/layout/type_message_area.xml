@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/light_blue_grey"
-    android:gravity="bottom"
-    android:orientation="horizontal">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:gravity="bottom"
+              android:orientation="horizontal">
 
     <EditText
         android:id="@+id/write_feedback"
@@ -15,13 +15,14 @@
         android:textAppearance="@style/TextAppearance.FontPath"
         android:textColor="@color/secondary_text"
         android:textColorHint="@color/secondary_text"
-        android:textSize="@dimen/text_large" />
+        android:textSize="@dimen/text_large"/>
 
     <ImageView
         android:id="@+id/btn_submit_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
+        android:contentDescription="@string/app_name"
         android:padding="4dp"
-        android:src="@drawable/ic_send_colored" />
+        android:src="@drawable/ic_send_black_36dp"/>
 </LinearLayout>

@@ -21,17 +21,16 @@ import java.util.List;
  */
 
 public class ChatListAdapter extends BaseAdapter {
-    private Context context;
-    private LayoutInflater inflater;
+    private Context mContext;
     private List<Feedback> feedbackList;
     private SharedPreferences mSharedPreferences;
-    private String username;
+    private String mUsername;
 
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
 
     public ChatListAdapter(Context context, List<Feedback> feedback) {
-        this.context = context;
+        this.mContext = context;
         this.feedbackList = feedback;
     }
 
@@ -52,15 +51,15 @@ public class ChatListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        username = mSharedPreferences.getString(KEY_USERNAME, null);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        mUsername = mSharedPreferences.getString(KEY_USERNAME, null);
 
 
         Feedback feedback = feedbackList.get(position);
 
-        if (feedback.getReplyBy().equals("0") && feedback.getUserName().equals(username)) {
+        if (feedback.getReplyBy().equals("0") && feedback.getUserName().equals(mUsername)) {
             convertView = li.inflate(R.layout.feedback_item_right, null);
         } else {
             convertView = li.inflate(R.layout.feedback_item_left, null);

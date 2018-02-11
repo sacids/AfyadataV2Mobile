@@ -1,7 +1,9 @@
 package org.sacids.afyadataV2.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,17 +17,22 @@ import org.sacids.afyadataV2.adapters.model.FormFeedback;
 import java.util.List;
 
 public class FormFeedbackListAdapter extends BaseAdapter {
-    private Context context;
-    private List<FormFeedback> feedbackList;
+    private Context mContext;
+    private List<FormFeedback> mList;
+    private SharedPreferences mSharedPreferences;
+    private String mUsername;
+
+    public static final String KEY_USERNAME = "username";
+    public static final String KEY_PASSWORD = "password";
 
     public FormFeedbackListAdapter(Context context, List<FormFeedback> feedbackList) {
-        this.context = context;
-        this.feedbackList = feedbackList;
+        this.mContext = context;
+        this.mList = feedbackList;
     }
 
     @Override
     public int getCount() {
-        return feedbackList.size();
+        return mList.size();
     }
 
     @Override
@@ -40,14 +47,17 @@ public class FormFeedbackListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        FormFeedback formFeedback = feedbackList.get(position);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        mUsername = mSharedPreferences.getString(KEY_USERNAME, null);
 
-        if (formFeedback.getSender().equals("server"))
-            convertView = li.inflate(R.layout.feedback_item_left, null);
-        else
+        FormFeedback formFeedback = mList.get(position);
+
+        if (formFeedback.getReplyBy().equals("0") && formFeedback.getUsername().equals(mUsername))
             convertView = li.inflate(R.layout.feedback_item_right, null);
+        else
+            convertView = li.inflate(R.layout.feedback_item_left, null);
 
         TextView tvMessage = (TextView) convertView.findViewById(R.id.tvMessage);
         if (Build.VERSION.SDK_INT >= 24) {
