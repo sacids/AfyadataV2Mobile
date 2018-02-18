@@ -36,7 +36,7 @@
     <string name="delete_yes">Futa fomu</string>
     <string name="discard_answer">Ondoa jibu</string>
     <string name="discard_group">Ondoa kikundi</string>
-    <string name="download">Chaguliwa</string>
+    <string name="download">Pakua Iliyochaguliwa</string>
     <string name="download_forms_result">Pakua Tokeo</string>
     <string name="downloading_data">Inaunganisha kwenye seva</string>
     <string name="do_not_change">Tangua</string>
@@ -86,7 +86,7 @@
     <string name="password">Neno siri</string>
     <string name="play_audio">Toa Sauti</string>
     <string name="play_video">Onyesha Video</string>
-    <string name="please_wait">Tafadhali ngoja kudogo.</string>
+    <string name="please_wait">Tafadhali ngoja kidogo.</string>
     <string name="please_wait_long">Tafadhali ngoja. Hii itachukua dakika chache.</string>
     <string name="quit_application">Ondoka %s</string>
     <string name="quit_entry">Hifadhi fomu na kuondoka</string>
@@ -235,7 +235,9 @@
     <string name="analytics_preferences">Taarifa ya matumizi</string>
     <string name="analytics">Kusanya taarifa ya matumizi ya wasiojulikana</string>
     <string name="select_all">Chagua Zote</string>
+    <string name="clear_all">Futa Zote</string>
     <string name="reset_settings_dialog_title">Chagua kipi cha kurekebisha</string>
+
 
     <!-- Language issues -->
     <string name="lang_swahili">Swahili</string>

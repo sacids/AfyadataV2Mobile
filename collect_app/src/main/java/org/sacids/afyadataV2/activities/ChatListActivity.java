@@ -192,7 +192,7 @@ public class ChatListActivity extends AppCompatActivity {
         mFeedback.setReplyBy(String.valueOf(0));
         mFeedback.setStatus("pending");
 
-        RestClient.post(mServerURL + "/api/v3/mFeedback/send", params, new JsonHttpResponseHandler() {
+        RestClient.post(mServerURL + "/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

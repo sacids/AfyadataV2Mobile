@@ -161,6 +161,9 @@ public class FormDetailsActivity extends AppCompatActivity {
             param.add("table_name", feedback.getFormId());
             param.add("instance_id", feedback.getInstanceId());
 
+            Log.d("table_name",feedback.getFormId());
+            Log.d("instance_id",feedback.getInstanceId());
+
             BackgroundClient.get(serverUrl + "/api/v3/feedback/form_details", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
