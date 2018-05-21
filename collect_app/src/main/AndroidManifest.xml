@@ -336,6 +336,11 @@ the specific language governing permissions and limitations under the License.
         </activity>
         <activity android:name=".activities.FormFeedbackActivity">
         </activity>
+
+        <service
+            android:name=".tasks.DownloadXMLTask"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>

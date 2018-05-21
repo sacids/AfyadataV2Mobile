@@ -39,6 +39,7 @@ import org.sacids.afyadataV2.preferences.PreferenceKeys;
 import org.sacids.afyadataV2.preferences.PreferencesActivity;
 import org.sacids.afyadataV2.receivers.FeedbackReceiver;
 import org.sacids.afyadataV2.tasks.DownloadSearchableForm;
+import org.sacids.afyadataV2.tasks.DownloadXMLTask;
 import org.sacids.afyadataV2.utilities.ToastUtils;
 import org.sacids.afyadataV2.web.RestClient;
 
@@ -207,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Start the service
         startService(new Intent(this, DownloadSearchableForm.class));
+        startService(new Intent(this, DownloadXMLTask.class));
 
         // Retrieve a PendingIntent that will perform a broadcast
         Intent feedbackIntent = new Intent(this, FeedbackReceiver.class);

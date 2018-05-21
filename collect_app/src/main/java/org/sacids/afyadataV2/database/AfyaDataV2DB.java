@@ -11,6 +11,7 @@ import org.sacids.afyadataV2.adapters.model.Campaign;
 import org.sacids.afyadataV2.adapters.model.Feedback;
 import org.sacids.afyadataV2.adapters.model.Form;
 import org.sacids.afyadataV2.adapters.model.FormDetails;
+import org.sacids.afyadataV2.adapters.model.Forms;
 import org.sacids.afyadataV2.adapters.model.SearchableData;
 import org.sacids.afyadataV2.adapters.model.Symptom;
 import org.sacids.afyadataV2.adapters.model.Tips;
@@ -28,66 +29,75 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "afyadata.db";
 
     // Feedback table
-    public static final String TABLE_FEEDBACK = "feedback";
-    public static final String KEY_FEEDBACK_ID = "id";
-    public static final String KEY_FEEDBACK_FORM_ID = "form_id";
-    public static final String KEY_INSTANCE_ID = "instance_id";
-    public static final String KEY_FORM_TITLE = "title";
-    public static final String KEY_MESSAGE = "message";
-    public static final String KEY_SENDER = "sender";
-    public static final String KEY_USER = "user";
-    public static final String KEY_CHR_NAME = "chr_name";
-    public static final String KEY_DATE_CREATED = "date_created";
-    public static final String KEY_FEEDBACK_STATUS = "status";
-    public static final String KEY_FEEDBACK_REPLY_BY = "reply_by";
+    private static final String TABLE_FEEDBACK = "feedback";
+    private static final String KEY_FEEDBACK_ID = "id";
+    private static final String KEY_FEEDBACK_FORM_ID = "form_id";
+    private static final String KEY_INSTANCE_ID = "instance_id";
+    private static final String KEY_FORM_TITLE = "title";
+    private static final String KEY_MESSAGE = "message";
+    private static final String KEY_SENDER = "sender";
+    private static final String KEY_USER = "user";
+    private static final String KEY_CHR_NAME = "chr_name";
+    private static final String KEY_DATE_CREATED = "date_created";
+    private static final String KEY_FEEDBACK_STATUS = "status";
+    private static final String KEY_FEEDBACK_REPLY_BY = "reply_by";
 
     //Form details table
-    public static final String TABLE_FORM_DETAILS = "form_details";
-    public static final String KEY_FORM_DETAILS_ID = "id";
-    public static final String KEY_FORM_DETAILS_LABEL = "label";
-    public static final String KEY_FORM_DETAILS_TYPE = "type";
-    public static final String KEY_FORM_DETAILS_VALUE = "value";
-    public static final String KEY_FORM_DETAILS_INSTANCE_ID = "instance_id";
+    private static final String TABLE_FORM_DETAILS = "form_details";
+    private static final String KEY_FORM_DETAILS_ID = "id";
+    private static final String KEY_FORM_DETAILS_LABEL = "label";
+    private static final String KEY_FORM_DETAILS_TYPE = "type";
+    private static final String KEY_FORM_DETAILS_VALUE = "value";
+    private static final String KEY_FORM_DETAILS_INSTANCE_ID = "instance_id";
 
     //Campaign table
-    public static final String TABLE_CAMPAIGN = "campaign";
-    public static final String KEY_CAMPAIGN_ID = "id";
-    public static final String KEY_CAMPAIGN_TITLE = "title";
-    public static final String KEY_CAMPAIGN_TYPE = "type";
-    public static final String KEY_CAMPAIGN_DESCRIPTION = "description";
-    public static final String KEY_CAMPAIGN_ICON = "icon";
-    public static final String KEY_CAMPAIGN_JR_FORM_ID = "jr_form_id";
+    private static final String TABLE_CAMPAIGN = "campaign";
+    private static final String KEY_CAMPAIGN_ID = "id";
+    private static final String KEY_CAMPAIGN_TITLE = "title";
+    private static final String KEY_CAMPAIGN_TYPE = "type";
+    private static final String KEY_CAMPAIGN_DESCRIPTION = "description";
+    private static final String KEY_CAMPAIGN_ICON = "icon";
+    private static final String KEY_CAMPAIGN_JR_FORM_ID = "jr_form_id";
 
     //OHKR tips
-    public static final String TABLE_OHKR_TIPS = "ohkr_tips";
-    public static final String KEY_TIP_ID = "id";
-    public static final String KEY_TIP_TITLE = "title";
-    public static final String KEY_TIP_DESCRIPTION = "description";
+    private static final String TABLE_OHKR_TIPS = "ohkr_tips";
+    private static final String KEY_TIP_ID = "id";
+    private static final String KEY_TIP_TITLE = "title";
+    private static final String KEY_TIP_DESCRIPTION = "description";
 
     //OHKR Symptoms List
-    public static final String TABLE_OHKR_SYMPTOMS = "ohkr_symptoms";
-    public static final String KEY_SYMPTOM_ID = "id";
-    public static final String KEY_SYMPTOM_TITLE = "title";
-    public static final String KEY_SYMPTOM_DESCRIPTION = "description";
+    private static final String TABLE_OHKR_SYMPTOMS = "ohkr_symptoms";
+    private static final String KEY_SYMPTOM_ID = "id";
+    private static final String KEY_SYMPTOM_TITLE = "title";
+    private static final String KEY_SYMPTOM_DESCRIPTION = "description";
 
     //searchable form
-    public static final String TABLE_SEARCHABLE_FORM = "searchable_form";
-    public static final String KEY_SEARCHABLE_FORM_ID = "id";
-    public static final String KEY_SEARCHABLE_JR_FORM_ID = "jr_form_id";
-    public static final String KEY_SEARCHABLE_FORM_TITLE = "title";
+    private static final String TABLE_SEARCHABLE_FORM = "searchable_form";
+    private static final String KEY_SEARCHABLE_FORM_ID = "id";
+    private static final String KEY_SEARCHABLE_JR_FORM_ID = "jr_form_id";
+    private static final String KEY_SEARCHABLE_FORM_TITLE = "title";
 
     //searchable form data
-    public static final String TABLE_SEARCHABLE_DATA = "searchable_data";
-    public static final String KEY_SEARCHABLE_DATA_ID = "id";
-    public static final String KEY_SEARCHABLE_DATA_FORM_ID = "form_id";
-    public static final String KEY_SEARCHABLE_DATA_LABEL = "label";
-    public static final String KEY_SEARCHABLE_DATA_VALUE = "value";
+    private static final String TABLE_SEARCHABLE_DATA = "searchable_data";
+    private static final String KEY_SEARCHABLE_DATA_ID = "id";
+    private static final String KEY_SEARCHABLE_DATA_FORM_ID = "form_id";
+    private static final String KEY_SEARCHABLE_DATA_LABEL = "label";
+    private static final String KEY_SEARCHABLE_DATA_VALUE = "value";
+
+    //forms
+    private static final String TABLE_FORMS = "forms";
+    private static final String KEY_FORMS_ID = "id";
+    private static final String KEY_FORMS_FORM_ID = "form_id";
+    private static final String KEY_FORMS_TITLE = "title";
+    private static final String KEY_FORMS_DESCRIPTION = "description";
+    private static final String KEY_FORMS_DOWNLOAD_URL = "download_url";
+
 
     public AfyaDataV2DB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -160,6 +170,14 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 + KEY_SEARCHABLE_DATA_LABEL + " TEXT,"
                 + KEY_SEARCHABLE_DATA_VALUE + " TEXT" + ")";
 
+        //Create table forms
+        String CREATE_FORMS_TABLE = "CREATE TABLE " + TABLE_FORMS + "("
+                + KEY_FORMS_ID + " INTEGER PRIMARY KEY,"
+                + KEY_FORMS_FORM_ID + " TEXT,"
+                + KEY_FORMS_TITLE + " TEXT,"
+                + KEY_FORMS_DESCRIPTION + " TEXT,"
+                + KEY_FORMS_DOWNLOAD_URL + " TEXT" + ")";
+
         //execute
         db.execSQL(CREATE_FEEDBACK_TABLE);
         db.execSQL(CREATE_FORM_DETAILS_TABLE);
@@ -168,6 +186,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         db.execSQL(CREATE_SYMPTOMS_TABLE);
         db.execSQL(CREATE_SEARCHABLE_FORM_TABLE);
         db.execSQL(CREATE_SEARCHABLE_DATA_TABLE);
+        db.execSQL(CREATE_FORMS_TABLE);
 
         //Log
         Log.d(TAG, "Database tables created");
@@ -184,6 +203,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_OHKR_SYMPTOMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SEARCHABLE_FORM);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SEARCHABLE_DATA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FORMS);
 
         // Create tables again
         onCreate(db);
@@ -803,6 +823,86 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         return db.update(TABLE_SEARCHABLE_DATA, values, KEY_SEARCHABLE_DATA_FORM_ID + " = ? AND " +
                         KEY_SEARCHABLE_DATA_LABEL + " = ?",
                 new String[]{String.valueOf(data.getFormId()), data.getValue()});
+    }
+
+
+    /*============================================================================
+     CRUD OPERATIONS FOR FORMS TABLE
+     ===========================================================================*/
+    public void addForm(Forms forms) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_FORMS_ID, forms.getId());
+        values.put(KEY_FORMS_FORM_ID, forms.getFormId());
+        values.put(KEY_FORMS_TITLE, forms.getTitle());
+        values.put(KEY_FORMS_DESCRIPTION, forms.getDescription());
+        values.put(KEY_FORMS_DOWNLOAD_URL, forms.getDownloadUrl());
+
+        // Inserting Row
+        db.insert(TABLE_FORMS, null, values);
+        db.close(); // Closing database connection
+    }
+
+    //get Forms
+    public List<Forms> getFormsList() {
+
+        List<Forms> formList = new ArrayList<Forms>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_FORMS + " ORDER BY " + KEY_FORMS_ID + " ASC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Forms form = new Forms();
+                form.setId(cursor.getLong(cursor.getColumnIndex(KEY_FORMS_ID)));
+                form.setFormId(cursor.getString(cursor.getColumnIndex(KEY_FORMS_FORM_ID)));
+                form.setTitle(cursor.getString(cursor.getColumnIndex(KEY_FORMS_TITLE)));
+                form.setDescription(cursor.getString(cursor.getColumnIndex(KEY_FORMS_DESCRIPTION)));
+                form.setDownloadUrl(cursor.getString(cursor.getColumnIndex(KEY_FORMS_DOWNLOAD_URL)));
+
+                // Adding form to list
+                formList.add(form);
+            } while (cursor.moveToNext());
+        }
+        // closing connection
+        cursor.close();
+        db.close();
+
+        // return formList
+        return formList;
+    }
+
+    //forms exists
+    public boolean isFormExist(Forms forms) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_FORMS, new String[]{KEY_FORMS_ID,
+                        KEY_FORMS_FORM_ID, KEY_FORMS_TITLE, KEY_FORMS_TITLE, KEY_FORMS_DESCRIPTION, KEY_FORMS_DOWNLOAD_URL},
+                KEY_FORMS_ID + "=?", new String[]{String.valueOf(forms.getId())}, null, null, null, null);
+
+        int count = cursor.getCount();
+        cursor.close();
+        return (count > 0) ? true : false;
+    }
+
+
+    // Updating Form
+    public int updateForm(Forms forms) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_FORMS_FORM_ID, forms.getFormId());
+        values.put(KEY_FORMS_TITLE, forms.getTitle());
+        values.put(KEY_FORMS_DESCRIPTION, forms.getDescription());
+        values.put(KEY_FORMS_DOWNLOAD_URL, forms.getDownloadUrl());
+
+        // updating row
+        return db.update(TABLE_FORMS, values, KEY_FORMS_ID + " = ?",
+                new String[]{String.valueOf(forms.getId())});
     }
 
 }

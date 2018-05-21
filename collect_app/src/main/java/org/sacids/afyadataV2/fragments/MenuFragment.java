@@ -23,6 +23,7 @@ import org.sacids.afyadataV2.activities.InstanceUploaderList;
 import org.sacids.afyadataV2.activities.ReportsActivity;
 import org.sacids.afyadataV2.adapters.MenuGridAdapter;
 import org.sacids.afyadataV2.app.PrefManager;
+import org.sacids.afyadataV2.utilities.ApplicationConstants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +45,7 @@ public class MenuFragment extends Fragment {
             R.drawable.ic_trash_bin,
             R.drawable.ic_download_form,
             R.drawable.ic_comment,
-            R.drawable.ic_reports,
+            R.drawable.ic_view_sent_form,
             R.drawable.ic_health_tips
     };
 
@@ -63,7 +64,6 @@ public class MenuFragment extends Fragment {
         mRootView = inflater.inflate(R.layout.fragment_menu, container, false);
 
         mPrefManager = new PrefManager(getContext());
-
         setViews();
 
         mMenuTitle = new String[]{
@@ -73,7 +73,7 @@ public class MenuFragment extends Fragment {
                 getResources().getString(R.string.manage_files),
                 getResources().getString(R.string.get_forms),
                 getResources().getString(R.string.nav_item_feedback),
-                getResources().getString(R.string.nav_item_reports),
+                getResources().getString(R.string.view_sent_forms),
                 getResources().getString(R.string.nav_item_tips)
         };
 
@@ -95,7 +95,10 @@ public class MenuFragment extends Fragment {
                         return;
 
                     case 1:
-                        startActivity(new Intent(getActivity(), InstanceChooserList.class));
+                        Intent i = new Intent(getActivity(), InstanceChooserList.class);
+                        i.putExtra(ApplicationConstants.BundleKeys.FORM_MODE,
+                                ApplicationConstants.FormModes.EDIT_SAVED);
+                        startActivity(i);
                         return;
 
                     case 2:
@@ -115,7 +118,10 @@ public class MenuFragment extends Fragment {
                         return;
 
                     case 6:
-                        startActivity(new Intent(getActivity(), ReportsActivity.class));
+                        startActivity(new Intent(getActivity(), InstanceChooserList.class)
+                                .putExtra(ApplicationConstants.BundleKeys.FORM_MODE,
+                                        ApplicationConstants.FormModes.VIEW_SENT)
+                        );
                         return;
 
                     case 7:

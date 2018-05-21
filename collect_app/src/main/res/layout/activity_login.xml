@@ -40,7 +40,7 @@
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="@dimen/text_size_extra_small"
+                android:textSize="@dimen/text_medium"
                 android:theme="@style/whiteEditTextStyle"/>
 
             <EditText
@@ -57,7 +57,7 @@
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="@dimen/text_small"
+                android:textSize="@dimen/text_medium"
                 android:theme="@style/whiteEditTextStyle"/>
         </LinearLayout>
 
@@ -75,7 +75,7 @@
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="@dimen/text_small"
+            android:textSize="@dimen/text_medium"
             android:theme="@style/whiteEditTextStyle"/>
 
         <!-- Login Button -->
@@ -97,11 +97,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_small"/>
+            android:textSize="@dimen/text_medium"/>
     </LinearLayout>
 </ScrollView>

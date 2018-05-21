@@ -30,9 +30,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private Context context = this;
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private PrefManager pref;
+    static final String TAG = "splash";
+    Context mContext = this;
+    PrefManager mPrefManager;
 
 
     @Override
@@ -42,7 +42,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         AfyaDataUtils.loadLanguage(SplashScreenActivity.this);
         setContentView(R.layout.splash_screen);
 
-        pref = new PrefManager(this);
+        mPrefManager = new PrefManager(this);
 
         int SPLASH_TIME_OUT = 1000;
         new Handler().postDelayed(new Runnable() {
@@ -54,11 +54,11 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-                if (pref.isLoggedIn()) {
-                    startActivity(new Intent(context, MainActivity.class));
-                } else {
-                    startActivity(new Intent(context, FrontPageActivity.class));
-                }
+                if (mPrefManager.isLoggedIn())
+                    startActivity(new Intent(mContext, MainActivity.class));
+                else
+                    startActivity(new Intent(mContext, FrontPageActivity.class));
+
                 finish();
             }
         }, SPLASH_TIME_OUT);

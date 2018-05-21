@@ -64,7 +64,7 @@ public class FormListAdapter extends BaseAdapter {
         final Form form = mFormList.get(position);
         title.setText(form.getTitle());
         instanceName.setText(form.getInstanceName());
-        feedback.setText("" + form.getFeedback());
+        feedback.setText(String.valueOf(form.getFeedback()));
         username.setText(form.getUser());
 
         //OnClick feedback

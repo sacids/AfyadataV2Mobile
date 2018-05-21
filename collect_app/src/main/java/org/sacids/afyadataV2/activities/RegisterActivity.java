@@ -39,7 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     //Button and EditText
     private Button btnRegister;
-    private Button btnLinkLogin;
     private EditText inputFirstName;
     private EditText inputLastName;
     private EditText inputCode;

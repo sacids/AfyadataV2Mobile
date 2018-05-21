@@ -33,7 +33,6 @@ import org.sacids.afyadataV2.web.BackgroundClient;
  */
 public class DownloadFeedbackTask extends IntentService {
 
-
     private static String TAG = "Feedback";
 
     // A integer, that identifies each notification uniquely
