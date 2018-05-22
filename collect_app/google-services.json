@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:875963739973:android:73d81b32b465820d",
         "android_client_info": {
-          "package_name": "org.sacids.afyadataV2"
+          "package_name": "tz.org.sacids.afyadata"
         }
       },
       "oauth_client": [
