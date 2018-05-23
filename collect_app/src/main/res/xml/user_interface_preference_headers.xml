@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
     <header
-        android:fragment="tz.org.sacids.afyadata.preferences.UserInterfacePreferences"
+        android:fragment="org.sacids.app.afyadata.preferences.UserInterfacePreferences"
         android:icon="@drawable/ic_phonelink_setup"
         android:key="@string/client"
         android:title="@string/client" />

@@ -67,14 +67,14 @@ android {
     buildToolsVersion('25.0.2')
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId('tz.org.sacids.afyadata')
+        applicationId('org.sacids.app.afyadata')
         minSdkVersion(16)
-        targetSdkVersion(26)
-        versionName '1.1'
+        targetSdkVersion(22)
+        versionName '1.2'
         testInstrumentationRunner('android.support.test.runner.AndroidJUnitRunner')
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-        versionCode 2
+        versionCode 3
     }
     signingConfigs {
         release {
