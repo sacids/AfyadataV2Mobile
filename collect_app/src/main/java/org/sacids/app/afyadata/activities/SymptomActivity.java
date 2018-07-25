@@ -19,22 +19,30 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SymptomActivity extends AppCompatActivity {
 
-    private static final String TAG = "Symptom";
+    static final String TAG = "Symptom";
+    Toolbar mToolbar;
+    ActionBar actionBar;
 
-    private Toolbar mToolbar;
-    private ActionBar actionBar;
+    //string variable
+    String mId;
+    String mTitle;
+    String mDescription;
 
-    private Symptom symptom = null;
+    //private Symptom symptom = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptom);
 
-        symptom = (Symptom) Parcels.unwrap(getIntent().getParcelableExtra("symptom"));
+        //get intent variables
+        mId = getIntent().getStringExtra("id");
+        mTitle = getIntent().getStringExtra("title");
+        mDescription = getIntent().getStringExtra("description");
+
+        //symptom = (Symptom) Parcels.unwrap(getIntent().getParcelableExtra("symptom"));
 
         setToolbar();
-
         setViews();
     }
 
@@ -64,7 +72,7 @@ public class SymptomActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_symptoms) + " > " + symptom.getTitle());
+        mToolbar.setTitle(getString(R.string.nav_item_symptoms) + " > " + mTitle);
         setSupportActionBar(mToolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -76,13 +84,13 @@ public class SymptomActivity extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.title);
         TextView description = (TextView) findViewById(R.id.description);
 
-        title.setText(symptom.getTitle());
+        title.setText(mTitle);
 
         //setText Description
         if (Build.VERSION.SDK_INT >= 24) {
-            description.setText(Html.fromHtml(symptom.getDescription(), Build.VERSION.SDK_INT));
+            description.setText(Html.fromHtml(mDescription, Build.VERSION.SDK_INT));
         } else {
-            description.setText(Html.fromHtml(symptom.getDescription())); // or for older api
+            description.setText(Html.fromHtml(mDescription)); // or for older api
         }
     }
 

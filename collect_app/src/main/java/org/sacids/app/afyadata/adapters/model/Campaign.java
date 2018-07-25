@@ -7,12 +7,12 @@ import org.parceler.Parcel;
  */
 @Parcel
 public class Campaign {
-    long id;
-    String title;
-    String type;
-    String jrFormId;
-    String description;
-    String icon;
+    private long id;
+    private String title;
+    private String type;
+    private String jrFormId;
+    private String description;
+    private String icon;
 
     public Campaign() {
     }

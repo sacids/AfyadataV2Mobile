@@ -40,18 +40,18 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FormDetailsActivity extends AppCompatActivity {
 
-    private static String TAG = "Feedback";
-    private Toolbar mToolbar;
-    private ActionBar actionBar;
+    static String TAG = "Feedback";
+    Toolbar mToolbar;
+    ActionBar actionBar;
 
-    private Context context = this;
-    private ProgressDialog pDialog;
+    Context mContext = this;
+    ProgressDialog pDialog;
 
     private List<FormDetails> formList = new ArrayList<FormDetails>();
     private ListView listView;
     private FormDetailsAdapter formAdapter;
 
-    private Feedback feedback = null;
+    //private Feedback feedback = null;
 
     //AfyaData database
     private AfyaDataV2DB db;
@@ -62,6 +62,14 @@ public class FormDetailsActivity extends AppCompatActivity {
     private static final String TAG_LABEL = "label";
     private static final String TAG_TYPE = "type";
     private static final String TAG_VALUE = "value";
+
+    //variable
+    String mId;
+    String mTitle;
+    String mFormId;
+    String mSender;
+    String mReply;
+    String mInstanceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +84,15 @@ public class FormDetailsActivity extends AppCompatActivity {
         serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
                 getString(R.string.default_server_url));
 
-        feedback = (Feedback) Parcels.unwrap(getIntent().getParcelableExtra("feedback"));
+        //get intent variable
+        mId = getIntent().getStringExtra("id");
+        mTitle = getIntent().getStringExtra("title");
+        mFormId = getIntent().getStringExtra("form_id");
+        mSender = getIntent().getStringExtra("sender");
+        mReply = getIntent().getStringExtra("reply_by");
+        mInstanceId = getIntent().getStringExtra("instance_id");
 
+        //feedback = (Feedback) Parcels.unwrap(getIntent().getParcelableExtra("feedback"));
         setToolbar();
 
         listView = (ListView) findViewById(R.id.list_forms);
@@ -85,7 +100,7 @@ public class FormDetailsActivity extends AppCompatActivity {
         //initialize database
         db = new AfyaDataV2DB(this);
 
-        formList = db.getFormDetails(feedback.getInstanceId());
+        formList = db.getFormDetails(mInstanceId);
 
         if (formList.size() > 0) {
             refreshDisplay();
@@ -126,7 +141,7 @@ public class FormDetailsActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_form_details) + " > " + feedback.getTitle());
+        mToolbar.setTitle(getString(R.string.nav_item_form_details) + " > " + mTitle);
         setSupportActionBar(mToolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -158,11 +173,11 @@ public class FormDetailsActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
 
             final RequestParams param = new RequestParams();
-            param.add("table_name", feedback.getFormId());
-            param.add("instance_id", feedback.getInstanceId());
+            param.add("table_name", mFormId);
+            param.add("instance_id", mInstanceId);
 
-            Log.d("table_name",feedback.getFormId());
-            Log.d("instance_id",feedback.getInstanceId());
+            Log.d("table_name", mFormId);
+            Log.d("instance_id", mInstanceId);
 
             BackgroundClient.get(serverUrl + "/api/v3/feedback/form_details", param, new JsonHttpResponseHandler() {
                 @Override
@@ -182,7 +197,7 @@ public class FormDetailsActivity extends AppCompatActivity {
                                 formDetails.setLabel(obj.getString(TAG_LABEL));
                                 formDetails.setType(obj.getString(TAG_TYPE));
                                 formDetails.setValue(obj.getString(TAG_VALUE));
-                                formDetails.setInstanceId(feedback.getInstanceId());
+                                formDetails.setInstanceId(mInstanceId);
 
                                 //check if form details exists
                                 if (!db.isFormDetailsExist(formDetails)) {
@@ -210,7 +225,7 @@ public class FormDetailsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            formList = db.getFormDetails(feedback.getInstanceId());
+            formList = db.getFormDetails(mInstanceId);
 
             if (formList != null) {
                 refreshDisplay();

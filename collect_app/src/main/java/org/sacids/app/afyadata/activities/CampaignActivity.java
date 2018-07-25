@@ -42,62 +42,62 @@ public class CampaignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campaign);
 
-        campaign = (Campaign) Parcels.unwrap(getIntent().getParcelableExtra("campaign"));
+        //campaign = (Campaign) Parcels.unwrap(getIntent().getParcelableExtra("campaign"));
 
         setToolbar();
-        setViews();
+        //setViews();
 
-        //handle button visibility
-        if (campaign.getType().equalsIgnoreCase("form")) {
-
-            btnForm.setVisibility(View.VISIBLE);
-            btnForm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //fill blank form
-                    String jrFormId = campaign.getJrFormId();
-                    String[] selectionArgs = {jrFormId};
-                    String selection = FormsProviderAPI.FormsColumns.JR_FORM_ID + "=?";
-                    String[] fields = {FormsProviderAPI.FormsColumns._ID};
-
-                    Cursor formCursor = null;
-                    try {
-                        formCursor = Collect.getInstance().getContentResolver().query(FormsProviderAPI.FormsColumns.CONTENT_URI, fields, selection, selectionArgs, null);
-                        if (formCursor.getCount() == 0) {
-                            // form does not already exist locally
-                            //Download form from server
-                            Intent downloadForms = new Intent(getApplicationContext(),
-                                    FormDownloadList.class);
-                            startActivity(downloadForms);
-                        } else {
-                            formCursor.moveToFirst();
-                            long idFormsTable = Long.parseLong(formCursor.getString(
-                                    formCursor.getColumnIndex(FormsProviderAPI.FormsColumns._ID)));
-                            Uri formUri = ContentUris.withAppendedId(
-                                    FormsProviderAPI.FormsColumns.CONTENT_URI, idFormsTable);
-
-                            Collect.getInstance().getActivityLogger()
-                                    .logAction(this, "onListItemClick: ", formUri.toString());
-
-                            String action = getIntent().getAction();
-                            if (Intent.ACTION_PICK.equals(action)) {
-                                // caller is waiting on a picked form
-                                setResult(RESULT_OK, new Intent().setData(formUri));
-                            } else {
-                                // caller wants to view/edit a form, so launch form entry activity
-                                startActivity(new Intent(Intent.ACTION_EDIT, formUri));
-                            }//end of function
-                        }
-
-
-                    } finally {
-                        if (formCursor != null) {
-                            formCursor.close();
-                        }
-                    }
-                }
-            });
-        }
+//        //handle button visibility
+//        if (campaign.getType().equalsIgnoreCase("form")) {
+//
+//            btnForm.setVisibility(View.VISIBLE);
+//            btnForm.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    //fill blank form
+//                    String jrFormId = campaign.getJrFormId();
+//                    String[] selectionArgs = {jrFormId};
+//                    String selection = FormsProviderAPI.FormsColumns.JR_FORM_ID + "=?";
+//                    String[] fields = {FormsProviderAPI.FormsColumns._ID};
+//
+//                    Cursor formCursor = null;
+//                    try {
+//                        formCursor = Collect.getInstance().getContentResolver().query(FormsProviderAPI.FormsColumns.CONTENT_URI, fields, selection, selectionArgs, null);
+//                        if (formCursor.getCount() == 0) {
+//                            // form does not already exist locally
+//                            //Download form from server
+//                            Intent downloadForms = new Intent(getApplicationContext(),
+//                                    FormDownloadList.class);
+//                            startActivity(downloadForms);
+//                        } else {
+//                            formCursor.moveToFirst();
+//                            long idFormsTable = Long.parseLong(formCursor.getString(
+//                                    formCursor.getColumnIndex(FormsProviderAPI.FormsColumns._ID)));
+//                            Uri formUri = ContentUris.withAppendedId(
+//                                    FormsProviderAPI.FormsColumns.CONTENT_URI, idFormsTable);
+//
+//                            Collect.getInstance().getActivityLogger()
+//                                    .logAction(this, "onListItemClick: ", formUri.toString());
+//
+//                            String action = getIntent().getAction();
+//                            if (Intent.ACTION_PICK.equals(action)) {
+//                                // caller is waiting on a picked form
+//                                setResult(RESULT_OK, new Intent().setData(formUri));
+//                            } else {
+//                                // caller wants to view/edit a form, so launch form entry activity
+//                                startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+//                            }//end of function
+//                        }
+//
+//
+//                    } finally {
+//                        if (formCursor != null) {
+//                            formCursor.close();
+//                        }
+//                    }
+//                }
+//            });
+//        }
     }
 
     @Override
@@ -126,7 +126,7 @@ public class CampaignActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_forms) + " > " + campaign.getTitle());
+        mToolbar.setTitle(getString(R.string.nav_item_forms) + " > ");
         setSupportActionBar(mToolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

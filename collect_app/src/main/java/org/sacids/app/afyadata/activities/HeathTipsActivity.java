@@ -19,22 +19,26 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HeathTipsActivity extends AppCompatActivity {
 
-    private static final String TAG = "Health Tips";
+    static final String TAG = "Health Tips";
+    Toolbar mToolbar;
+    ActionBar actionBar;
 
-    private Toolbar mToolbar;
-    private ActionBar actionBar;
-
-    private Tips tp = null;
+    String mId;
+    String mTitle;
+    String mDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heath_tips);
 
-        tp = (Tips) Parcels.unwrap(getIntent().getParcelableExtra("tips"));
+        mId = getIntent().getStringExtra("id");
+        mTitle = getIntent().getStringExtra("title");
+        mDescription = getIntent().getStringExtra("description");
+
+        //tp = (Tips) Parcels.unwrap(getIntent().getParcelableExtra("tips"));
 
         setToolbar();
-
         setViews();
     }
 
@@ -64,7 +68,7 @@ public class HeathTipsActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_tips) + " > " + tp.getTitle());
+        mToolbar.setTitle(getString(R.string.nav_item_tips) + " > " + mTitle);
         setSupportActionBar(mToolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -76,13 +80,13 @@ public class HeathTipsActivity extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.title);
         TextView description = (TextView) findViewById(R.id.description);
 
-        title.setText(tp.getTitle());
+        title.setText(mTitle);
 
         //setText Description
         if (Build.VERSION.SDK_INT >= 24) {
-            description.setText(Html.fromHtml(tp.getDescription(), Build.VERSION.SDK_INT));
+            description.setText(Html.fromHtml(mDescription, Build.VERSION.SDK_INT));
         } else {
-            description.setText(Html.fromHtml(tp.getDescription())); // or for older api
+            description.setText(Html.fromHtml(mDescription)); // or for older api
         }
     }
 

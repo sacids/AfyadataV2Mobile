@@ -6,19 +6,18 @@ import org.parceler.Parcel;
  * Created by administrator on 13/09/2017.
  */
 
-@Parcel
 public class Feedback {
-    long id;
-    String formId;
-    String instanceId;
-    String title;
-    String message;
-    String sender;
-    String userName;
-    String chrName;
-    String dateCreated;
-    String status;
-    String replyBy;
+    private long id;
+    private String formId;
+    private String instanceId;
+    private String title;
+    private String message;
+    private String sender;
+    private String userName;
+    private String chrName;
+    private String dateCreated;
+    private String status;
+    private String replyBy;
 
     public Feedback() {
     }

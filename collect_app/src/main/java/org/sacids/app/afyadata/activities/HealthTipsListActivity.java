@@ -42,10 +42,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HealthTipsListActivity extends AppCompatActivity {
 
-    private static final String TAG = "Health Tips";
-
-    private Toolbar mToolbar;
-    private ActionBar actionBar;
+    static final String TAG = "Health Tips";
+    Toolbar mToolbar;
+    ActionBar actionBar;
 
     private Context context = this;
     private ProgressDialog pDialog;
@@ -105,7 +104,9 @@ public class HealthTipsListActivity extends AppCompatActivity {
                 Tips tips = tipsList.get(position);
 
                 Intent intent = new Intent(context, HeathTipsActivity.class);
-                intent.putExtra("tips", Parcels.wrap(tips));
+                intent.putExtra("id", tips.getId());
+                intent.putExtra("title", tips.getTitle());
+                intent.putExtra("description", tips.getDescription());
                 startActivity(intent);
             }
         });

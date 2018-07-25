@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //set country code
         inputCode.setText(getCountryCode());
-        inputCode.setEnabled(false);
+        inputCode.setEnabled(true);// TODO: 14/06/2018  : allow people to edit this
     }
 
     //Login
@@ -155,6 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                         prefManager.createLogin(userId);
 
                         //set FirstName and LastName
+                        prefManager.setUserId(userId);
                         prefManager.setFirstName(firstName);
                         prefManager.setLastName(lastName);
 

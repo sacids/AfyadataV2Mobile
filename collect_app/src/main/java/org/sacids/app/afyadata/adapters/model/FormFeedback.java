@@ -8,14 +8,14 @@ import org.parceler.Parcel;
 
 @Parcel
 public class FormFeedback {
-    long id;
-    String formId;
-    String instanceId;
-    String message;
-    String sender;
-    String replyBy;
-    String username;
-    String dateCreated;
+    private long id;
+    private String formId;
+    private String instanceId;
+    private String message;
+    private String sender;
+    private String replyBy;
+    private String username;
+    private String dateCreated;
 
     public FormFeedback() {
     }

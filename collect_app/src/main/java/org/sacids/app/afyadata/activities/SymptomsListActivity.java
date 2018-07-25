@@ -101,9 +101,11 @@ public class SymptomsListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Symptom symptom = symptomsList.get(position);
 
-                Intent intent = new Intent(context, SymptomActivity.class);
-                intent.putExtra("symptom", Parcels.wrap(symptom));
-                startActivity(intent);
+                //start Activity
+                startActivity(new Intent(context, SymptomActivity.class)
+                        .putExtra("id", symptom.getId())
+                        .putExtra("title", symptom.getTitle())
+                        .putExtra("description", symptom.getDescription()));
             }
         });
     }

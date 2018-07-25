@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.sacids.app.afyadata.R;
 import org.sacids.app.afyadata.adapters.model.Feedback;
+import org.sacids.app.afyadata.app.PrefManager;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class ChatListAdapter extends BaseAdapter {
     private Context mContext;
     private List<Feedback> feedbackList;
     private SharedPreferences mSharedPreferences;
+    private PrefManager mPrefManager;
     private String mUsername;
 
     public static final String KEY_USERNAME = "username";
@@ -53,24 +55,29 @@ public class ChatListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        mPrefManager = new PrefManager(mContext);
+
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         mUsername = mSharedPreferences.getString(KEY_USERNAME, null);
 
-
         Feedback feedback = feedbackList.get(position);
 
-        if (feedback.getReplyBy().equals("0") && feedback.getUserName().equals(mUsername)) {
-            convertView = li.inflate(R.layout.feedback_item_right, null);
-        } else {
+        //check for server
+        if (feedback.getSender().equalsIgnoreCase("server")) {
             convertView = li.inflate(R.layout.feedback_item_left, null);
+        } else {
+            if (feedback.getReplyBy().equalsIgnoreCase(mPrefManager.getUserId()))
+                convertView = li.inflate(R.layout.feedback_item_right, null);
+            else
+                convertView = li.inflate(R.layout.feedback_item_left, null);
         }
 
+        //textViewMessage
         TextView tvMessage = (TextView) convertView.findViewById(R.id.tvMessage);
-        if (Build.VERSION.SDK_INT >= 24) {
+        if (Build.VERSION.SDK_INT >= 24)
             tvMessage.setText(Html.fromHtml(feedback.getMessage(), Build.VERSION.SDK_INT));
-        } else {
+        else
             tvMessage.setText(Html.fromHtml(feedback.getMessage())); // or for older api
-        }
 
         return convertView;
     }

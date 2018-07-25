@@ -29,6 +29,7 @@ import org.parceler.Parcels;
 import org.sacids.app.afyadata.R;
 import org.sacids.app.afyadata.adapters.ChatListAdapter;
 import org.sacids.app.afyadata.adapters.model.Feedback;
+import org.sacids.app.afyadata.app.PrefManager;
 import org.sacids.app.afyadata.database.AfyaDataV2DB;
 import org.sacids.app.afyadata.preferences.PreferenceKeys;
 import org.sacids.app.afyadata.web.RestClient;
@@ -44,15 +45,24 @@ public class ChatListActivity extends AppCompatActivity {
     Toolbar mToolbar;
     ActionBar mActionBar;
     Context mContext = this;
+    private PrefManager mPrefManager;
 
     ProgressDialog mProgressDialog;
     SharedPreferences mSharedPreferences;
 
     //model and db
-    Feedback mFeedback;
     AfyaDataV2DB db;
 
+    //variable
+    String mId;
+    String mTitle;
+    String mFormId;
+    String mSender;
+    String mReply;
+    String mInstanceId;
+
     //listView
+    Feedback mFeedback = null;
     ListView mListView;
     List<Feedback> mFeedbackList = new ArrayList<Feedback>();
     ChatListAdapter mChatListAdapter;
@@ -65,17 +75,29 @@ public class ChatListActivity extends AppCompatActivity {
     //EditText
     EditText mEditFeedback;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
 
-        mFeedback = (Feedback) Parcels.unwrap(getIntent().getParcelableExtra("feedback"));
+        mPrefManager = new PrefManager(mContext);
+
+        //get intent variable
+        mId = getIntent().getStringExtra("id");
+        mTitle = getIntent().getStringExtra("title");
+        mFormId = getIntent().getStringExtra("form_id");
+        mSender = getIntent().getStringExtra("sender");
+        mReply = getIntent().getStringExtra("reply_by");
+        mInstanceId = getIntent().getStringExtra("instance_id");
+
+        mFeedback = new Feedback();
+        //mFeedback.setId(Long.parseLong(mId));
+        //mFeedback.setTitle(mTitle);
+
         setToolbar();
 
         db = new AfyaDataV2DB(this);
-        mFeedbackList = db.getFeedbackByInstanceId(mFeedback.getInstanceId());
+        mFeedbackList = db.getFeedbackByInstanceId(mInstanceId);
         mListView = (ListView) findViewById(R.id.list_feedback);
 
         if (mFeedbackList.size() > 0) {
@@ -120,7 +142,7 @@ public class ChatListActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_feedback) + " > " + mFeedback.getTitle());
+        mToolbar.setTitle(getString(R.string.nav_item_feedback) + " > " + mTitle);
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -149,9 +171,14 @@ public class ChatListActivity extends AppCompatActivity {
 
     //show form details
     private void showFormDetails() {
-        Intent feedbackIntent = new Intent(ChatListActivity.this, FormDetailsActivity.class);
-        feedbackIntent.putExtra("feedback", Parcels.wrap(mFeedback));
-        startActivity(feedbackIntent);
+        //start activity
+        startActivity(new Intent(mContext, FormDetailsActivity.class)
+                .putExtra("id", mId)
+                .putExtra("title", mTitle)
+                .putExtra("form_id", mFormId)
+                .putExtra("sender", mSender)
+                .putExtra("reply_by", mReply)
+                .putExtra("instance_id", mInstanceId));
     }
 
 
@@ -176,20 +203,20 @@ public class ChatListActivity extends AppCompatActivity {
         mProgressDialog.show();
 
         final RequestParams params = new RequestParams();
-        params.add("form_id", mFeedback.getFormId());
+        params.add("form_id", mFormId);
         params.add("username", mUsername);
         params.add("message", mMessage);
-        params.add("instance_id", mFeedback.getInstanceId());
+        params.add("instance_id", mInstanceId);
         params.add("sender", "user");
         params.add("status", "pending");
 
         //append chat at last
-        mFeedback.setFormId(mFeedback.getFormId());
+        mFeedback.setFormId(mFormId);
         mFeedback.setUserName(mUsername);
         mFeedback.setMessage(mMessage);
         mFeedback.setSender("user");
-        mFeedback.setInstanceId(mFeedback.getInstanceId());
-        mFeedback.setReplyBy(String.valueOf(0));
+        mFeedback.setInstanceId(mInstanceId);
+        mFeedback.setReplyBy(mPrefManager.getUserId());
         mFeedback.setStatus("pending");
 
         RestClient.post(mServerURL + "/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
@@ -201,13 +228,17 @@ public class ChatListActivity extends AppCompatActivity {
 
                 Log.d(TAG, response.toString());
 
+                //update adapter
                 mFeedbackList.add(mFeedback);
                 mChatListAdapter.notifyDataSetChanged();
                 mEditFeedback.setText("");//clear mFeedback posted
                 Log.d(TAG, "Saving feedback success");
 
-                Toast.makeText(ChatListActivity.this, getResources().getString(R.string.success_feedback),
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, getResources().getString(R.string.success_feedback), Toast.LENGTH_SHORT).show();
+//                //start new Activity
+//                finish();
+//                startActivity(new Intent(mContext, ChatListActivity.class)
+//                        .putExtra("feedback", Parcels.wrap(mFeedback)));
             }
 
             @Override

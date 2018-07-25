@@ -5,11 +5,11 @@ import org.parceler.Parcel;
 /**
  * Created by administrator on 16/09/2017.
  */
-@Parcel
+
 public class Symptom {
-    long id;
-    String title;
-    String description;
+    public long id;
+    public String title;
+    public String description;
 
     public Symptom() {
     }

@@ -6,11 +6,10 @@ import org.parceler.Parcel;
  * Created by administrator on 13/09/2017.
  */
 
-@Parcel
 public class Tips {
-    long id;
-    String title;
-    String description;
+    private long id;
+    private String title;
+    private String description;
 
     public Tips() {
     }

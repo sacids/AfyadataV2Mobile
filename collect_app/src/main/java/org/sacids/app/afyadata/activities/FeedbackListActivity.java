@@ -44,8 +44,8 @@ import java.util.List;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FeedbackListActivity extends AppCompatActivity {
-    static String TAG = "Feedback";
 
+    static String TAG = "Feedback";
     Toolbar mToolbar;
     ActionBar mActionBar;
 
@@ -53,9 +53,9 @@ public class FeedbackListActivity extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
     ProgressDialog mProgressDialog;
 
-    private ListView mListView;
-    private List<Feedback> mFeedbackList = new ArrayList<Feedback>();
-    private FeedbackListAdapter mListAdapter;
+    ListView mListView;
+    List<Feedback> mFeedbackList = new ArrayList<Feedback>();
+    FeedbackListAdapter mListAdapter;
 
     //string variable
     private String mServerURL;
@@ -150,10 +150,14 @@ public class FeedbackListActivity extends AppCompatActivity {
                 view.setBackgroundColor(Color.parseColor("#F4F4F4"));
 
                 Feedback feedback = mFeedbackList.get(position);
-
-                Intent feedbackIntent = new Intent(mContext, ChatListActivity.class);
-                feedbackIntent.putExtra("feedback", Parcels.wrap(feedback));
-                startActivity(feedbackIntent);
+                //start activity
+                startActivity(new Intent(mContext, ChatListActivity.class)
+                        .putExtra("id", feedback.getId())
+                        .putExtra("title", feedback.getTitle())
+                        .putExtra("form_id", feedback.getFormId())
+                        .putExtra("sender", feedback.getSender())
+                        .putExtra("reply_by", feedback.getReplyBy())
+                        .putExtra("instance_id", feedback.getInstanceId()));
             }
         });
     }
