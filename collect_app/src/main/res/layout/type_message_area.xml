@@ -24,5 +24,6 @@
         android:layout_weight="5"
         android:contentDescription="@string/app_name"
         android:padding="4dp"
-        android:src="@drawable/ic_send_black_36dp"/>
+        android:tint="@color/primary"
+        android:src="@drawable/ic_send_white"/>
 </LinearLayout>
