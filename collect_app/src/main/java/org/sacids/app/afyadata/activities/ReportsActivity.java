@@ -169,7 +169,7 @@ public class ReportsActivity extends AppCompatActivity {
                                   JSONObject response) {
                 mProgressBar.setVisibility(View.GONE);
 
-                //Log.d(TAG, response.toString());
+                Log.d(TAG, "forms response => " + response.toString());
 
                 try {
                     if (response.getString("status").equalsIgnoreCase("success")) {

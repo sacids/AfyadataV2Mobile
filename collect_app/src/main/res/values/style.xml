@@ -18,9 +18,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
@@ -51,6 +51,10 @@
     <!-- Font Style -->
     <style name="TextAppearance.FontPath" parent="android:TextAppearance">
         <item name="fontPath">fonts/Lato-Regular.ttf</item>
+    </style>
+
+    <style name="BoldTextAppearance.FontPath" parent="android:TextAppearance">
+        <item name="fontPath">fonts/Lato-Bold.ttf</item>
     </style>
 
     <style name="TextViewCustomFont">

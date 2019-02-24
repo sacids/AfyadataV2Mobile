@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary_dark"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_dark"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/primary_dark"
             android:prompt="@string/lbl_choose_language"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"/>
 
         <ImageView
             android:id="@+id/app_logo"
@@ -27,7 +27,7 @@
             android:layout_below="@id/spinner"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="0dp"
-            android:src="@drawable/app_logo_white" />
+            android:src="@drawable/app_logo_white"/>
 
         <TextView
             android:id="@+id/app_slogan"
@@ -39,7 +39,7 @@
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
             android:textSize="@dimen/title_medium"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_login"
@@ -54,10 +54,10 @@
             android:paddingRight="100dp"
             android:text="@string/lbl_sign_in"
             android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_medium"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_large"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_register"
@@ -72,10 +72,10 @@
             android:paddingRight="100dp"
             android:text="@string/lbl_sign_up"
             android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_medium"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_large"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 </ScrollView>

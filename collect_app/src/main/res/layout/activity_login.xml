@@ -40,7 +40,7 @@
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="@dimen/text_medium"
+                android:textSize="@dimen/text_large"
                 android:theme="@style/whiteEditTextStyle"/>
 
             <EditText
@@ -57,7 +57,7 @@
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="@dimen/text_medium"
+                android:textSize="@dimen/text_large"
                 android:theme="@style/whiteEditTextStyle"/>
         </LinearLayout>
 
@@ -75,7 +75,7 @@
             android:textAppearance="@style/TextAppearance.FontPath"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="@dimen/text_medium"
+            android:textSize="@dimen/text_large"
             android:theme="@style/whiteEditTextStyle"/>
 
         <!-- Login Button -->
@@ -88,7 +88,7 @@
             android:background="@drawable/primary_dark_white_border_button"
             android:text="@string/lbl_sign_in"
             android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
             android:textColor="@color/white"
             android:textSize="@dimen/text_large"/>
 
@@ -100,8 +100,8 @@
             android:layout_marginTop="30dp"
             android:background="@null"
             android:text="@string/btn_link_to_register"
-            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_medium"/>
+            android:textSize="@dimen/text_large"/>
     </LinearLayout>
 </ScrollView>
