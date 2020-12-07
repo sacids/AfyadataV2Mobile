@@ -15,9 +15,9 @@ the License.
 -->
 <resources>
     <!-- primary colors -->
-    <color name="primary">#a20400</color>
-    <color name="primary_dark">#781E14</color>
-    <color name="primary_light">#a9201d</color>
+    <color name="primary">#428499</color>
+    <color name="primary_dark">#35839c</color>
+    <color name="primary_light">#7dcae3</color>
     <color name="accent">#795548</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
