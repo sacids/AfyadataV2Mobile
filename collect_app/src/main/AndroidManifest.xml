@@ -10,7 +10,7 @@ the specific language governing permissions and limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="org.sacids.app.afyadata">
+          package="org.mozambique.app.afyadata">
 
     <uses-feature
         android:name="android.hardware.location"
@@ -64,7 +64,7 @@ the specific language governing permissions and limitations under the License.
     -->
 
     <permission
-        android:name="org.sacids.app.afyadata.permission.MAPS_RECEIVE"
+        android:name="org.mozambique.app.afyadata.permission.MAPS_RECEIVE"
         android:protectionLevel="signature"/>
 
     <uses-permission android:name="org.odk.collect.android.permission.MAPS_RECEIVE"/>
@@ -79,7 +79,7 @@ the specific language governing permissions and limitations under the License.
         android:xlargeScreens="true"/>
 
     <application
-        android:name=".application.Collect"
+        android:name="org.mozambique.app.afyadata.application.Collect"
         android:icon="@mipmap/ic_launcher"
         android:installLocation="auto"
         android:label="@string/app_name"
@@ -87,25 +87,25 @@ the specific language governing permissions and limitations under the License.
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <provider
-            android:name=".provider.FormsProvider"
-            android:authorities="org.sacids.app.afyadata.provider.odk.forms"
+            android:name="org.mozambique.app.afyadata.provider.FormsProvider"
+            android:authorities="org.mozambique.app.afyadata.provider.odk.forms"
             android:exported="true"/>
         <provider
-            android:name=".provider.InstanceProvider"
-            android:authorities="org.sacids.app.afyadata.provider.odk.instances"
+            android:name="org.mozambique.app.afyadata.provider.InstanceProvider"
+            android:authorities="org.mozambique.app.afyadata.provider.odk.instances"
             android:exported="true"/>
 
         <activity
-            android:name=".activities.MainMenuActivity"
+            android:name="org.mozambique.app.afyadata.activities.MainMenuActivity"
             android:configChanges="locale|orientation|screenSize"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.ScannerWithFlashlightActivity"
+            android:name="org.mozambique.app.afyadata.activities.ScannerWithFlashlightActivity"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
-            android:name=".activities.FormEntryActivity"
+            android:name="org.mozambique.app.afyadata.activities.FormEntryActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize">
@@ -120,25 +120,25 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.NotificationActivity"
+            android:name="org.mozambique.app.afyadata.activities.NotificationActivity"
             android:excludeFromRecents="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:taskAffinity=""/>
         <activity
-            android:name=".activities.DrawActivity"
+            android:name="org.mozambique.app.afyadata.activities.DrawActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".activities.OpenSourceLicensesActivity"
+            android:name="org.mozambique.app.afyadata.activities.OpenSourceLicensesActivity"
             android:label="@string/all_open_source_licenses"/>
         <activity
-            android:name=".activities.GoogleDriveActivity"
+            android:name="org.mozambique.app.afyadata.activities.GoogleDriveActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".activities.InstanceChooserList"
+            android:name="org.mozambique.app.afyadata.activities.InstanceChooserList"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -150,7 +150,7 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.FormChooserList"
+            android:name="org.mozambique.app.afyadata.activities.FormChooserList"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -163,18 +163,18 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.FormDownloadList"
+            android:name="org.mozambique.app.afyadata.activities.FormDownloadList"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.FileManagerTabs"
+            android:name="org.mozambique.app.afyadata.activities.FileManagerTabs"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GoogleSheetsUploaderActivity"
+            android:name="org.mozambique.app.afyadata.activities.GoogleSheetsUploaderActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.InstanceUploaderList"
+            android:name="org.mozambique.app.afyadata.activities.InstanceUploaderList"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
             <intent-filter>
@@ -185,52 +185,52 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.InstanceUploaderActivity"
+            android:name="org.mozambique.app.afyadata.activities.InstanceUploaderActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".preferences.AboutPreferencesActivity"
+            android:name="org.mozambique.app.afyadata.preferences.AboutPreferencesActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".preferences.PreferencesActivity"
+            android:name="org.mozambique.app.afyadata.preferences.PreferencesActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".preferences.AdminPreferencesActivity"
+            android:name="org.mozambique.app.afyadata.preferences.AdminPreferencesActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.FormHierarchyActivity"
+            android:name="org.mozambique.app.afyadata.activities.FormHierarchyActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoPointActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoPointActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoPointMapActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoPointMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoPointOsmMapActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoPointOsmMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoShapeOsmMapActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoShapeOsmMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoShapeGoogleMapActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoShapeGoogleMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoTraceOsmMapActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoTraceOsmMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.GeoTraceGoogleMapActivity"
+            android:name="org.mozambique.app.afyadata.activities.GeoTraceGoogleMapActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.BearingActivity"
+            android:name="org.mozambique.app.afyadata.activities.BearingActivity"
             android:label="@string/app_name"/>
         <activity
-            android:name=".activities.SplashScreenActivity"
+            android:name="org.mozambique.app.afyadata.activities.SplashScreenActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -241,7 +241,7 @@ the specific language governing permissions and limitations under the License.
         </activity>
         <!-- Enable Shortcuts for Command Actions -->
         <activity
-            android:name=".activities.AndroidShortcuts"
+            android:name="org.mozambique.app.afyadata.activities.AndroidShortcuts"
             android:label="ODK Form"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -250,11 +250,11 @@ the specific language governing permissions and limitations under the License.
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.CaptureSelfieActivity"/>
-        <activity android:name=".activities.CaptureSelfieActivityNewApi"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.CaptureSelfieActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.CaptureSelfieActivityNewApi"/>
 
         <receiver
-            android:name=".receivers.NetworkReceiver"
+            android:name="org.mozambique.app.afyadata.receivers.NetworkReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
@@ -293,52 +293,52 @@ the specific language governing permissions and limitations under the License.
             android:name="com.google.android.maps"
             android:required="false"/>
 
-        <activity android:name=".activities.FrontPageActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.FrontPageActivity"/>
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="org.mozambique.app.afyadata.activities.LoginActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".activities.RegisterActivity"
+            android:name="org.mozambique.app.afyadata.activities.RegisterActivity"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activities.MainActivity"/>
-        <activity android:name=".activities.HealthTipsListActivity"/>
-        <activity android:name=".activities.CampaignListActivity"/>
-        <activity android:name=".activities.FeedbackListActivity"/>
-        <activity android:name=".activities.HeathTipsActivity"/>
-        <activity android:name=".activities.CampaignActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.MainActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.HealthTipsListActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.CampaignListActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.FeedbackListActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.HeathTipsActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.CampaignActivity"/>
         <activity
-            android:name=".activities.ChatListActivity"
+            android:name="org.mozambique.app.afyadata.activities.ChatListActivity"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activities.AboutActivity"/>
-        <activity android:name=".activities.FormDetailsActivity"/>
-        <activity android:name=".activities.SymptomsListActivity"/>
-        <activity android:name=".activities.SymptomActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.AboutActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.FormDetailsActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.SymptomsListActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.SymptomActivity"/>
         <activity
-            android:name=".activities.SearchActivity"
+            android:name="org.mozambique.app.afyadata.activities.SearchActivity"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".activities.LanguageActivity"/>
+        <activity android:name="org.mozambique.app.afyadata.activities.LanguageActivity"/>
 
         <service
-            android:name=".tasks.DownloadSearchableForm"
+            android:name="org.mozambique.app.afyadata.tasks.DownloadSearchableForm"
             android:exported="false"/>
         <service
-            android:name=".tasks.DownloadFeedbackTask"
+            android:name="org.mozambique.app.afyadata.tasks.DownloadFeedbackTask"
             android:exported="false"/>
 
         <receiver
-            android:name=".receivers.FeedbackReceiver"
+            android:name="org.mozambique.app.afyadata.receivers.FeedbackReceiver"
             android:enabled="true"
             android:exported="true"/>
 
-        <activity android:name=".activities.ReportsActivity">
+        <activity android:name="org.mozambique.app.afyadata.activities.ReportsActivity">
         </activity>
-        <activity android:name=".activities.FormViewActivity">
+        <activity android:name="org.mozambique.app.afyadata.activities.FormViewActivity">
         </activity>
-        <activity android:name=".activities.FormFeedbackActivity">
+        <activity android:name="org.mozambique.app.afyadata.activities.FormFeedbackActivity">
         </activity>
 
         <service
-            android:name=".tasks.DownloadXMLTask"
+            android:name="org.mozambique.app.afyadata.tasks.DownloadXMLTask"
             android:exported="false">
         </service>
     </application>
