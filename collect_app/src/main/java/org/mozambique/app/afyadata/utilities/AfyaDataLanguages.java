@@ -5,10 +5,10 @@ package org.mozambique.app.afyadata.utilities;
  */
 
 public enum AfyaDataLanguages {
+    PORTUGUESE("pt"),
     SWAHILI("sw"),
     ENGLISH("en"),
     FRENCH("fr"),
-    PORTUGUESE("pt"),
     THAI("th"),
     CHINESE("zh"),
     VIETNAMESE("vi"),

@@ -66,8 +66,7 @@ public class AfyaDataUtils {
 
     public static String getLangCode(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
-        String langCode = preferences.getString(Preferences.LANGUAGE, AfyaDataLanguages.SWAHILI.getLanguage());
-        return langCode;
+        return preferences.getString(Preferences.LANGUAGE, AfyaDataLanguages.PORTUGUESE.getLanguage());
     }
 
     //setAppLanguage

@@ -128,7 +128,7 @@ public class FrontPageActivity extends AppCompatActivity {
                                 break;
 
                             default:
-                                setAppLanguage(_activity, AfyaDataLanguages.SWAHILI.getLanguage());
+                                setAppLanguage(_activity, AfyaDataLanguages.PORTUGUESE.getLanguage());
                                 break;
                         }
                         recreate();
