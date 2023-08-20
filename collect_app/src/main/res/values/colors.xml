@@ -15,9 +15,9 @@ the License.
 -->
 <resources>
     <!-- primary colors -->
-    <color name="primary">#428499</color>
-    <color name="primary_dark">#35839c</color>
-    <color name="primary_light">#7dcae3</color>
+    <color name="primary">#a60904</color>
+    <color name="primary_dark">#a60904</color>
+    <color name="primary_light">#a60904</color>
     <color name="accent">#795548</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
@@ -27,7 +27,7 @@ the License.
 
     <!-- other color -->
     <color name="primaryTextColor">#000000</color>
-    <color name="tintColor">#2196F3</color>
+    <color name="tintColor">#a60904</color>
     <color name="black">#000000</color>
     <color name="gray">#eeeeee</color>
     <color name="grey">#757575</color>

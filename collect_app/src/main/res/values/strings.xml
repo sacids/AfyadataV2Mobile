@@ -524,7 +524,7 @@
     <string name="lang_thai">Thai</string>
     <string name="lang_vietnamese">Vietnamese</string>
     <string name="btn_change_language">Change</string>
-    <string name="lbl_choose_language">Choose Language</string>
+    <string name="lbl_choose_language">Choisissez une langue</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -591,12 +591,12 @@
     <string name="lbl_valid_new_password_required">New password should be 8 or more character</string>
     <string name="lbl_password_confirm_required">Password confirmation is required</string>
     <string name="lbl_password_match_required">Password did not match</string>
-    <string name="lbl_sign_in">SIGN IN</string>
-    <string name="lbl_sign_up">SIGN UP</string>
+    <string name="lbl_sign_in">CONNEXION</string>
+    <string name="lbl_sign_up">INSCRIPTION</string>
     <string name="lbl_change_password">Change Password</string>
-    <string name="btn_link_to_register">New member to AfyaData? Register Now.</string>
-    <string name="btn_link_to_login">Already have account, LogIn .</string>
-    <string name="lbl_waiting">Please wait.....</string>
+    <string name="btn_link_to_register">Nouveau membre sur AfyaData ? S\'inscrire maintenant.</string>
+    <string name="btn_link_to_login">Vous avez déjà un compte, connectez-vous .</string>
+    <string name="lbl_waiting">Patientez.....</string>
     <string name="msg_nothing_display">Nothing to display</string>
     <string name="msg_no_feedback">No feedback at the moment</string>
     <string name="msg_no_campaign">No campaign at the moment</string>

@@ -8,11 +8,15 @@
         android:id="@+id/app_image"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginLeft="87dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/app_logo_white" />
+        android:src="@drawable/logofonblanc" />
 </RelativeLayout>

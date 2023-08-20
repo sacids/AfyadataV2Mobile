@@ -1,99 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_dark">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/app_logo"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/app_name"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/app_logo_white"/>
+        android:layout_marginTop="73dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logocouleur" />
 
     <LinearLayout
         android:id="@+id/viewContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/app_logo"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="9dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
             android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_red_background"
             android:orientation="horizontal"
             android:weightSum="1">
 
             <EditText
                 android:id="@+id/code"
-                android:layout_width="0dp"
+                android:layout_width="6dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.3"
                 android:maxLines="1"
-                android:padding="10dp"
+                android:padding="20dp"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="@dimen/text_large"
-                android:theme="@style/whiteEditTextStyle"/>
+
+
+                android:theme="@style/whiteEditTextStyle" />
+
+
+
 
             <EditText
                 android:id="@+id/mobile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="2dp"
                 android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="0dp"
                 android:layout_weight="0.7"
                 android:hint="@string/lbl_mobile"
                 android:inputType="phone"
                 android:maxLines="1"
-                android:padding="10dp"
+                android:padding="20dp"
                 android:textAppearance="@style/TextAppearance.FontPath"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="@dimen/text_large"
-                android:theme="@style/whiteEditTextStyle"/>
+                android:theme="@style/whiteEditTextStyle" />
         </LinearLayout>
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="50dp"
+
             android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_red_background"
             android:hint="@string/lbl_password"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:padding="10dp"
+            android:padding="20dp"
             android:textAppearance="@style/TextAppearance.FontPath"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="@dimen/text_large"
-            android:theme="@style/whiteEditTextStyle"/>
+            android:theme="@style/whiteEditTextStyle" />
 
         <!-- Login Button -->
         <Button
             android:id="@+id/button_login"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:background="@drawable/primary_dark_white_border_button"
+            android:background="@drawable/btnconnexionrouge"
             android:text="@string/lbl_sign_in"
             android:textAllCaps="true"
             android:textAppearance="@style/BoldTextAppearance.FontPath"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_large"/>
+            android:textSize="@dimen/text_large" />
 
         <TextView
             android:id="@+id/btn_link_register"
@@ -104,10 +121,10 @@
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAppearance="@style/BoldTextAppearance.FontPath"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_large"/>
+            android:textColor="@color/black"
+            android:textSize="12sp" />
     </LinearLayout>
-
+    <!--
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -116,5 +133,6 @@
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/app_name"
         android:src="@drawable/app_logo_mozambique"/>
+        -->
 </RelativeLayout>
 

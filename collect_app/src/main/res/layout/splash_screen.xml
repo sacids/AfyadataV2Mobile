@@ -2,47 +2,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_dark">
+    android:background="@drawable/backgroundimg">
 
-    <ImageView
-        android:id="@+id/app_logo"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/app_logo_white" />
 
-    <TextView
-        android:id="@+id/app_slogan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/app_logo"
-        android:gravity="center_horizontal"
-        android:text="@string/app_slogan"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/white"
-        android:textSize="@dimen/title_medium"
-        android:textStyle="bold" />
+  <ImageView
+      android:id="@+id/app_logo"
+      android:layout_width="200dp"
+      android:layout_height="150dp"
+      android:layout_centerInParent="true"
+      android:layout_marginTop="80dp"
+      android:src="@drawable/branding" />
 
-    <TextView
-        android:id="@+id/powered_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:padding="10dp"
-        android:text="@string/powered_by"
-        android:textAppearance="@style/TextAppearance.FontPath"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_medium"
-        android:textStyle="bold" />
-
+    <!--
+ <TextView
+    android:id="@+id/app_slogan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/app_logo"
+    android:gravity="center_horizontal"
+    android:text="@string/app_slogan"
+    android:textAppearance="@style/TextAppearance.FontPath"
+    android:textColor="@color/white"
+    android:textSize="@dimen/title_medium"
+    android:textStyle="bold" />
+    -->
+    <!--
+   <TextView
+      android:id="@+id/powered_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="0dp"
+      android:padding="10dp"
+      android:text="@string/powered_by"
+      android:textAppearance="@style/TextAppearance.FontPath"
+      android:textColor="@color/white"
+      android:textSize="@dimen/text_medium"
+      android:textStyle="bold" />
+ -->
     <ImageView
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="0dp"
-        android:layout_marginRight="5dp"
-        android:src="@drawable/app_logo_white" />
-</RelativeLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="39dp"
+        android:src="@drawable/logofonblanc" />
+
+
+   </RelativeLayout>

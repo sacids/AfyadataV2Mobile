@@ -35,7 +35,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:gravity="center"
-        android:horizontalSpacing="2dp"
+        android:horizontalSpacing="3dp"
         android:numColumns="auto_fit"
         android:scrollbars="none"
         android:stretchMode="columnWidth"
