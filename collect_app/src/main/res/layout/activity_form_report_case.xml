@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_grey">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/id_case_attended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_case_attended"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_large" />
+
+        <RadioGroup
+            android:id="@+id/idRGAttendCase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton android:id="@+id/rb_attended_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"/>
+
+            <RadioButton android:id="@+id/rb_attended_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/id_disease_detected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_detected_disease"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_large" />
+
+        <!-- Spinner Dropdown -->
+        <Spinner
+            android:id="@+id/sp_disease_detected"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:id="@+id/id_other_disease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_other_disease"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_large" />
+
+        <EditText
+            android:id="@+id/et_other_disease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_write_other_disease"
+            android:inputType="text"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/secondary_text"
+            android:textSize="@dimen/text_large"/>
+
+
+        <EditText
+            android:id="@+id/et_action_taken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/lbl_write_action_taken"
+            android:inputType="text|textMultiLine"
+            android:minHeight="100dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/secondary_text"
+            android:textSize="@dimen/text_large"/>
+
+        <TextView
+            android:id="@+id/tv_reported_emai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_reported_emai"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_large" />
+
+        <RadioGroup
+            android:id="@+id/idRGReported"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton android:id="@+id/rb_reported_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"/>
+
+            <RadioButton android:id="@+id/rb_reported_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnconnexionrouge"
+            android:text="@string/lbl_submit"
+            android:textAllCaps="true"
+            android:textAppearance="@style/BoldTextAppearance.FontPath"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large" />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -5,8 +5,12 @@
 
     <item
         android:id="@+id/action_form_details"
-        android:icon="@drawable/ic_description_white_48dp"
-        android:title="Form Details"
-        app:showAsAction="always" />
+        android:title="@string/nav_item_form_details"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_report_case"
+        android:title="@string/nav_item_report_case"
+        app:showAsAction="never" />
 
 </menu>

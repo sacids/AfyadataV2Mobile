@@ -538,11 +538,13 @@
     <string name="nav_item_forms">Campaign</string>
     <string name="nav_item_reports">Reports</string>
     <string name="nav_item_feedback">Feedback</string>
+    <string name="nav_item_chat">Chat</string>
     <string name="nav_item_tips">Health A-Z</string>
     <string name="nav_item_symptoms">Symptoms</string>
     <string name="nav_item_search">Search</string>
     <string name="nav_item_lab">Lab</string>
-    <string name="nav_item_form_details">Form Details</string>
+    <string name="nav_item_form_details">Preview details</string>
+    <string name="nav_item_report_case">Report Case</string>
     <string name="nav_item_settings">Settings</string>
     <string name="nav_item_language">Change Language</string>
     <string name="nav_item_logout">Sign Out</string>
@@ -554,6 +556,17 @@
     <string name="required_feedback">Feedback message required</string>
     <string name="success_feedback">Your feedback successfully sent.</string>
     <string name="error_feedback">Failed to send feedback, try again.</string>
+
+    <!-- Report case -->
+    <string name="lbl_case_attended">Case Attended</string>
+    <string name="lbl_detected_disease">Detected Disease</string>
+    <string name="lbl_select_disease">-- Select Disease --</string>
+    <string name="required_disease">Disease required</string>
+    <string name="lbl_other_disease">Other Disease(If any)</string>
+    <string name="lbl_write_other_disease">Write other disease</string>
+    <string name="lbl_write_action_taken">Write action taken</string>
+    <string name="lbl_reported_emai">Reported on e-Mai</string>
+    <string name="lbl_submit">Submit</string>
 
     <!--Laboratory issues-->
     <string name="lbl_lab">Laboratory</string>
@@ -619,5 +632,6 @@
     <string name="app_license">Open License</string>
     <string name="app_web">AfyaData Website</string>
     <string name="support_from">Created with support from</string>
+    <string name="title_activity_form_report_case">FormReportCaseActivity</string>
 
 </resources>

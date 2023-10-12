@@ -1,23 +1,28 @@
 package org.mozambique.app.afyadata.activities;
 
+
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
+
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -25,20 +30,19 @@ import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
 import org.json.JSONObject;
 import org.mozambique.app.afyadata.R;
-import org.mozambique.app.afyadata.adapters.ChatListAdapter;
-import org.mozambique.app.afyadata.adapters.model.Feedback;
+import org.mozambique.app.afyadata.adapters.model.Tips;
 import org.mozambique.app.afyadata.app.PrefManager;
 import org.mozambique.app.afyadata.database.AfyaDataV2DB;
 import org.mozambique.app.afyadata.preferences.PreferenceKeys;
 import org.mozambique.app.afyadata.web.RestClient;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+public class FormReportCaseActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-public class ChatListActivity extends AppCompatActivity {
-    static final String TAG = "Chat";
+    static final String TAG = "Report Case";
 
     Toolbar mToolbar;
     ActionBar mActionBar;
@@ -51,66 +55,65 @@ public class ChatListActivity extends AppCompatActivity {
     //model and db
     AfyaDataV2DB db;
 
+    //attend case
+    private RadioGroup rgAttendCase;
+    private RadioButton rbAttendCase;
+
+    //detected disease
+    private List<Tips> tipsList = new ArrayList<Tips>();
+    private Spinner spDisease;
+
+    //other disease AND action taken
+    private EditText etOtherDisease;
+    private EditText etActionTaken;
+
+    //reported on e-mai
+    private RadioGroup rgReported;
+    private RadioButton rbReported;
+
+
     //variable
     String mId;
-    String mTitle;
     String mFormId;
-    String mSender;
-    String mReply;
     String mInstanceId;
-
-    //listView
-    Feedback mFeedback = null;
-    ListView mListView;
-    List<Feedback> mFeedbackList = new ArrayList<Feedback>();
-    ChatListAdapter mChatListAdapter;
+    String mCaseAttended;
+    String diseaseId;
+    long mDiseaseId;
+    String mOtherDisease;
+    String mActionTaken;
+    String mReported;
 
     //string variable
     String mServerURL;
     String mUsername;
-    String mMessage;
-
-    //EditText
-    EditText mEditFeedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_list);
+        setContentView(R.layout.activity_form_report_case);
 
         mPrefManager = new PrefManager(mContext);
+        db = new AfyaDataV2DB(this);
 
         //get intent variable
         mId = getIntent().getStringExtra("id");
-        mTitle = getIntent().getStringExtra("title");
         mFormId = getIntent().getStringExtra("form_id");
-        mSender = getIntent().getStringExtra("sender");
-        mReply = getIntent().getStringExtra("reply_by");
         mInstanceId = getIntent().getStringExtra("instance_id");
 
-        mFeedback = new Feedback();
-        //mFeedback.setId(Long.parseLong(mId));
-        //mFeedback.setTitle(mTitle);
-
         setToolbar();
+        initViews();
 
-        db = new AfyaDataV2DB(this);
-        mFeedbackList = db.getFeedbackByInstanceId(mInstanceId);
-        mListView = (ListView) findViewById(R.id.list_feedback);
+        // Spinner click listener
+        spDisease.setOnItemSelectedListener(this);
 
-        if (mFeedbackList.size() > 0) {
-            mChatListAdapter = new ChatListAdapter(this, mFeedbackList);
-            mListView.setAdapter(mChatListAdapter);
-            mChatListAdapter.notifyDataSetChanged();
-        }
-
-        setAppViews();
+        // Loading spinner data from database
+        loadSpinnerData();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.chat_menu, menu);
+        getMenuInflater().inflate(R.menu.general_menu, menu);
 
         return true;
     }
@@ -124,14 +127,6 @@ public class ChatListActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.action_form_details:
-                showFormDetails();
-                break;
-
-            case R.id.action_report_case:
-                reportCase();
-                break;
-
             case android.R.id.home:
                 onBackPressed();
                 break;
@@ -144,7 +139,7 @@ public class ChatListActivity extends AppCompatActivity {
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_chat));
+        mToolbar.setTitle(getString(R.string.nav_item_report_case));
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -152,50 +147,78 @@ public class ChatListActivity extends AppCompatActivity {
     }
 
     //setAppViews
-    private void setAppViews() {
-        //For submitting mFeedback to server
-        mEditFeedback = (EditText) findViewById(R.id.write_feedback);
+    private void initViews() {
+        spDisease = (Spinner) findViewById(R.id.sp_disease_detected);
+        etOtherDisease = (EditText) findViewById(R.id.et_other_disease);
+        etActionTaken = (EditText) findViewById(R.id.et_action_taken);
+        rgAttendCase = (RadioGroup) findViewById(R.id.idRGAttendCase);
+        rgReported = (RadioGroup) findViewById(R.id.idRGReported);
 
         //onClick submit
-        findViewById(R.id.btn_submit_feedback).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMessage = mEditFeedback.getText().toString();
+                mActionTaken = etActionTaken.getText().toString();
+                mOtherDisease = etOtherDisease.getText().toString();
 
-                if (mMessage.length() == 0 || mMessage == null) {
+                if (mActionTaken.length() == 0 || mActionTaken == null) {
                     Toast.makeText(mContext, getString(R.string.required_feedback), Toast.LENGTH_SHORT).show();
                 } else {
-                    postFeedback();
+                    //todo: post data to the server
+                    postCase();
                 }
             }
         });
     }
 
-    //show form details
-    private void showFormDetails() {
-        //start activity
-        startActivity(new Intent(mContext, FormDetailsActivity.class)
-                .putExtra("id", mId)
-                .putExtra("title", mTitle)
-                .putExtra("form_id", mFormId)
-                .putExtra("sender", mSender)
-                .putExtra("reply_by", mReply)
-                .putExtra("instance_id", mInstanceId));
+
+    //load the spinner data from SQLite database
+    private void loadSpinnerData() {
+        tipsList = db.getTipsList();
+
+        //mListFrom
+        ArrayList<String> mFromList = new ArrayList<>();
+
+        mFromList.add(getString(R.string.lbl_select_disease));
+        for (Tips tip : tipsList) {
+            mFromList.add(tip.getTitle());
+        }
+        System.out.println("my diseaseList => " + mFromList);
+
+        // Creating mAdapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, mFromList);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data mAdapter to spinner
+        spDisease.setAdapter(dataAdapter);
     }
 
-    //report case
-    private void reportCase(){
-        //start new activity
-        startActivity(new Intent(mContext, FormReportCaseActivity.class)
-                .putExtra("form_id", mFormId)
-                .putExtra("instance_id", mInstanceId));
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position,
+                               long id) {
+        // On selecting a spinner item
+        diseaseId = parent.getItemAtPosition(position).toString();
 
+        //validation
+        if (diseaseId.equalsIgnoreCase(getString(R.string.lbl_select_disease))) {
+            Log.d(TAG, "Do nothing");
+        } else {
+            Tips tp = tipsList.get(position - 1);
+            mDiseaseId = tp.getId();
+        }
     }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
 
+    }
 
     //Function to post details to the server
-    private void postFeedback() {
+    private void postCase() {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
@@ -215,24 +238,17 @@ public class ChatListActivity extends AppCompatActivity {
         mProgressDialog.show();
 
         final RequestParams params = new RequestParams();
-        params.add("form_id", mFormId);
         params.add("username", mUsername);
-        params.add("message", mMessage);
+        params.add("form_id", mFormId);
         params.add("instance_id", mInstanceId);
-        params.add("sender", "user");
-        params.add("status", "pending");
+        params.add("case_attended", mCaseAttended);
+        params.add("disease_id", String.valueOf(mDiseaseId));
+        params.add("other_disease", mOtherDisease);
+        params.add("action_taken", mActionTaken);
+        params.add("reported", mReported);
 
-        //append chat at last
-        mFeedback.setFormId(mFormId);
-        mFeedback.setUserName(mUsername);
-        mFeedback.setMessage(mMessage);
-        mFeedback.setSender("user");
-        mFeedback.setInstanceId(mInstanceId);
-        mFeedback.setReplyBy(mPrefManager.getUserId());
-        mFeedback.setStatus("pending");
-
+        //post data to server
         RestClient.post(mServerURL + "/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -240,32 +256,22 @@ public class ChatListActivity extends AppCompatActivity {
 
                 Log.d(TAG, response.toString());
 
-                //update adapter
-                mFeedbackList.add(mFeedback);
-                mChatListAdapter.notifyDataSetChanged();
-                mEditFeedback.setText("");//clear mFeedback posted
-                Log.d(TAG, "Saving feedback success");
+                //clear form
+                etActionTaken.setText("");
+                Log.d(TAG, "Data posted to the server...");
 
                 Toast.makeText(mContext, getResources().getString(R.string.success_feedback), Toast.LENGTH_SHORT).show();
-//                //start new Activity
-//                finish();
-//                startActivity(new Intent(mContext, ChatListActivity.class)
-//                        .putExtra("feedback", Parcels.wrap(mFeedback)));
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 mProgressDialog.dismiss();
-                Toast.makeText(ChatListActivity.this, getResources().getString(R.string.error_feedback),
+                Toast.makeText(FormReportCaseActivity.this, getResources().getString(R.string.error_feedback),
                         Toast.LENGTH_SHORT).show();
 
             }
         });
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 }
