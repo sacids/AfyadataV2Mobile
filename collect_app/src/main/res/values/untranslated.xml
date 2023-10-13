@@ -14,7 +14,7 @@ the specific language governing permissions and limitations under the License. -
     <string name="protocol_google_sheets" translatable="false">google_sheets</string>
     <string name="protocol_other" translatable="false">other_protocol</string>
    <!-- <string name="default_server_url" translatable="false">http://192.168.43.31/sacids/afyadata</string>-->
-    <string name="default_server_url" translatable="false">https://e-combus.com/</string>
+    <string name="default_server_url" translatable="false">http://142.93.198.244</string>
     <string name="default_odk_formlist" translatable="false">/formList</string>
     <string name="default_odk_submission" translatable="false">/submission</string>
     <string name="app_url" translatable="false">http://opendatakit.org</string>
