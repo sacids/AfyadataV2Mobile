@@ -44,6 +44,8 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 /**
  * Activity to upload completed forms.
  *
@@ -78,6 +80,7 @@ public class InstanceUploaderActivity extends AppCompatActivity implements Insta
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.i("onCreate: %s", ((savedInstanceState == null) ? "creating" : "re-initializing"));
+        loadLanguage(this);
 
         alertMsg = getString(R.string.please_wait);
         alertShowing = false;

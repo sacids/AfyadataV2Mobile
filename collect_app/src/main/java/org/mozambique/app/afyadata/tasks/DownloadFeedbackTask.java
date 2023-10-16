@@ -56,6 +56,7 @@ public class DownloadFeedbackTask extends IntentService {
     private static final String TAG_CHR_NAME = "chr_name";
     private static final String TAG_DATE_CREATED = "date_created";
     private static final String TAG_STATUS = "status";
+    private static final String TAG_ATTEND_STATUS = "attend_status";
     private static final String TAG_REPLY_BY = "reply_by";
 
 
@@ -119,6 +120,7 @@ public class DownloadFeedbackTask extends IntentService {
                                 fb.setUserName(obj.getString(TAG_USER));
                                 fb.setDateCreated(obj.getString(TAG_DATE_CREATED));
                                 fb.setStatus(obj.getString(TAG_STATUS));
+                                fb.setAttendStatus(obj.getString(TAG_ATTEND_STATUS));
                             }
 
                             //Notification Message

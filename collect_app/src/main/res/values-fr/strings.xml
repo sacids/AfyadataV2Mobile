@@ -508,8 +508,12 @@
   <string name="lang_english">English</string>
   <string name="lang_french">French</string>
   <string name="lang_portuguese">Portuguese</string>
-  <string name="btn_change_language">Changer de langue</string>
-  <string name="lbl_choose_language">Changer de langue</string>
+  <string name="lang_khmer">Khmer</string>
+  <string name="lang_chinese">Chinese</string>
+  <string name="lang_thai">Thai</string>
+  <string name="lang_vietnamese">Vietnamese</string>
+  <string name="btn_change_language">Change</string>
+  <string name="lbl_choose_language">Choisissez une langue</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -539,6 +543,17 @@
   <string name="success_feedback">Vos commentaires ont été envoyés avec succès.</string>
   <string name="error_feedback">Impossible d\'envoyer des commentaires, réessayez.</string>
 
+  <!-- Cas de rapport -->
+  <string name="lbl_case_information">Notification de cas</string>
+  <string name="lbl_case_attended">Cas pris en charge</string>
+  <string name="lbl_detected_disease">Maladie détectée</string>
+  <string name="lbl_select_disease">-- Sélectionnez une maladie --</string>
+  <string name="required_disease">Maladie requise</string>
+  <string name="lbl_other_disease">Autre maladie (si applicable)</string>
+  <string name="lbl_write_other_disease">Écrire une autre maladie</string>
+  <string name="lbl_write_action_taken">Écrire les mesures prises</string>
+  <string name="lbl_reported_emai">Rapporté par e-mail</string>
+  <string name="lbl_submit">Soumettre</string>
 
   <!--Laboratory issues-->
   <string name="lbl_lab">Laboratoire</string>
@@ -572,11 +587,11 @@
   <string name="lbl_valid_password_required">Le mot de passe doit comporter 8 caractères</string>
   <string name="lbl_password_confirm_required">La confirmation du mot de passe est requise</string>
   <string name="lbl_password_match_required">Le mot de passe ne correspond pas</string>
-  <string name="lbl_sign_in">LogIn</string>
-  <string name="lbl_sign_up">REGISTRE</string>
-  <string name="btn_link_to_register">Nouveau membre à AfyaData? Registre À présent.</string>
-  <string name="btn_link_to_login">Vous avez déjà un compte, LogIn .</string>
-  <string name="lbl_waiting">S\'il vous plaît, attendez.....</string>
+  <string name="lbl_sign_in">CONNEXION</string>
+  <string name="lbl_sign_up">INSCRIPTION</string>
+  <string name="btn_link_to_register">Nouveau membre sur AfyaData ? S\'inscrire maintenant.</string>
+  <string name="btn_link_to_login">Vous avez déjà un compte, connectez-vous .</string>
+  <string name="lbl_waiting">Patientez.....</string>
   <string name="msg_nothing_display">Rien à afficher</string>
   <string name="msg_no_feedback">Aucun commentaire pour le moment</string>
   <string name="msg_no_campaign">Aucune campagne pour le moment</string>
@@ -589,8 +604,8 @@
 
 
   <!-- About AfyaData -->
-  <string name="lbl_about">Afyadata Manager is a tool that analyzes all the data collected from the field and intelligently
-        sends feedback to the data collector and sends an alert to higher authority officials if any abnormal pattern is discovered
-        in the data collected, this tool provides a graphical user interface for involved health stakeholders to analyze and visualizing
-        data collected via Afyadata mobile app for android.</string>
+  <string name="lbl_about">Afyadata est un outil qui analyse toutes les données collectées sur le terrain et envoie intelligemment des
+      commentaires au collecteur de données et alerte les responsables de l\'autorité supérieure en cas de détection d\'un modèle anormal
+      dans les données collectées. Cet outil fournit une interface utilisateur graphique aux parties prenantes de la santé impliquées pour
+      analyser et visualiser les données collectées via l\'application mobile Afyadata pour Android.</string>
 </resources>

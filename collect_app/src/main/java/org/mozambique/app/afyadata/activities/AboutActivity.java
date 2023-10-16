@@ -14,6 +14,8 @@ import org.mozambique.app.afyadata.R;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class AboutActivity extends AppCompatActivity {
 
     private static final String TAG = "About";
@@ -24,6 +26,7 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(AboutActivity.this);
         setContentView(R.layout.activity_about);
 
         setViews();

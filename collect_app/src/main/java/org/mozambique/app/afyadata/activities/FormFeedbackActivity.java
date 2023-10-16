@@ -40,6 +40,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class FormFeedbackActivity extends AppCompatActivity {
 
     private static final String TAG = "FormFeedback";
@@ -80,6 +82,7 @@ public class FormFeedbackActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(FormFeedbackActivity.this);
         setContentView(R.layout.activity_form_feedback);
 
         ConnectivityManager connectivityManager =

@@ -36,6 +36,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class FormDetailsActivity extends AppCompatActivity {
 
     static String TAG = "Feedback";
@@ -72,6 +74,7 @@ public class FormDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(FormDetailsActivity.this);
         setContentView(R.layout.activity_form_details);
 
         ConnectivityManager connectivityManager =

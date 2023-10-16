@@ -9,11 +9,15 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.mozambique.app.afyadata.R;
+import org.mozambique.app.afyadata.utilities.ImageLoader;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
 
 public class HeathTipsActivity extends AppCompatActivity {
 
@@ -23,15 +27,19 @@ public class HeathTipsActivity extends AppCompatActivity {
 
     String mId;
     String mTitle;
+    String mPhoto;
     String mDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(this);
+
         setContentView(R.layout.activity_heath_tips);
 
         mId = getIntent().getStringExtra("id");
         mTitle = getIntent().getStringExtra("title");
+        mPhoto = getIntent().getStringExtra("photo");
         mDescription = getIntent().getStringExtra("description");
 
         //tp = (Tips) Parcels.unwrap(getIntent().getParcelableExtra("tips"));
@@ -77,6 +85,7 @@ public class HeathTipsActivity extends AppCompatActivity {
     public void setViews() {
         TextView title = (TextView) findViewById(R.id.title);
         TextView description = (TextView) findViewById(R.id.description);
+        ImageView photo = (ImageView) findViewById(R.id.photo);
 
         title.setText(mTitle);
 
@@ -86,6 +95,12 @@ public class HeathTipsActivity extends AppCompatActivity {
         } else {
             description.setText(Html.fromHtml(mDescription)); // or for older api
         }
+
+        // Loader image - will be shown before loading image
+        int loader = R.drawable.cow;
+
+        ImageLoader imgLoader = new ImageLoader(this);
+        imgLoader.displayImage(mPhoto, loader, photo);
     }
 
     @Override

@@ -126,6 +126,7 @@ import timber.log.Timber;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
 import static org.mozambique.app.afyadata.utilities.ApplicationConstants.XML_OPENROSA_NAMESPACE;
 
 
@@ -259,6 +260,7 @@ public class FormEntryActivity extends AppCompatActivity implements AnimationLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(this);
 
         // must be at the beginning of any activity that can be called from an
         // external intent

@@ -31,6 +31,8 @@ import org.mozambique.app.afyadata.web.RestClient;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "Register";
@@ -63,10 +65,12 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String KEY_USER_ID = "uid";
     private static final String KEY_FIRST_NAME = "first_name";
     private static final String KEY_LAST_NAME = "last_name";
+    private static final String KEY_GROUP = "group";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(RegisterActivity.this);
         setContentView(R.layout.activity_register);
 
         prefManager = new PrefManager(this);
@@ -176,6 +180,7 @@ public class RegisterActivity extends AppCompatActivity {
                         String username = obj.getString(PreferenceKeys.KEY_USERNAME);
                         String firstName = obj.getString(KEY_FIRST_NAME);
                         String lastName = obj.getString(KEY_LAST_NAME);
+                        String groupName    = obj.getString(KEY_GROUP);
 
                         //login session
                         prefManager.createLogin(userId);
@@ -183,6 +188,7 @@ public class RegisterActivity extends AppCompatActivity {
                         //set FirstName and LastName
                         prefManager.setFirstName(firstName);
                         prefManager.setLastName(lastName);
+                        prefManager.setGroup(groupName);
 
                         //save variables to shared Preference
                         SharedPreferences.Editor editor = mSharedPreferences.edit();

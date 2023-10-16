@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,8 @@ public class FrontPageActivity extends AppCompatActivity {
 
         loadLanguage(FrontPageActivity.this);
 
+        Log.d("debug", "");
+
         setContentView(R.layout.activity_front_page);
         mSharedPreferences = getSharedPreferences(Preferences.AFYA_DATA, MODE_PRIVATE);
 
@@ -46,9 +49,9 @@ public class FrontPageActivity extends AppCompatActivity {
         //Available Languages
         mLanguage = new String[]{
                 getString(R.string.lbl_choose_language),
+                getString(R.string.lang_french),
                 getString(R.string.lang_english),
                 getString(R.string.lang_swahili),
-                getString(R.string.lang_french),
                 getString(R.string.lang_portuguese),
                 getString(R.string.lang_thai),
                 getString(R.string.lang_vietnamese),
@@ -128,7 +131,7 @@ public class FrontPageActivity extends AppCompatActivity {
                                 break;
 
                             default:
-                                setAppLanguage(_activity, AfyaDataLanguages.PORTUGUESE.getLanguage());
+                                setAppLanguage(_activity, AfyaDataLanguages.FRENCH.getLanguage());
                                 break;
                         }
                         recreate();

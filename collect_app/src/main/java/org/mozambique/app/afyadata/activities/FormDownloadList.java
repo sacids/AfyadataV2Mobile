@@ -64,6 +64,8 @@ import java.util.Set;
 
 import timber.log.Timber;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 /**
  * Responsible for displaying, adding and deleting all the valid forms in the forms directory. One
  * caveat. If the server requires authentication, a dialog will pop up asking when you request the
@@ -135,6 +137,7 @@ public class FormDownloadList extends FormListActivity implements FormListDownlo
     @SuppressWarnings("unchecked")
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        loadLanguage(this);
         setContentView(R.layout.remote_file_manage_list);
         super.onCreate(savedInstanceState);
         setTitle(getString(R.string.get_forms));

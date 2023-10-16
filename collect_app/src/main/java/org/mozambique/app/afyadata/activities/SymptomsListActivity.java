@@ -39,6 +39,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class SymptomsListActivity extends AppCompatActivity {
 
     private static final String TAG = "Symptoms";
@@ -60,11 +62,13 @@ public class SymptomsListActivity extends AppCompatActivity {
 
     private static final String TAG_ID = "id";
     private static final String TAG_TITLE = "title";
+    private static final String TAG_PHOTO = "photo";
     private static final String TAG_DESCRIPTION = "description";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(SymptomsListActivity.this);
         setContentView(R.layout.activity_symptoms_list);
 
         setToolbar();
@@ -104,6 +108,7 @@ public class SymptomsListActivity extends AppCompatActivity {
                 startActivity(new Intent(context, SymptomActivity.class)
                         .putExtra("id", symptom.getId())
                         .putExtra("title", symptom.getTitle())
+                        .putExtra("photo", symptom.getPhoto())
                         .putExtra("description", symptom.getDescription()));
             }
         });
@@ -183,6 +188,7 @@ public class SymptomsListActivity extends AppCompatActivity {
                                 Symptom symptom = new Symptom();
                                 symptom.setId(obj.getInt(TAG_ID));
                                 symptom.setTitle(obj.getString(TAG_TITLE));
+                                symptom.setPhoto(obj.getString(TAG_PHOTO));
                                 symptom.setDescription(obj.getString(TAG_DESCRIPTION));
 
                                 if (!db.isGlossaryExist(symptom)) {

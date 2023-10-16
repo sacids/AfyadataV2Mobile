@@ -1,6 +1,7 @@
 package org.mozambique.app.afyadata.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -51,6 +52,18 @@ public class FeedbackListAdapter extends BaseAdapter {
 
         TextView form_name = (TextView) convertView.findViewById(R.id.form_name);
         form_name.setText(feedback.getTitle());
+
+        TextView attend_status = (TextView) convertView.findViewById(R.id.attend_status);
+
+        if(feedback.getAttendStatus().equalsIgnoreCase("Pending")){
+            attend_status.setText(R.string.lbl_pending);
+            attend_status.setTextColor(Color.RED);
+
+        }else if(feedback.getAttendStatus().equalsIgnoreCase("Attended")){
+            attend_status.setText(R.string.lbl_attended);
+            attend_status.setTextColor(Color.GREEN);
+        }
+
 
         TextView message = (TextView) convertView.findViewById(R.id.message);
 

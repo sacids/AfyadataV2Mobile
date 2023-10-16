@@ -34,11 +34,14 @@ import org.mozambique.app.afyadata.adapters.model.Tips;
 import org.mozambique.app.afyadata.app.PrefManager;
 import org.mozambique.app.afyadata.database.AfyaDataV2DB;
 import org.mozambique.app.afyadata.preferences.PreferenceKeys;
+import org.mozambique.app.afyadata.tasks.GPSTracker;
 import org.mozambique.app.afyadata.web.RestClient;
 
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
 
 public class FormReportCaseActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -87,9 +90,16 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
     String mServerURL;
     String mUsername;
 
+    double mLatitude;
+    double mLongitude;
+
+    // GPSTracker class
+    GPSTracker gps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(FormReportCaseActivity.this);
         setContentView(R.layout.activity_form_report_case);
 
         mPrefManager = new PrefManager(mContext);
@@ -108,6 +118,25 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
 
         // Loading spinner data from database
         loadSpinnerData();
+
+        //capturing gps
+        gps = new GPSTracker(this);
+
+        // check if GPS enabled
+        if(gps.canGetLocation()){
+            mLatitude = gps.getLatitude();
+            mLongitude = gps.getLongitude();
+
+            Log.d(TAG, "latitude => " + mLatitude);
+            Log.d(TAG, "longitude => " + mLongitude);
+            // \n is for new line
+            //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+        }else{
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+        }
     }
 
     @Override
@@ -139,7 +168,7 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
     //setToolbar
     private void setToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle(getString(R.string.nav_item_report_case));
+        mToolbar.setTitle(getString(R.string.lbl_case_information));
         setSupportActionBar(mToolbar);
         mActionBar = getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
@@ -160,6 +189,16 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
             public void onClick(View v) {
                 mActionTaken = etActionTaken.getText().toString();
                 mOtherDisease = etOtherDisease.getText().toString();
+
+                // case attended
+                int caseId = rgAttendCase.getCheckedRadioButtonId();
+                rbAttendCase = (RadioButton) findViewById(caseId);
+                mCaseAttended = rbAttendCase.getText().toString();
+
+                //reported
+                int reportId = rgReported.getCheckedRadioButtonId();
+                rbReported = (RadioButton) findViewById(reportId);
+                mReported = rbReported.getText().toString();
 
                 if (mActionTaken.length() == 0 || mActionTaken == null) {
                     Toast.makeText(mContext, getString(R.string.required_feedback), Toast.LENGTH_SHORT).show();
@@ -237,6 +276,10 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
         mProgressDialog.setMessage(getResources().getString(R.string.lbl_waiting));
         mProgressDialog.show();
 
+        Log.d(TAG, "case attended => " + mCaseAttended);
+        Log.d(TAG, "reported => " + mReported);
+        Log.d(TAG, "action taken => " + mActionTaken);
+
         final RequestParams params = new RequestParams();
         params.add("username", mUsername);
         params.add("form_id", mFormId);
@@ -246,9 +289,11 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
         params.add("other_disease", mOtherDisease);
         params.add("action_taken", mActionTaken);
         params.add("reported", mReported);
+        params.add("latitude", String.valueOf(mLatitude));
+        params.add("longitude", String.valueOf(mLongitude));
 
         //post data to server
-        RestClient.post(mServerURL + "/api/v3/feedback/send", params, new JsonHttpResponseHandler() {
+        RestClient.post(mServerURL + "/api/v3/feedback/case_information", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);

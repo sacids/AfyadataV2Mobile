@@ -33,6 +33,7 @@ public class PrefManager {
     private static final String KEY_FIRST_NAME = "first_name";
     private static final String KEY_LAST_NAME = "last_name";
     private static final String KEY_USER_ID = "user_id";
+    private static final String KEY_GROUP = "group";
 
 
     public PrefManager(Context context) {
@@ -59,6 +60,16 @@ public class PrefManager {
 
     public String getUserId() {
         return pref.getString(KEY_USER_ID, null);
+    }
+
+    //group
+    public void setGroup(String group) {
+        editor.putString(KEY_GROUP, group);
+        editor.commit();
+    }
+
+    public String getGroup() {
+        return pref.getString(KEY_GROUP, null);
     }
 
     //Username
@@ -129,6 +140,8 @@ public class PrefManager {
         profile.put("first_name", pref.getString(KEY_FIRST_NAME, null));
         profile.put("last_name", pref.getString(KEY_LAST_NAME, null));
         profile.put("user_id", pref.getString(KEY_USER_ID, null));
+        profile.put("group", pref.getString(KEY_GROUP, null));
+
         return profile;
     }
 }

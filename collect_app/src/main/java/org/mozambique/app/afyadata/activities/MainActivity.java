@@ -46,6 +46,8 @@ import org.mozambique.app.afyadata.web.RestClient;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class MainActivity extends AppCompatActivity {
 
     private static String TAG = "Main";
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(MainActivity.this);
         setContentView(R.layout.activity_main);
 
         connectivityManager =

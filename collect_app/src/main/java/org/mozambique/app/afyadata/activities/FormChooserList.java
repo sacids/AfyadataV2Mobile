@@ -39,6 +39,8 @@ import org.mozambique.app.afyadata.utilities.VersionHidingCursorAdapter;
 import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 /**
  * Responsible for displaying all the valid forms in the forms directory. Stores the path to
  * selected form for use by {@link MainMenuActivity}.
@@ -56,7 +58,7 @@ public class FormChooserList extends FormListActivity implements DiskSyncListene
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        loadLanguage(this);
         // must be at the beginning of any activity that can be called from an external intent
         try {
             Collect.createODKDirs();

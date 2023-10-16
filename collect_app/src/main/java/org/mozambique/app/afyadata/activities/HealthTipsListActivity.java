@@ -39,6 +39,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class HealthTipsListActivity extends AppCompatActivity {
 
     static final String TAG = "Health Tips";
@@ -60,11 +62,13 @@ public class HealthTipsListActivity extends AppCompatActivity {
 
     private static final String TAG_ID = "id";
     private static final String TAG_TITLE = "title";
+    private static final String TAG_PHOTO = "photo";
     private static final String TAG_DESCRIPTION = "description";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(HealthTipsListActivity.this);
         setContentView(R.layout.activity_health_tips_list);
 
         setToolbar();
@@ -105,6 +109,7 @@ public class HealthTipsListActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, HeathTipsActivity.class);
                 intent.putExtra("id", tips.getId());
                 intent.putExtra("title", tips.getTitle());
+                intent.putExtra("photo", tips.getPhoto());
                 intent.putExtra("description", tips.getDescription());
                 startActivity(intent);
             }
@@ -184,6 +189,7 @@ public class HealthTipsListActivity extends AppCompatActivity {
                                 Tips tp = new Tips();
                                 tp.setId(obj.getInt(TAG_ID));
                                 tp.setTitle(obj.getString(TAG_TITLE));
+                                tp.setPhoto(obj.getString(TAG_PHOTO));
                                 tp.setDescription(obj.getString(TAG_DESCRIPTION));
 
                                 if (!db.isTipExist(tp)) {

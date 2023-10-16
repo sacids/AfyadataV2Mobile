@@ -51,6 +51,8 @@ import java.util.List;
 
 import timber.log.Timber;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 /**
  * Responsible for displaying all the valid forms in the forms directory. Stores
  * the path to selected form for use by {@link MainMenuActivity}.
@@ -80,6 +82,7 @@ public class InstanceUploaderList extends InstanceListActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Timber.i("onCreate");
+        loadLanguage(this);
         setContentView(R.layout.instance_uploader_list);
         super.onCreate(savedInstanceState);
 

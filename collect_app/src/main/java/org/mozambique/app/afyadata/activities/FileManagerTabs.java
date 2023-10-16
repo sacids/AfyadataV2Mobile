@@ -34,6 +34,8 @@ import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class FileManagerTabs extends AppCompatActivity {
 
     private DataManagerList dataManagerList = DataManagerList.newInstance();
@@ -48,6 +50,7 @@ public class FileManagerTabs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(this);
 
         setContentView(R.layout.file_manager_layout);
         initToolbar();

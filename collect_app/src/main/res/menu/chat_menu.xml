@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/action_report_case"
-        android:title="@string/nav_item_report_case"
+        android:title="@string/lbl_case_information"
         app:showAsAction="never" />
 
 </menu>

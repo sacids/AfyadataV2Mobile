@@ -7,6 +7,7 @@ package org.mozambique.app.afyadata.adapters.model;
 public class Symptom {
     public long id;
     public String title;
+    public String photo;
     public String description;
 
     public Symptom() {
@@ -26,6 +27,14 @@ public class Symptom {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getDescription() {

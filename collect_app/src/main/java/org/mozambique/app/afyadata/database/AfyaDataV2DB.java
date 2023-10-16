@@ -29,7 +29,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     // Database Name
     private static final String DATABASE_NAME = "afyadata.db";
@@ -46,6 +46,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
     private static final String KEY_CHR_NAME = "chr_name";
     private static final String KEY_DATE_CREATED = "date_created";
     private static final String KEY_FEEDBACK_STATUS = "status";
+    private static final String KEY_ATTEND_STATUS = "attend_status";
     private static final String KEY_FEEDBACK_REPLY_BY = "reply_by";
 
     //Form details table
@@ -69,12 +70,14 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
     private static final String TABLE_OHKR_TIPS = "ohkr_tips";
     private static final String KEY_TIP_ID = "id";
     private static final String KEY_TIP_TITLE = "title";
+    private static final String KEY_TIP_PHOTO = "photo";
     private static final String KEY_TIP_DESCRIPTION = "description";
 
     //OHKR Symptoms List
     private static final String TABLE_OHKR_SYMPTOMS = "ohkr_symptoms";
     private static final String KEY_SYMPTOM_ID = "id";
     private static final String KEY_SYMPTOM_TITLE = "title";
+    private static final String KEY_SYMPTOM_PHOTO = "photo";
     private static final String KEY_SYMPTOM_DESCRIPTION = "description";
 
     //searchable form
@@ -120,6 +123,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 + KEY_CHR_NAME + " TEXT,"
                 + KEY_DATE_CREATED + " TEXT,"
                 + KEY_FEEDBACK_STATUS + " TEXT,"
+                + KEY_ATTEND_STATUS + " TEXT,"
                 + KEY_FEEDBACK_REPLY_BY + " TEXT" + ")";
 
         //Create form_details table
@@ -146,6 +150,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 + TABLE_OHKR_TIPS + "("
                 + KEY_TIP_ID + " INTEGER PRIMARY KEY,"
                 + KEY_TIP_TITLE + " TEXT,"
+                + KEY_TIP_PHOTO + " TEXT,"
                 + KEY_TIP_DESCRIPTION + " TEXT" + ")";
 
         //Create symptoms table
@@ -153,6 +158,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 + TABLE_OHKR_SYMPTOMS + "("
                 + KEY_SYMPTOM_ID + " INTEGER PRIMARY KEY," // and auto increment will be handled with
                 + KEY_SYMPTOM_TITLE + " TEXT,"
+                + KEY_SYMPTOM_PHOTO + " TEXT,"
                 + KEY_SYMPTOM_DESCRIPTION + " TEXT" + ")";
 
         //Create searchable_form table
@@ -227,6 +233,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         values.put(KEY_CHR_NAME, feedback.getChrName());
         values.put(KEY_DATE_CREATED, feedback.getDateCreated());
         values.put(KEY_FEEDBACK_STATUS, feedback.getStatus());
+        values.put(KEY_ATTEND_STATUS, feedback.getAttendStatus());
         values.put(KEY_FEEDBACK_REPLY_BY, feedback.getReplyBy());
 
         // Inserting Row
@@ -259,6 +266,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 feedback.setChrName(cursor.getString(cursor.getColumnIndex(KEY_CHR_NAME)));
                 feedback.setDateCreated(cursor.getString(cursor.getColumnIndex(KEY_DATE_CREATED)));
                 feedback.setStatus(cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_STATUS)));
+                feedback.setAttendStatus(cursor.getString(cursor.getColumnIndex(KEY_ATTEND_STATUS)));
                 feedback.setReplyBy(cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_REPLY_BY)));
 
                 // Adding feedback to list
@@ -294,6 +302,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 feedback.setChrName(cursor.getString(cursor.getColumnIndex(KEY_CHR_NAME)));
                 feedback.setDateCreated(cursor.getString(cursor.getColumnIndex(KEY_DATE_CREATED)));
                 feedback.setStatus(cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_STATUS)));
+                feedback.setAttendStatus(cursor.getString(cursor.getColumnIndex(KEY_ATTEND_STATUS)));
                 feedback.setReplyBy(cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_REPLY_BY)));
 
                 // Adding feedback to list
@@ -311,7 +320,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(TABLE_FEEDBACK, new String[]{KEY_FEEDBACK_ID,
                         KEY_FEEDBACK_FORM_ID, KEY_INSTANCE_ID, KEY_FORM_TITLE, KEY_MESSAGE, KEY_SENDER, KEY_USER,
-                        KEY_CHR_NAME, KEY_DATE_CREATED, KEY_FEEDBACK_STATUS, KEY_FEEDBACK_REPLY_BY},
+                        KEY_CHR_NAME, KEY_DATE_CREATED, KEY_FEEDBACK_STATUS, KEY_ATTEND_STATUS, KEY_FEEDBACK_REPLY_BY},
                 KEY_FEEDBACK_ID + "=?", new String[]{String.valueOf(feedback.getId())}, null, null, null, null);
 
         int count = cursor.getCount();
@@ -372,6 +381,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                     cursor.getString(cursor.getColumnIndex(KEY_CHR_NAME)),
                     cursor.getString(cursor.getColumnIndex(KEY_DATE_CREATED)),
                     cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_STATUS)),
+                    cursor.getString(cursor.getColumnIndex(KEY_ATTEND_STATUS)),
                     cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_REPLY_BY)));
         }
 
@@ -547,6 +557,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_TIP_ID, tp.getId());
         values.put(KEY_TIP_TITLE, tp.getTitle());
+        values.put(KEY_TIP_PHOTO, tp.getPhoto());
         values.put(KEY_TIP_DESCRIPTION, tp.getDescription());
 
         // Inserting Row
@@ -571,6 +582,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 Tips tp = new Tips();
                 tp.setId(Long.parseLong(cursor.getString(cursor.getColumnIndex(KEY_TIP_ID))));
                 tp.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TIP_TITLE)));
+                tp.setPhoto(cursor.getString(cursor.getColumnIndex(KEY_TIP_PHOTO)));
                 tp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_TIP_DESCRIPTION)));
 
                 // Adding tip to list
@@ -586,7 +598,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_OHKR_TIPS, new String[]{KEY_TIP_ID,
-                        KEY_TIP_TITLE, KEY_TIP_DESCRIPTION}, KEY_TIP_ID + "=?",
+                        KEY_TIP_TITLE, KEY_TIP_PHOTO, KEY_TIP_DESCRIPTION}, KEY_TIP_ID + "=?",
                 new String[]{String.valueOf(tp.getId())}, null, null, null, null);
 
         int count = cursor.getCount();
@@ -599,6 +611,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_TIP_TITLE, tp.getTitle());
+        values.put(KEY_TIP_PHOTO, tp.getPhoto());
         values.put(KEY_TIP_DESCRIPTION, tp.getDescription());
 
         db.update(TABLE_OHKR_TIPS, values,
@@ -615,6 +628,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_SYMPTOM_ID, symptom.getId());
         values.put(KEY_SYMPTOM_TITLE, symptom.getTitle());
+        values.put(KEY_SYMPTOM_PHOTO, symptom.getPhoto());
         values.put(KEY_SYMPTOM_DESCRIPTION, symptom.getDescription());
 
         // Inserting Row
@@ -639,6 +653,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
                 Symptom symptom = new Symptom();
                 symptom.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_SYMPTOM_ID))));
                 symptom.setTitle(cursor.getString(cursor.getColumnIndex(KEY_SYMPTOM_TITLE)));
+                symptom.setPhoto(cursor.getString(cursor.getColumnIndex(KEY_SYMPTOM_PHOTO)));
                 symptom.setDescription(cursor.getString(cursor.getColumnIndex(KEY_SYMPTOM_DESCRIPTION)));
 
                 // Adding glossary to list
@@ -654,7 +669,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_OHKR_SYMPTOMS, new String[]{KEY_SYMPTOM_ID,
-                        KEY_SYMPTOM_TITLE, KEY_SYMPTOM_DESCRIPTION}, KEY_SYMPTOM_ID + "=?",
+                        KEY_SYMPTOM_TITLE, KEY_SYMPTOM_PHOTO, KEY_SYMPTOM_DESCRIPTION}, KEY_SYMPTOM_ID + "=?",
                 new String[]{String.valueOf(symptom.getId())}, null, null, null, null);
 
         int count = cursor.getCount();
@@ -668,6 +683,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(KEY_SYMPTOM_TITLE, symptom.getTitle());
+        values.put(KEY_SYMPTOM_PHOTO, symptom.getPhoto());
         values.put(KEY_SYMPTOM_DESCRIPTION, symptom.getDescription());
 
         db.update(TABLE_OHKR_SYMPTOMS, values,

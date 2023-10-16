@@ -42,6 +42,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class FeedbackListActivity extends AppCompatActivity {
 
     static String TAG = "Feedback";
@@ -74,12 +76,14 @@ public class FeedbackListActivity extends AppCompatActivity {
     private static final String TAG_CHR_NAME = "chr_name";
     private static final String TAG_DATE_CREATED = "date_created";
     private static final String TAG_STATUS = "status";
+    private static final String TAG_ATTEND_STATUS = "attend_status";
     private static final String TAG_REPLY_BY = "reply_by";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(FeedbackListActivity.this);
         setContentView(R.layout.activity_feedback_list);
 
         setToolbar();
@@ -265,6 +269,7 @@ public class FeedbackListActivity extends AppCompatActivity {
                                 fb.setChrName(obj.getString(TAG_CHR_NAME));
                                 fb.setDateCreated(obj.getString(TAG_DATE_CREATED));
                                 fb.setStatus(obj.getString(TAG_STATUS));
+                                fb.setAttendStatus(obj.getString(TAG_ATTEND_STATUS));
                                 fb.setReplyBy(obj.getString(TAG_REPLY_BY));
 
                                 if (!db.isFeedbackExist(fb)) {

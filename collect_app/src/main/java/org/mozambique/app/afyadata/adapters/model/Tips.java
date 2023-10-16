@@ -7,6 +7,7 @@ package org.mozambique.app.afyadata.adapters.model;
 public class Tips {
     private long id;
     private String title;
+    private String photo;
     private String description;
 
     public Tips() {
@@ -26,6 +27,14 @@ public class Tips {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getDescription() {

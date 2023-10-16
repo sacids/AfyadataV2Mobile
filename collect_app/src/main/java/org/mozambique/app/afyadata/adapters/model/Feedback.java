@@ -15,12 +15,13 @@ public class Feedback {
     private String chrName;
     private String dateCreated;
     private String status;
+    private String attendStatus;
     private String replyBy;
 
     public Feedback() {
     }
 
-    public Feedback(long id, String formId, String instanceId, String title, String message, String sender, String userName, String chrName, String dateCreated, String status, String replyBy) {
+    public Feedback(long id, String formId, String instanceId, String title, String message, String sender, String userName, String chrName, String dateCreated, String status, String attendStatus, String replyBy) {
         this.id = id;
         this.formId = formId;
         this.instanceId = instanceId;
@@ -31,6 +32,7 @@ public class Feedback {
         this.chrName = chrName;
         this.dateCreated = dateCreated;
         this.status = status;
+        this.attendStatus = attendStatus;
         this.replyBy = replyBy;
     }
 
@@ -113,6 +115,10 @@ public class Feedback {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getAttendStatus(){ return  attendStatus;}
+
+    public void setAttendStatus(String attendStatus){ this.attendStatus= attendStatus; }
 
     public String getReplyBy() {
         return replyBy;

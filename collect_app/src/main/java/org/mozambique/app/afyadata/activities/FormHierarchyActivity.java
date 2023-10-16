@@ -48,6 +48,8 @@ import java.util.List;
 
 import timber.log.Timber;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class FormHierarchyActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private static final int CHILD = 1;
@@ -71,6 +73,7 @@ public class FormHierarchyActivity extends AppCompatActivity implements AdapterV
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(this);
         setContentView(R.layout.hierarchy_layout);
 
         listView = (ListView) findViewById(android.R.id.list);

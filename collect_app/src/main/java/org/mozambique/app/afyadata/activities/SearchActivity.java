@@ -42,6 +42,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class SearchActivity extends AppCompatActivity {
 
     private static final String TAG = "Search";
@@ -77,6 +79,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(SearchActivity.this);
         setContentView(R.layout.activity_search);
 
         db = new AfyaDataV2DB(this);

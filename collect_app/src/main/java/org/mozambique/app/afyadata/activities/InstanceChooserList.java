@@ -40,6 +40,8 @@ import org.mozambique.app.afyadata.utilities.ApplicationConstants;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 /**
  * Responsible for displaying all the valid instances in the instance directory.
  *
@@ -59,7 +61,7 @@ public class InstanceChooserList extends InstanceListActivity implements DiskSyn
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        loadLanguage(this);
         // must be at the beginning of any activity that can be called from an external intent
         try {
             Collect.createODKDirs();

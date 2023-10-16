@@ -37,6 +37,8 @@ import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+import static org.mozambique.app.afyadata.utilities.AfyaDataUtils.loadLanguage;
+
 public class ChatListActivity extends AppCompatActivity {
     static final String TAG = "Chat";
 
@@ -73,9 +75,13 @@ public class ChatListActivity extends AppCompatActivity {
     //EditText
     EditText mEditFeedback;
 
+    //group name
+    String mGroup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage(this);
         setContentView(R.layout.activity_chat_list);
 
         mPrefManager = new PrefManager(mContext);
@@ -104,6 +110,10 @@ public class ChatListActivity extends AppCompatActivity {
             mChatListAdapter.notifyDataSetChanged();
         }
 
+        //set group
+        mGroup = mPrefManager.getGroup();
+
+        //setup views
         setAppViews();
     }
 
@@ -112,7 +122,13 @@ public class ChatListActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.chat_menu, menu);
 
-        return true;
+        if (mGroup.equalsIgnoreCase("CAW")) {
+            MenuItem menuItem = menu.findItem(R.id.action_report_case);
+            menuItem.setVisible(false);
+        }
+
+        //return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
