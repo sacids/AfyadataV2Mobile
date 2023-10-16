@@ -302,8 +302,15 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
                 Log.d(TAG, response.toString());
 
                 //clear form
+                rbAttendCase.setChecked(false);
+                rbReported.setChecked(false);
                 etActionTaken.setText("");
+                //spDisease.setAdapter(null);
+                etOtherDisease.setText("");
+
                 Log.d(TAG, "Data posted to the server...");
+
+                //todo: update feedback status
 
                 Toast.makeText(mContext, getResources().getString(R.string.success_feedback), Toast.LENGTH_SHORT).show();
             }

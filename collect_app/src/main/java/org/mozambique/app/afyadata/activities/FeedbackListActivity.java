@@ -122,6 +122,7 @@ public class FeedbackListActivity extends AppCompatActivity {
                 view.setBackgroundColor(Color.parseColor("#F4F4F4"));
 
                 final Feedback feedback = mFeedbackList.get(position);
+                loadLanguage(mContext);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setMessage(getResources().getString(R.string.delete_status))

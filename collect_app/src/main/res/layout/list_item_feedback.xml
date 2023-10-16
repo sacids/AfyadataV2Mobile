@@ -33,7 +33,7 @@
                 android:layout_alignParentRight="true"
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/primary"
-                android:textSize="@dimen/text_small"
+                android:textSize="@dimen/text_medium"
                 android:textStyle="bold"/>
 
         </RelativeLayout>

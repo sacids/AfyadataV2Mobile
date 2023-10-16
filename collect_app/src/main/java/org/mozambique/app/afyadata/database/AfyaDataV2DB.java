@@ -343,6 +343,7 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         values.put(KEY_CHR_NAME, feedback.getChrName());
         values.put(KEY_DATE_CREATED, feedback.getDateCreated());
         values.put(KEY_FEEDBACK_STATUS, feedback.getStatus());
+        values.put(KEY_ATTEND_STATUS, feedback.getAttendStatus());
         values.put(KEY_FEEDBACK_REPLY_BY, feedback.getReplyBy());
 
         // updating row
