@@ -208,8 +208,6 @@ public class ChatListActivity extends AppCompatActivity {
 
     }
 
-
-
     //Function to post details to the server
     private void postFeedback() {
         ConnectivityManager connectivityManager =

@@ -552,7 +552,7 @@
   <string name="lbl_other_disease">Autre maladie (si applicable)</string>
   <string name="lbl_write_other_disease">Écrire une autre maladie</string>
   <string name="lbl_write_action_taken">Écrire les mesures prises</string>
-  <string name="lbl_reported_emai">Rapporté par e-mail</string>
+  <string name="lbl_reported_emai">Rapporté par EMA-i</string>
   <string name="lbl_submit">Soumettre</string>
 
   <!--Laboratory issues-->

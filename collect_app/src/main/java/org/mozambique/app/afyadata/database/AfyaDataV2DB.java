@@ -390,6 +390,50 @@ public class AfyaDataV2DB extends SQLiteOpenHelper {
         return feedback;
     }
 
+    //get feedback by form and instance
+    public Feedback getInstanceFeedback(String instanceId){
+        String selectQuery = "SELECT  * FROM " + TABLE_FEEDBACK +  " WHERE " + KEY_INSTANCE_ID + " = ?";
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{instanceId});
+
+        Feedback feedback = null;
+
+        //check if cursor not null
+        if (cursor != null && cursor.moveToFirst()) {
+            //feedback constructor
+            feedback = new Feedback(
+                    Long.parseLong(cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_ID))),
+                    cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_FORM_ID)),
+                    cursor.getString(cursor.getColumnIndex(KEY_INSTANCE_ID)),
+                    cursor.getString(cursor.getColumnIndex(KEY_FORM_TITLE)),
+                    cursor.getString(cursor.getColumnIndex(KEY_MESSAGE)),
+                    cursor.getString(cursor.getColumnIndex(KEY_SENDER)),
+                    cursor.getString(cursor.getColumnIndex(KEY_USER)),
+                    cursor.getString(cursor.getColumnIndex(KEY_CHR_NAME)),
+                    cursor.getString(cursor.getColumnIndex(KEY_DATE_CREATED)),
+                    cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_STATUS)),
+                    cursor.getString(cursor.getColumnIndex(KEY_ATTEND_STATUS)),
+                    cursor.getString(cursor.getColumnIndex(KEY_FEEDBACK_REPLY_BY)));
+        }
+
+        // return feedback
+        return feedback;
+    }
+
+    // Updating feedback
+    public int updateInstanceFeedback(String formId ,String instanceId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ATTEND_STATUS, "Attended");
+
+        // updating row
+        return db.update(TABLE_FEEDBACK, values, KEY_FEEDBACK_FORM_ID + " = ? AND " + KEY_INSTANCE_ID + " = ?",
+                new String[]{formId, instanceId});
+    }
+
     /*******************************************************************
      * All CRUD(Create, Read, Update, Delete) Operations for Feedback
      *******************************************************************/

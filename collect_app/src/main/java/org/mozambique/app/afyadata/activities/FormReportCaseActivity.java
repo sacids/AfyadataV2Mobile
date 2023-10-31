@@ -30,6 +30,7 @@ import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
 import org.json.JSONObject;
 import org.mozambique.app.afyadata.R;
+import org.mozambique.app.afyadata.adapters.model.Feedback;
 import org.mozambique.app.afyadata.adapters.model.Tips;
 import org.mozambique.app.afyadata.app.PrefManager;
 import org.mozambique.app.afyadata.database.AfyaDataV2DB;
@@ -129,8 +130,6 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
 
             Log.d(TAG, "latitude => " + mLatitude);
             Log.d(TAG, "longitude => " + mLongitude);
-            // \n is for new line
-            //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
         }else{
             // can't get location
             // GPS or Network is not enabled
@@ -276,10 +275,7 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
         mProgressDialog.setMessage(getResources().getString(R.string.lbl_waiting));
         mProgressDialog.show();
 
-        Log.d(TAG, "case attended => " + mCaseAttended);
-        Log.d(TAG, "reported => " + mReported);
-        Log.d(TAG, "action taken => " + mActionTaken);
-
+        //payload
         final RequestParams params = new RequestParams();
         params.add("username", mUsername);
         params.add("form_id", mFormId);
@@ -298,7 +294,6 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 mProgressDialog.dismiss();
-
                 Log.d(TAG, response.toString());
 
                 //clear form
@@ -310,8 +305,10 @@ public class FormReportCaseActivity extends AppCompatActivity implements Adapter
 
                 Log.d(TAG, "Data posted to the server...");
 
-                //todo: update feedback status
+                //update feedback status
+                db.updateInstanceFeedback(mFormId, mInstanceId);
 
+                //toast message
                 Toast.makeText(mContext, getResources().getString(R.string.success_feedback), Toast.LENGTH_SHORT).show();
             }
 

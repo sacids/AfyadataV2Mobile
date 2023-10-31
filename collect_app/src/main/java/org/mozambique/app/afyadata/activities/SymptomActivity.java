@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +30,6 @@ public class SymptomActivity extends AppCompatActivity {
     //string variable
     String mId;
     String mTitle;
-    String mPhoto;
     String mDescription;
 
     //private Symptom symptom = null;
@@ -42,7 +43,6 @@ public class SymptomActivity extends AppCompatActivity {
         //get intent variables
         mId = getIntent().getStringExtra("id");
         mTitle = getIntent().getStringExtra("title");
-        mPhoto = getIntent().getStringExtra("photo");
         mDescription = getIntent().getStringExtra("description");
 
         //symptom = (Symptom) Parcels.unwrap(getIntent().getParcelableExtra("symptom"));
@@ -87,23 +87,13 @@ public class SymptomActivity extends AppCompatActivity {
     //setViews
     public void setViews() {
         TextView title = (TextView) findViewById(R.id.title);
-        TextView description = (TextView) findViewById(R.id.description);
-        ImageView photo = (ImageView) findViewById(R.id.photo);
-
         title.setText(mTitle);
 
-        //setText Description
-        if (Build.VERSION.SDK_INT >= 24) {
-            description.setText(Html.fromHtml(mDescription, Build.VERSION.SDK_INT));
-        } else {
-            description.setText(Html.fromHtml(mDescription)); // or for older api
-        }
-
-        // Loader image - will be shown before loading image
-        int loader = R.drawable.cow;
-
-        ImageLoader imgLoader = new ImageLoader(this);
-        imgLoader.displayImage(mPhoto, loader, photo);
+        //here the trick
+        WebView webView = (WebView) findViewById(R.id.description);
+        //webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadData(mDescription,"text/html","UTF-8");
     }
 
     @Override

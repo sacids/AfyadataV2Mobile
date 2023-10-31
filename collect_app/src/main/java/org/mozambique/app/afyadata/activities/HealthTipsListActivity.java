@@ -55,7 +55,8 @@ public class HealthTipsListActivity extends AppCompatActivity {
     private TipsListAdapter adapter;
 
     private SharedPreferences mSharedPreferences;
-    private String serverUrl;
+    private String mServerURL;
+    private String mUsername;
 
     //AfyaData database
     private AfyaDataV2DB db;
@@ -78,7 +79,8 @@ public class HealthTipsListActivity extends AppCompatActivity {
         NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        serverUrl = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
+        mUsername = mSharedPreferences.getString(PreferenceKeys.KEY_USERNAME, null);
+        mServerURL = mSharedPreferences.getString(PreferenceKeys.KEY_SERVER_URL,
                 getString(R.string.default_server_url));
 
 
@@ -174,9 +176,10 @@ public class HealthTipsListActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
 
             RequestParams param = new RequestParams();
+            param.add("username", mUsername);
             //param.add("language", language);
 
-            BackgroundClient.get(serverUrl + "/api/v3/ohkr/disease", param, new JsonHttpResponseHandler() {
+            BackgroundClient.get(mServerURL + "/api/v3/ohkr/disease", param, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     // If the response is JSONObject instead of expected JSONArray
