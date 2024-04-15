@@ -3,16 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundimg">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/app_logo"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:contentDescription="@string/app_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:src="@drawable/logofonblanc"/>
+        android:src="@drawable/app_logo"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:background="@drawable/bordureinscriptionbtn"
+                android:background="@drawable/rounded_red_background"
                 android:textSize="@dimen/text_large"
                 android:theme="@style/whiteEditTextStyle"/>
 
@@ -60,7 +60,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="@dimen/text_large"
-                android:background="@drawable/bordureinscriptionbtn"
+                android:background="@drawable/rounded_red_background"
                 android:theme="@style/whiteEditTextStyle"/>
 
             <LinearLayout
@@ -69,7 +69,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/bordureinscriptionbtn"
+                android:background="@drawable/rounded_red_background"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
@@ -85,7 +85,7 @@
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="@dimen/text_large"
-                    android:background="@drawable/bordureinscriptionbtnsans"
+                    android:background="@drawable/rounded_red_background"
                     android:theme="@style/whiteEditTextStyle" />
 
                 <EditText
@@ -100,7 +100,7 @@
                     android:inputType="phone"
                     android:maxLines="1"
                     android:padding="10dp"
-                    android:background="@drawable/bordureinscriptionbtnsans"
+                    android:background="@drawable/rounded_red_background"
                     android:textAppearance="@style/TextAppearance.FontPath"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -117,7 +117,7 @@
                 android:layout_marginRight="50dp"
                 android:hint="@string/lbl_password"
                 android:inputType="textPassword"
-                android:background="@drawable/bordureinscriptionbtn"
+                android:background="@drawable/rounded_red_background"
                 android:maxLength="8"
                 android:maxLines="1"
                 android:padding="10dp"
@@ -139,7 +139,7 @@
                 android:maxLength="8"
                 android:maxLines="1"
                 android:padding="10dp"
-                android:background="@drawable/bordureinscriptionbtn"
+                android:background="@drawable/rounded_red_background"
                 android:textAppearance="@style/TextAppearance.FontPath"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
@@ -153,7 +153,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/signupbtn"
+                android:background="@drawable/btnconnexionrouge"
                 android:text="@string/lbl_sign_up"
                 android:textAllCaps="true"
                 android:textAppearance="@style/BoldTextAppearance.FontPath"
@@ -169,7 +169,7 @@
                 android:background="@null"
                 android:text="@string/btn_link_to_login"
                 android:textAppearance="@style/BoldTextAppearance.FontPath"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_large"/>
 
         </LinearLayout>
